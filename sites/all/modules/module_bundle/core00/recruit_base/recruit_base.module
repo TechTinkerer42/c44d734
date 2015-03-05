@@ -1,0 +1,25 @@
+<?php
+	
+/* module_load_include('recruit_base', 'recruit_base.css'); */
+
+function recruit_base_menu(){
+  $items = array();
+
+  $items['admin/dash/rolemanager'] = array(
+    'title' => t('Role Manager'),
+    'page callback' => 'recruit_base_output',
+    'access arguments' => array('access dash'),
+    'type' => MENU_LOCAL_TASK,
+  );    
+   
+  return $items;
+}  
+
+
+/*
+* Display output
+*/
+function recruit_base_output() {
+  drupal_set_title("Role Manager");
+  return '';
+}

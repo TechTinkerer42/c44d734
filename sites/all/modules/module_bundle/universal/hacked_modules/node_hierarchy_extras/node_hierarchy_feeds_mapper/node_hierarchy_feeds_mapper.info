@@ -1,0 +1,8 @@
+name = Node Hierarchy Feeds Mapper
+description = Feeds Mapper for importing Node Hierarchy
+package = "Node Hierarchy"
+dependencies[] = nodehierarchy
+dependencies[] = feeds
+core = 7.x
+version = "7.x-0.1"
+

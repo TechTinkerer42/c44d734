@@ -1,0 +1,17 @@
+name = core44 Tweaker
+description = Code based tweaks
+core = 7.x
+version = 7.x-1.0
+package = core44
+php = 5.2
+
+;dependencies[] = feeds
+;dependencies[] = uuid
+
+;files[] = includes/core44_tweaker.controller.inc
+;files[] = includes/core44_tweaker.batch.inc
+
+;scripts[] = js/core44_tweaker.js
+
+;stylesheets[all][] = css/core44_tweaker.css
+;stylesheets[print][] = css/core44_tweaker.css

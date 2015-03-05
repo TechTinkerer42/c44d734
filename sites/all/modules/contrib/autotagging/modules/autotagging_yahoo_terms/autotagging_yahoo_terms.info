@@ -1,0 +1,6 @@
+name = Autotagging Yahoo Terms support
+package = Autotagging
+description = Access Yahoo Terms for autotagging of content
+dependencies[] = taxonomy
+dependencies[] = autotagging
+core = 6.x

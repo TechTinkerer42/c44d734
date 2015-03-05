@@ -1,0 +1,76 @@
+<?php
+
+/**
+ * Implementation of hook_ctools_plugin_api().
+ */
+module_load_include('inc', 'core44_ol_pimp', 'includes/core44_ol_pimp_styles');
+
+/**
+ * Implementation of hook_openlayers_behaviors().
+ *
+ * This is a ctools plugins hook.
+ */
+function core44_ol_pimp_openlayers_behaviors() {
+
+  $behaviors['core44_ol_pimp_behavior_navigation'] = array(
+    'title' => t('core44: Navigation'),
+    'description' => t('Provides the ability to navigate the map interface. This is just for user interactions and does not show any visual controls. This behavior automatically includes the Pan Zoom, Zoom Box, and Pinch Zoom controls.'),
+    'type' => 'map',
+  );
+  $behaviors['core44_ol_pimp_behavior_cluster'] = array(
+    'title' => t('core44: Cluster'),
+    'description' => t('Provides vector layer features clustering by proximity.  This will not always respect the styles that assigned to the layer.'),
+    'type' => 'layer',
+  );
+  $behaviors['core44_ol_pimp_behavior_tooltip'] = array(
+    'title' => t('core44: Tooltip'),
+    'description' => t('Adds popup tooltips to features.'),
+    'type' => 'layer',
+  );
+  $behaviors['core44_ol_pimp_behavior_highlight'] = array(
+    'title' => t('core44: Highlight'),
+    'description' => t('Provides functionality for feature highlighting.'),
+    'type' => 'layer',
+  );
+  $behaviors['core44_ol_pimp_behavior_dynamic_styles'] = array(
+    'title' => t('core44: Dynamic styles'),
+    'description' => t('Dynamic styling of features'),
+    'type' => 'layer',
+  );
+  $behaviors['core44_ol_pimp_behavior_zoomtolayer'] = array(
+    'title' => t('core44: Zoom to layer'),
+    'description' => t('Zooms to the extent of a given layer(s) on map loading. If multiple layers are chosen, zooms to the extent that includes all chosen layers.'),
+    'type' => 'layer',
+  );   
+  $behaviors['core44_ol_pimp_behavior_mapwidthtoggle'] = array(
+    'title' => t('core44: Map width toggle'),
+    'description' => t('Adds a toggle to change the width of the map and page ratio'),
+    'type' => 'map',
+  );  
+  $behaviors['core44_ol_pimp_behavior_scubox'] = array(
+    'title' => t('core44: scubox'),
+    'description' => t('Core scubox map functionality'),
+    'type' => 'map',
+  );             
+  $behaviors['core44_ol_pimp_behavior_popup'] = array(
+    'title' => t('core44: Popup'),
+    'description' => t('Adds clickable info boxes to points or shapes on maps.  This does not work with the Tooltip behavior due to limitation of event handling in the OpenLayers library.'),
+    'type' => 'layer',
+  );
+  $behaviors['core44_ol_pimp_behavior_drawfeatures'] = array(
+    'title' => t('core44: Draw'),
+    'description' => t('Provides functionality for adding features to a map.'),
+    'type' => 'layer',
+  );  
+  foreach ($behaviors as $key => $data) {
+    $behaviors[$key]['path'] = drupal_get_path('module', 'core44_ol_pimp') . '/plugins/behaviors';
+    $behaviors[$key]['behavior'] = array(
+      'class' => $key,
+      'file' => $key . '.inc',
+      'parent' => 'openlayers_behavior',
+    );
+  }
+
+  return $behaviors;
+
+}

@@ -1,0 +1,329 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the profile module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function profile2_install() {
+  // Add an initial profile type, but only if installed manually. In case the
+  // module is installed via an installation profile, skip that.
+  if (!drupal_installation_attempted()) {
+    $type = entity_create('profile2_type', array(
+      'type' => 'main',
+      'label' => t('Main profile'),
+      'weight' => 0,
+      'data' => array(
+        'registration' => TRUE,
+        'use_page' => TRUE,
+        'revisions' => 0,
+      ),
+    ));
+    $type->save();
+    user_role_grant_permissions(DRUPAL_AUTHENTICATED_RID, array('edit own main profile', 'view own main profile'));
+    drupal_set_message(t('A main profile type has been created and assigned to all users. Go to the <a href="!url">Profile types</a> page to add some fields or to configure further profile types.', array('!url' => url('admin/structure/profiles'))));
+  }
+}
+
+/**
+ * Implements hook_schema().
+ */
+function profile2_schema() {
+  $schema['profile'] = array(
+    'description' => 'Stores profile items.',
+    'fields' => array(
+      'pid' => array(
+        'type' => 'serial',
+        'not null' => TRUE,
+        'description' => 'Primary Key: Unique profile item ID.',
+      ),
+      'vid' => _profile2_vid_field(),
+      'type' => array(
+        'description' => 'The {profile_type}.type of this profile.',
+        'type' => 'varchar',
+        'length' => 32,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'uid' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => FALSE,
+        'default' => NULL,
+        'description' => "The {users}.uid of the associated user.",
+      ),
+      'label' => array(
+        'description' => 'A human-readable label for this profile.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'created' => array(
+        'description' => 'The Unix timestamp when the profile was created.',
+        'type' => 'int',
+        'not null' => FALSE,
+      ),
+      'changed' => array(
+        'description' => 'The Unix timestamp when the profile was most recently saved.',
+        'type' => 'int',
+        'not null' => FALSE,
+      ),
+    ),
+    'indexes' => array(
+      'uid' => array('uid'),
+    ),
+    'foreign keys' => array(
+      'uid' => array(
+        'table' => 'users',
+        'columns' => array('uid' => 'uid'),
+      ),
+      'type' => array(
+        'table' => 'profile_type',
+        'columns' => array('type' => 'type'),
+      ),
+    ),
+    'primary key' => array('pid'),
+    'unique keys' => array(
+      'vid' => array('vid'),
+    ),
+  );
+
+  $schema['profile_revision'] = _profile2_revision_table();
+
+  $schema['profile_type'] = array(
+    'description' => 'Stores information about all defined profile types.',
+    'fields' => array(
+      'id' => array(
+        'type' => 'serial',
+        'not null' => TRUE,
+        'description' => 'Primary Key: Unique profile type ID.',
+      ),
+      'type' => array(
+        'description' => 'The machine-readable name of this profile type.',
+        'type' => 'varchar',
+        'length' => 32,
+        'not null' => TRUE,
+      ),
+      'label' => array(
+        'description' => 'The human-readable name of this profile type.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'weight' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'size' => 'tiny',
+        'description' => 'The weight of this profile type in relation to others.',
+      ),
+      'data' => array(
+        'type' => 'text',
+        'not null' => FALSE,
+        'size' => 'big',
+        'serialize' => TRUE,
+        'description' => 'A serialized array of additional data related to this profile type.',
+      ),
+      'status' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        // Set the default to ENTITY_CUSTOM without using the constant as it is
+        // not safe to use it at this point.
+        'default' => 0x01,
+        'size' => 'tiny',
+        'description' => 'The exportable status of the entity.',
+      ),
+      'module' => array(
+        'description' => 'The name of the providing module if the entity has been defined in code.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+      ),
+    ),
+    'primary key' => array('id'),
+    'unique keys' => array(
+      'type' => array('type'),
+    ),
+  );
+  return $schema;
+}
+
+/**
+ * Define the vid (version ID) field for the {profile} table.
+ *
+ * Put it in a separate function in order to guarantee that we use the same
+ * definition in hook_schema() and hook_update_N().
+ */
+function _profile2_vid_field() {
+  $vid_field = array(
+    'description' => 'The current {profile_revision}.vid version identifier.',
+    'type' => 'int',
+    'unsigned' => TRUE,
+    'not null' => FALSE,
+    'default' => NULL,
+  );
+
+  return $vid_field;
+}
+
+/**
+ * Define the {profile_revision} table.
+ *
+ * Put it in a separate function in order to guarantee that we use the same
+ * definition in hook_schema() and hook_update_N().
+ */
+function _profile2_revision_table() {
+  $profile_revision = array(
+    'description' => 'Stores information about each saved version of a {profile}.',
+    'fields' => array(
+      'pid' => array(
+        'description' => 'The {profile} this version belongs to.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'vid' => array(
+        'description' => 'Primary Key: Unique identifier of this version.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'authorid' => array(
+        'description' => 'The {users}.uid that created this version.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'label' => array(
+        'description' => 'A human-readable label for this profile.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'log' => array(
+        'description' => 'The log entry explaining the changes in this version.',
+        'type' => 'text',
+        'not null' => TRUE,
+        'size' => 'big',
+      ),
+      'timestamp' => array(
+        'description' => 'A Unix timestamp indicating when this version was created.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+    ),
+    'indexes' => array(
+      'pid' => array('pid'),
+      'authorid' => array('authorid'),
+    ),
+    'primary key' => array('vid'),
+    'foreign keys' => array(
+      'versioned_profile' => array(
+        'table' => 'profile',
+        'columns' => array('pid' => 'pid'),
+      ),
+      'version_uid' => array(
+        'table' => 'users',
+        'columns' => array('authorid' => 'uid'),
+      ),
+    ),
+  );
+
+  return $profile_revision;
+}
+
+/**
+ * Add in the exportable entity db columns as required by the entity API.
+ */
+function profile2_update_7100() {
+  db_add_field('profile_type', 'status', array(
+    'type' => 'int',
+    'not null' => TRUE,
+    'default' => ENTITY_CUSTOM,
+    'size' => 'tiny',
+    'description' => 'The exportable status of the entity.',
+  ));
+  db_add_field('profile_type', 'module', array(
+    'description' => 'The name of the providing module if the entity has been defined in code.',
+    'type' => 'varchar',
+    'length' => 255,
+    'not null' => FALSE,
+  ));
+}
+
+/**
+ * Add a label column to profiles.
+ */
+function profile2_update_7101() {
+  db_add_field('profile', 'label', array(
+    'description' => 'A human-readable label for this profile.',
+    'type' => 'varchar',
+    'length' => 255,
+    'not null' => TRUE,
+    'default' => '',
+  ));
+  $types = db_select('profile_type', 'p')
+    ->fields('p')
+    ->execute()
+    ->fetchAllAssoc('type');
+
+  // Initialize with the type label.
+  foreach ($types as $type_name => $type) {
+    db_update('profile')
+      ->fields(array(
+        'label' => $type->label,
+      ))
+      ->condition('type', $type_name)
+      ->execute();
+  }
+}
+
+/**
+ * Add a created and a changed column to profiles.
+ */
+function profile2_update_7102() {
+  db_add_field('profile', 'created', array(
+    'description' => 'The Unix timestamp when the profile was created.',
+    'type' => 'int',
+    'not null' => FALSE,
+  ));
+  db_add_field('profile', 'changed', array(
+    'description' => 'The Unix timestamp when the profile was most recently saved.',
+    'type' => 'int',
+    'not null' => FALSE,
+  ));
+}
+
+/**
+ * Add revisioning support.
+ */
+function profile2_update_7103() {
+  db_add_field('profile', 'vid', _profile2_vid_field());
+
+  $profile_revision = _profile2_revision_table();
+  db_create_table('profile_revision', $profile_revision);
+
+  // Add version id data to the profile.
+  db_query('UPDATE {profile} SET vid = pid');
+
+  // Add current revision data to the revision table.
+  db_query("INSERT INTO {profile_revision} (pid, vid, authorid, label, log, timestamp)
+            SELECT pid, vid, uid, label, '', UNIX_TIMESTAMP()
+            FROM {profile}");
+
+  db_add_unique_key('profile', 'vid', array('vid'));
+
+  // Set the revisions flag for existing profiles.
+  foreach (profile2_get_types() as $profile_type) {
+    $profile_type->data['revisions'] = 0;
+    $profile_type->save();
+  }
+}

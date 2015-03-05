@@ -1,0 +1,6 @@
+name = Autotagging Tagthe.net support
+package = Autotagging
+description = Access TagThe.net for autotagging of content
+dependencies[] = taxonomy
+dependencies[] = autotagging
+core = 7.x

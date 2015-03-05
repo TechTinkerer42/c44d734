@@ -1,0 +1,6 @@
+name = Profile2 Feeds
+package = Feeds
+description = "Provides feeds integration for Profile2 profiles."
+core = 7.x
+dependencies[] = feeds
+dependencies[] = profile2

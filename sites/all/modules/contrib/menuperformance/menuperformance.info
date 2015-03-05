@@ -1,0 +1,11 @@
+name = MenuPerformance
+description = Improves performance when the system contains large amounts of menu items.
+package = User interface
+core = 7.x
+configure = admin/config/user-interface/menuperformance
+; Information added by drupal.org packaging script on 2013-10-01
+version = "7.x-1.0-beta3+4-dev"
+core = "7.x"
+project = "menuperformance"
+datestamp = "1380586737"
+

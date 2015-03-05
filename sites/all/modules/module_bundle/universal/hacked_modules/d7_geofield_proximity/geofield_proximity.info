@@ -1,0 +1,14 @@
+name = Geofield Proximity
+description = Provides geofield proximity filters for views.
+core = 7.x
+dependencies[] = geofield
+dependencies[] = geocoder
+dependencies[] = views
+configure = admin/config/proximity
+
+files[] = includes/geofield_proximity.views.inc
+files[] = includes/geofield_proximity_handler_filter.inc
+files[] = includes/geofield_proximity_handler_filter_circle.inc
+files[] = includes/geofield_proximity_handler_filter_square.inc
+files[] = includes/geofield_proximity_handler_sort.inc
+

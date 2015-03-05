@@ -1,0 +1,130 @@
+<?php
+
+/**
+ * @file
+ * Install file for Countries module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function countries_borders_install() {
+  $field_config = _countries_borders_field_config();
+  field_create_field($field_config);
+  $field_instance = _countries_borders_field_instance();
+  field_create_instance($field_instance);
+  // Import borders
+  _countries_borders_import_csv();
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function countries_borders_uninstall() {
+  field_delete_field('field_countries_borders');
+}
+
+function _countries_borders_field_config() {
+  return array(
+    'active' => '1',
+    'cardinality' => '1',
+    'deleted' => '0',
+    'entity_types' => array(),
+    'field_name' => 'field_countries_borders',
+    'foreign keys' => array(),
+    'indexes' => array(),
+    'locked' => TRUE,
+    'module' => 'geofield',
+    'settings' => array(),
+    'translatable' => '0',
+    'type' => 'geofield',
+  );
+}
+
+function _countries_borders_field_instance() {
+  return array(
+    'bundle' => 'country',
+    'default_value' => NULL,
+    'deleted' => '0',
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'geofield',
+        'settings' => array(
+          'data' => 'full',
+          'map_preset' => 'geofield_formatter_map',
+        ),
+        'type' => 'geofield_openlayers',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'country',
+    'field_name' => 'field_countries_borders',
+    'label' => 'Borders',
+    'required' => 0,
+    'settings' => array(
+      'local_solr' => array(
+        'enabled' => FALSE,
+        'lat_field' => 'lat',
+        'lng_field' => 'lng',
+      ),
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'geofield',
+      'settings' => array(
+      ),
+      'type' => 'geofield_wkt',
+      'weight' => '4',
+    ),
+  );
+}
+
+/**
+ * Helper function to import countries.
+ */
+function _countries_borders_import_csv() {
+  // Allow unlimited time limit, since the import process can be long
+  set_time_limit(0);
+
+  $countries = array();
+  $handle = fopen(dirname(__FILE__) . '/countries_borders.csv', 'r');
+  $headers = fgetcsv($handle, 1024, ';');
+  while (($row = fgetcsv($handle, 1024, ';')) !== FALSE) {
+    // The wkt data.
+    $row[0] = trim($row[0]);
+    // The iso2 data.
+    $row[2] = empty($row[2]) || $row[2] == 'NULL' ? '' : trim($row[2]);
+    // The lon data.
+    $row[10] = empty($row[10]) || $row[10] == 'NULL' ? '' : trim($row[10]);
+    // The lat data.
+    $row[11] = empty($row[11]) || $row[11] == 'NULL' ? '' : trim($row[11]);
+    if (!empty($row[0]) && $row[0] != 'NULL') {
+      $countries[$row[2]] = array(
+        'wkt' => $row[0],
+        'lon' => $row[10],
+        'lat' => $row[11],
+      );
+    }
+  }
+  fclose($handle);
+  foreach ($countries as $key => $wkt) {
+    $country = country_load($key);
+    if ($country) {
+      $country->field_countries_borders[LANGUAGE_NONE][0] = geofield_compute_values($wkt);
+      country_save($country);
+    }
+  }
+  
+  watchdog('countries', "Pre-populated countries borders data.");
+}
+
+/**
+ * Updates field instance
+ */
+function countries_borders_update_7100() {
+  $field_instance = _countries_borders_field_instance();
+  field_update_instance($field_instance);
+}

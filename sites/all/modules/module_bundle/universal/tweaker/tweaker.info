@@ -1,0 +1,49 @@
+core = "7.x"
+name = "Tweaker"
+description = "Custom site tweaks and overrides"
+package = "CUSTOM"
+
+; Information added by drush on 2012-12-13
+version = "unknown"
+project = "module_bundle"
+datestamp = "1355336693"
+
+
+
+; Information added by drush on 2012-12-14
+version = "unknown"
+project = "module_bundle"
+datestamp = "1355497728"
+
+
+
+; Information added by drush on 2012-12-15
+version = "unknown"
+project = "module_bundle"
+<<<<<<< HEAD
+datestamp = "1355552960"
+=======
+datestamp = "1355554868"
+>>>>>>> Information added by drush
+
+
+
+; Information added by drush on 2013-02-08
+version = "unknown"
+project = "module_bundle"
+datestamp = "1360321459"
+
+
+
+; Information added by drush on 2013-03-10
+version = "unknown"
+project = "module_bundle"
+datestamp = "1362897870"
+
+
+
+; Information added by drush on 2013-03-19
+version = "unknown"
+project = "core_default"
+datestamp = "1363674615"
+

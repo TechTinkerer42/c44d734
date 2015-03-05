@@ -1,0 +1,17 @@
+name = Rooms Availability Reference
+description = Provides a field to reference and display availability information on any fieldable entity
+core = 7.x
+version = 1.x-dev
+
+package = Rooms
+
+dependencies[] = rooms_availability
+
+files[] = test/rooms_availability_reference_test.test
+
+; Information added by drupal.org packaging script on 2013-03-21
+version = "7.x-1.0-rc2+69-dev"
+core = "7.x"
+project = "rooms"
+datestamp = "1363829226"
+

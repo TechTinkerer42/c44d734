@@ -1,0 +1,6 @@
+name = Autotagging OpenCalais support
+package = Autotagging
+description = Access OpenCalais for autotagging of content
+dependencies[] = taxonomy
+dependencies[] = autotagging
+core = 7.x

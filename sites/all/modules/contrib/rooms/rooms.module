@@ -1,0 +1,235 @@
+<?php
+
+/**
+ * @file
+ * Provides basic underlying functionality and configuration options used
+ * by all Rooms modules
+ */
+
+
+define('ROOMS_CHILDREN_FEATURES', 'children_features');
+
+define('ROOMS_ADD', 'add');
+define('ROOMS_SUB', 'sub');
+define('ROOMS_REPLACE', 'replace');
+define('ROOMS_INCREASE', 'increase');
+define('ROOMS_DECREASE', 'decrease');
+define('ROOMS_PRICE_SINGLE_OCCUPANCY', 'single_occupancy');
+define('ROOMS_DYNAMIC_MODIFIER', 'dynamic_modifier');
+
+
+/**
+ * Implements hook_permission().
+ */
+function rooms_permission() {
+  $permissions = array(
+    'configure room settings' => array(
+      'title' => t('Configure rooms settings'),
+      'description' => t('Allows users to configure rooms settings'),
+      'restrict access' => TRUE,
+    ),
+  );
+
+  return $permissions;
+}
+
+/**
+ * implements hook_field_info().
+ */
+function rooms_field_info() {
+  return array(
+    'rooms_options' => array(
+      'label' => t('rooms options'),
+      'description' => t('rooms options'),
+      'settings' => array(),
+      'default_widget' => 'rooms_options_combined',
+      'default_formatter' => 'rooms_options_default',
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_validate().
+ */
+function rooms_field_validate($entity_type, $entity, $field, $instance, $langcode, $items, &$errors) {
+}
+
+/**
+ * Implements hook_field_is_empty().
+ */
+function rooms_field_is_empty($item, $field) {
+  return empty($item['name']);
+}
+
+/**
+ * Implements hook_field_schema().
+ */
+function rooms_field_schema($field) {
+  if ($field['type'] == 'rooms_options') {
+    return array(
+      'columns' => array(
+        'name' => array(
+          'type' => 'varchar',
+          'length' => 255,
+          'not null' => TRUE,
+        ),
+        'quantity' => array(
+          'type' => 'int',
+          'not null' => FALSE,
+        ),
+        'operation' => array(
+          'type' => 'varchar',
+          'length' => 255,
+          'not null' => FALSE,
+        ),
+        'value' => array(
+          'type' => 'int',
+          'not null' => FALSE,
+        ),
+      ),
+    );
+  }
+}
+
+/**
+ * Implements hook_field_widget_info().
+ */
+function rooms_field_widget_info() {
+  return array(
+    'rooms_options_combined' => array(
+      'label' => t('Combined text field'),
+      'description' => t(''),
+      'field types' => array('rooms_options'),
+      'settings' => array(),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_widget_form().
+ */
+function rooms_field_widget_form(&$form, &$form_state, $field, $instance, $langcode, $items, $delta, $element) {
+  if ($instance['widget']['type'] == 'rooms_options_combined') {
+    $element['name'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Name'),
+      '#default_value' => isset($items[$delta]['name']) ? $items[$delta]['name'] : NULL,
+    );
+    $element['quantity'] = array(
+      '#type' => 'select',
+      '#title' => t('Quantity'),
+      '#options' => array('None', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'),
+      '#default_value' => isset($items[$delta]['quantity']) ? $items[$delta]['quantity'] : NULL,
+    );
+    $element['operation'] = array(
+      '#type' => 'select',
+      '#title' => t('Operation'),
+      '#options' => array(ROOMS_ADD, ROOMS_SUB, ROOMS_REPLACE, ROOMS_INCREASE, ROOMS_DECREASE),
+      '#default_value' => isset($items[$delta]['operation']) ? $items[$delta]['operation'] : NULL,
+    );
+    $element['value'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Value'),
+      '#default_value' => isset($items[$delta]['value']) ? $items[$delta]['value'] : NULL,
+    );
+
+    return $element;
+  }
+}
+
+/**
+ * Utility function that returns an array with the last day of each month given a year
+ *
+ * @param $year
+ * The year to get the end of month dates for
+ *
+ * @param $calendar
+ * The calendar to use to determine eof dates
+ *
+ * @return
+ * An array keyed by months
+ */
+function rooms_end_of_month_dates($year) {
+
+  $end_of_month_dates = array();
+
+  for ($i = 1; $i<=12; $i++) {
+     $end_of_month_dates[$i] = date("t", mktime(0, 0, 0, $i, 1, $year));
+  }
+
+  return $end_of_month_dates;
+}
+
+
+/**
+ * Utility function - we have a few forms that need a start and end date field and we need to apply
+ * the same javascript to these forms in order to have a specific consistent behaviour and groups
+ * the form elements and javascript injection in one place.
+ *
+ * @param array $data_range_fields If you are adding extra information pass the fields first keeping
+ * in mind that any key values that are set in the function will be overidden.
+ *
+ * @return array The array holding the field definitions
+ */
+function rooms_date_range_fields($date_range_fields = array()) {
+  $date_format = str_replace('-', '/', variable_get('rooms_date_format', 'd-m-Y'));
+
+  $date_range_fields['rooms_start_date'] = array(
+    '#prefix' => '<div class="start-date">',
+    '#suffix' => '</div>',
+    '#type' => 'date_popup',
+    '#title' => t('Arrival Date'),
+    '#date_type' => DATE_DATETIME,
+    '#date_format' => $date_format,
+    //'#default_value' => "$year-$month-01 00:00:00",
+    '#date_increment' => 1,
+    '#date_year_range' => '-1:+3',
+    '#required' => TRUE,
+  );
+
+  $date_range_fields['rooms_end_date'] = array(
+    '#prefix' => '<div class="end-date">',
+    '#suffix' => '</div>',
+    '#type' => 'date_popup',
+    '#title' => t('Departure Date'),
+    '#date_type' => DATE_DATETIME,
+    '#date_format' => $date_format,
+    //'#default_value' => "$year-$month-01 00:00:00",
+    '#date_increment' => 1,
+    '#date_year_range' => '-1:+3',
+    '#required' => TRUE,
+    '#attached' => array(
+      'js' => array(
+        drupal_get_path('module', 'rooms') . '/js/rooms_date_popup.js',
+        array(
+         'data' => array(
+            'rooms' => array(
+              'roomsBookingStartDay' => variable_get('rooms_booking_start_date', 1),
+              'roomsDateFormat' => rooms_dateFormatTojQueryUIDatePickerFormat($date_format),
+            ),
+          ),
+          'type' => 'setting',
+        ),
+      ),
+    ),
+  );
+
+  return $date_range_fields;
+}
+
+
+/**
+ * Transfom from PHP conventions to jQueryUI conventions for dates
+ */
+function rooms_dateFormatTojQueryUIDatePickerFormat($date_format) {
+  $chars = array(
+    // Day
+    'd' => 'dd', 'j' => 'd', 'l' => 'DD', 'D' => 'D',
+    // Month
+    'm' => 'mm', 'n' => 'm', 'F' => 'MM', 'M' => 'M',
+    // Year
+    'Y' => 'yy', 'y' => 'y',
+  );
+
+  return strtr((string)$date_format, $chars);
+}

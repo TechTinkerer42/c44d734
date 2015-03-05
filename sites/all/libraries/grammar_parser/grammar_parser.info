@@ -1,0 +1,18 @@
+name = "Grammar Parser"
+
+description = "Grammar Parser -- an API for parsing, editing and rebuilding a code snippet
+               according to the grammar of the programming language."
+
+package = Development
+
+; only list files with class declarations
+;files[] = grammar_parser.install
+;files[] = grammar_parser.module
+files[] = engine/editor.inc
+files[] = engine/list.inc
+files[] = engine/object.inc
+files[] = engine/parser.inc
+files[] = engine/reader.inc
+files[] = engine/writer.inc
+
+core = 7.x

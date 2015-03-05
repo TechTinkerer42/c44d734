@@ -1,0 +1,6 @@
+name = Omega UI
+description = The Omega UI is an advanced addon for the <a href="http://himer.us/omega-theme">Omega</a> theme and subthemes, creating a visual interface for managing the layout and theme settings for you Omega subtheme, and allowing for contextual theme settings.
+package = Theme Tools
+core = 7.x
+
+files[] = omega_ui.module 

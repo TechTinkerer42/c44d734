@@ -1,0 +1,13 @@
+<?php
+
+function core44_former_form_alter(&$form, &$form_state, $form_id){
+  /* dsm($form['#form_id']); */
+  if($form['#form_id'] == 'bean_form'){
+   $form['revision']['is_new_revision']['#type'] = 'hidden';
+   $form['revision']['default_revision']['#type'] = 'hidden';
+   $form['revision']['log']['#type'] = 'hidden';   
+   $form['label']['#type'] = 'hidden';
+   $form['view_mode']['#type'] = 'hidden';
+  }
+
+}

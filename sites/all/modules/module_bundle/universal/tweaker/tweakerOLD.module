@@ -1,0 +1,216 @@
+<?php
+/**
+* ADDS A UUID FIELD TO FEEDS TAXONOMY MAPPER - THIS DEPENDS ON A HACK IN THE FEEDS MODULE ITSELF
+* Implementation of hook_feeds_node_processor_targets_alter().
+*/
+function tweaker_feeds_processor_targets_alter(&$targets, $entity_type, $bundle_name){
+  if ($entity_type == 'taxonomy_term') {
+    $targets['uuid'] = array(
+      'name' => t('UUID'),
+      'description' => t('The UUID of term.'),
+      'optional_unique' => TRUE,      
+      'callback' => 'tweaker_set_target',
+    );
+  }
+}
+
+function tweaker_validUUID($uuid){
+  return preg_match('#^[a-z0-9]{8}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{12}$#', $uuid);
+}
+/**
+* Mapping callback.
+*/
+function tweaker_set_target($source, $entity, $target, $value) {
+  //dsm($entity);
+  //tweaker_validUUID($value);
+  //$str = $value;
+  //$str .= chr(32); /* add an escape character at the end of $str */
+  $entity->uuid = $value;
+  //if (!is_array($value)) {
+  // $entity->{$target}[$entity->uuid] = $str;
+  //}
+}
+
+
+//function tweaker_overlay_paths_alter(&$paths) {	
+////$options = drupal_get_query_parameters();
+////dsm($options);
+////// If the current page request is inside the overlay, add ?render=overlay
+////// to the new path, so that it appears correctly inside the overlay.
+////if (isset($options['query'])) {
+//// 	 $options['query'] += array('render' => 'overlay');
+////}
+////else {
+////  	$options['query'] = array('render' => 'overlay');
+////}
+//
+////////	dsm(current_path());
+////////	
+////$paths['node/5/courses'] = TRUE;
+////////	//$current_path = current_path();
+////////	
+////////
+////////	
+//	if(arg(0) == 'node' && is_numeric(arg(1))) {
+//		$node = node_load(arg(1));
+////		dsm($node);
+//		$alias = drupal_lookup_path('alias',"node/".$node->nid);
+////		//dsm($alias);
+//		if($node->type == 'dive_school'){
+//			$paths[$alias] = TRUE;
+//			$paths[$alias.'/*'] = TRUE;			
+//			$paths['node/'.$node->nid] = TRUE;
+//			$paths['node/'.$node->nid.'/*'] = TRUE;
+//			//$paths[$current_path] = TRUE;
+//			//$paths[$current_path.'/*'] = TRUE;	
+//		
+//			//overlay_paths_init();
+//			$mypaths = path_get_admin_paths();
+//			//dsm($mypaths);
+//		}
+////		if($node->type == 'region_02'){
+////			$paths['node/*'] = FALSE;
+////			$paths['node/*/courses'] = FALSE;			
+////		}
+////	
+//////	dsm($paths);
+//	}
+//}	
+//function tweaker_overlay_paths(){
+//	$pieces = explode("/", $_GET['q']);
+//	$node_path = $pieces[0].'/'.$pieces[1];
+//	
+//	$test = 'scubox-scuba';
+//	$testalias = drupal_lookup_path('alias',$node_path);
+//	
+//	dsm('query: '.$_GET['q']);
+//	dsm('handmade: '.$test);
+//	dsm('lookup: '.$testalias);
+//		
+//	$paths = array(
+//		$test => true,
+//		$test.'/*' => true,
+//	);
+//	return $paths;
+//}
+function tweaker_overlay_paths_alter(&$paths){
+	//dsm($_GET);
+
+
+
+
+		
+	//$paths['INSERTED-WITH-ADMIN-PATHS-ALTER'] = true;
+	//$paths[$testpath] = true;
+	//$paths[$test] = true;
+	//$paths[$test.'/*'] = true;		
+//	$paths['node/5'] = true;
+//	$paths['node/5/*'] = true;
+	
+	if(arg(0) == 'node' && is_numeric(arg(1))) {
+		$node = node_load(arg(1));
+		if($node->type == 'dive_school'){
+			$paths['node/'.$node->nid] = TRUE;
+			$paths['node/'.$node->nid.'/*'] = TRUE;
+		}
+	}	
+	//$src = 'node/' . $node->nid;
+	//$query = db_query("SELECT dst FROM {url_alias} WHERE src = '%s'", $src);
+	//$test = drupal_get_path_alias('node/'.$node->nid);
+	//dsm($myalias);
+	//dsm($arg);
+	//get some variables
+	//$mode = overlay_get_mode();
+	//dsm($_SESSION);
+	//dsm($mode);
+$test = 'scubox-scuba';
+//	if(arg(0) == 'node' && is_numeric(arg(1))) {
+//		$node = node_load(arg(1));
+//	} else {
+//		$node = null;
+//	}
+//	//dsm($node->nid);
+//	if($node->type == 'dive_school' || 'region_02' || null){
+		$paths[$test] = true;
+		$paths[$test.'/*'] = true;
+//		$paths['node/5'] = true;
+//		$paths['node/5/*'] = true;
+dsm($paths);
+//	}
+}
+
+function tweaker_preprocess_page(&$variables){
+// 	if($_GET['q'] == 'node/4'){
+//		$_GET['q'] = array('render' => 'overlay');	
+//		dsm($_GET);
+//		}
+		//dsm($variables);
+		//$arg = $variables;
+		//tweaker_admin_paths_alter($arg);
+			//tweaker_admin_paths_alter($paths['bananas/50'] = TRUE);
+			//$mypaths = path_get_admin_paths();
+			//dsm($mypaths);
+			
+		
+//		$nodes = $variables['page']['content']['system_main']['nodes'];
+		//$tab1 = $variables['tabs']['#primary'][0]['#link']['href'];
+		
+		//if($tab1 == 'node/5'){
+			//dsm('this is node 5');
+			//dsm(admin_paths)
+		//}		
+//		foreach ($nodes as $k => $data) {
+//			if($nodes[$k]['#bundle'] == 'dive_school'){
+//				  dsm('this is a dive school');
+//			};
+		//}
+	//}
+   // global $user;
+  //  if(arg(0) == 'node' && is_numeric(arg(1))) {
+	   // $node = node_load(arg(1));
+		//if($node->type == 'dive_school'){
+			//foreach($vars['primary_local_tasks'] as $key => $value){
+				//dsm($vars);
+				//$vars['primary_local_tasks'][1]['#link']['options'] = array('render' => 'overlay');
+				//$value[1]['#link']['href'] = 'node/bananas';
+			//};
+		//}
+    //}
+}
+
+//  if ((isset($url['query']['render']) && ($url['query']['render'] == 'overlay')) || (isset($_GET['render']) && $_GET['render'] == 'overlay')) {
+//	  dsm("we have overlay");
+//  }
+//function tweaker_batch_alter(&$batch) {
+//
+//
+//  if (overlay_get_mode() == 'child') {
+//	dsm($batch);
+////    if (isset($batch['url_options']['query'])) {
+////      $batch['url_options']['query']['render'] = 'overlay';
+////    }
+////    else {
+////      $batch['url_options']['query'] = array('render' => 'overlay');
+////    }
+//  }
+//}
+
+
+
+//function tweaker_menu_alter(&$items) {
+//	//drupal_set_message('Menu Items: <pre>'.print_r($items, TRUE).'</pre>');
+//    $items['user/%user/track/navigation']['title'] = "Track Your Posts";
+//    $items['user/%user/view']['title'] = "View Profile";
+//    $items['user/%user_category/edit']['title'] = "Edit Profile";
+//}
+
+function tweaker_process_page(&$vars){
+		dsm($vars);
+		$node = $vars['node'];
+		if($node->type == 'dive_school' || $node->type == 'liveaboard'){
+			$vars['primary_local_tasks'][0]['#link']['title'] = 'Home';
+		}
+		if($node->type == 'dive_site'){
+			$vars['primary_local_tasks'][0]['#link']['title'] = 'Details';
+		}		
+}

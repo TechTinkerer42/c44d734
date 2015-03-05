@@ -1,0 +1,161 @@
+diff --git a/autotagging.module b/autotagging.module
+index 8fe56ee..e1fdc6f 100644
+--- a/autotagging.module
++++ b/autotagging.module
+@@ -83,19 +83,8 @@ function autotagging_node_presave(&$node) {
+   if (!in_array($node->type, $allowed_types)) {
+     return NULL;
+   }
+-
+-  // invoke autotagging api
+-  $text = array();
+-  $text[] = $node->title;
+-  // TODO: handle each language separately
+-  foreach ($node->body as $lang => $body_field) {
+-    foreach ($body_field as $key => $body) {
+-      $text[] = str_replace("\n", ' ', $body['value']);
+-    }
+-  }
+-  $text = implode(' ', strip_tags($text));
+-  // exclude stop words
+-  $text = preg_replace(explode("\n", variable_get('autotagging_stop_words')), '', $text);
++  // Extract text.
++  $text = autotagging_extract_text($node);
+   $prefetch_hook = 'autotagging_api_prefetch';
+   module_invoke_all($prefetch_hook, $node, $text);
+   $ignore_setting = variable_get('autotagging_error_handling', 'Defer');
+@@ -111,16 +100,7 @@ function autotagging_node_presave(&$node) {
+         break;
+       }
+     }
+-    if (isset($terms) && is_array($terms) && !empty($terms)) {
+-      // find the vocabulary with which to associate these terms
+-      //
+-      foreach ($terms as $vid => $termlist) {
+-        foreach ($termlist as $term) {
+-          $node->{'field_' . $vid}[0]['value'] = $term;
+-
+-        }
+-      }
+-    }
++    autotagging_add_tags($node, $terms);
+   }
+   // allows modules to act on terms before they're saved.
+   $presave_hook = 'autotagging_api_presave';
+@@ -139,13 +119,8 @@ function autotagging_node_insert($node) {
+     return NULL;
+   }
+
+-  // invoke autotagging api
+-  $text = array();
+-  $text[] = $node->title;
+-  $text[] = str_replace("\n", ' ', $node->body);
+-  $text = implode(' ', strip_tags($text));
+-  // exclude stop words
+-  $text = preg_replace(explode("\n", variable_get('autotagging_stop_words')), '', $text);
++  // Extract text.
++  $text = autotagging_extract_text($node);
+   $prefetch_hook = 'autotagging_api_prefetch';
+   module_invoke_all($prefetch_hook, $node, $text);
+   $ignore_setting = variable_get('autotagging_error_handling', 'Defer');
+@@ -160,24 +135,12 @@ function autotagging_node_insert($node) {
+         //
+         break;
+       }
+-    }
+-    if (isset($terms) && is_array($terms) && !empty($terms)) {
+-      // find the vocabulary with which to associate these terms
+-      //
+-      foreach ($terms as $vid => $termlist) {
+-        if (empty($node->taxonomy['tags'][$vid])) {
+-          $node->taxonomy['tags'][$vid] = implode(', ', $termlist);
+-        }
+-        else {
+-          $node->taxonomy['tags'][$vid] .= ', ' . implode(', ', $termlist);
+-        }
+-      }
+-    }
++    }
++    autotagging_add_tags($node, $terms);
+   }
+   // allows modules to act on terms before they're saved.
+   $presave_hook = 'autotagging_api_presave';
+   module_invoke_all($presave_hook, $node, $terms);
+-  taxonomy_node_save($node, $node->taxonomy);
+ }
+
+ /**
+@@ -199,3 +162,73 @@ function autotagging_form_alter(&$form, &$form_state, $form_id) {
+     '#markup' => '<a href="javascript:void(0);" onclick="autotagging_js_suggest();">' . t('Suggest Tags') . '</a><div id="autotagging_suggest"></div>',
+   );
+ }
++
++function autotagging_extract_text($node) {
++  // invoke autotagging api
++  $text = array();
++  $text[] = $node->title;
++  // TODO: handle each language separately
++  foreach ($node->body as $lang => $body_field) {
++    foreach ($body_field as $key => $body) {
++      $text[] = str_replace("\n", ' ', strip_tags($body['value']));
++    }
++  }
++  $text = implode(' ', $text);
++  // exclude stop words
++  $text = variable_get('autotagging_stop_words') ? preg_replace(explode("\n", variable_get('autotagging_stop_words')), '', $text) : $text;
++  return $text;
++}
++function autotagging_add_tags(&$node, $terms) {
++  if (isset($terms) && is_array($terms) && !empty($terms)) {
++    // Create an array of term reference field names indexed by vid
++    // so we can figure out what field we're going to assign our terms to.
++    $field_names = array();
++    $fields = field_info_instances('node', $node->type);
++    foreach ($fields as $field_name => $settings) {
++      if ($settings['widget']['module'] == 'taxonomy') {
++        $field_info = field_info_field_by_id($settings['field_id']);
++        if(isset($field_info['settings']['allowed_values'])) {
++          foreach ($field_info['settings']['allowed_values'] as $value) {
++            $field_names[$value['vocabulary']] = $field_name;
++          }
++        }
++      }
++    }
++    // find the vocabulary with which to associate these terms
++    foreach ($terms as $vid => $termlist) {
++      foreach ($termlist as $name) {
++        $vocabulary = taxonomy_vocabulary_load($vid);
++        // Look up term based on given name and vocabulary.
++        $term = taxonomy_term_load_multiple(array(), array('name' => trim($name), 'vid' => $vid));
++        // Add term if no term was found.
++        if (!$term) {
++          $term = new stdClass;
++          $term->vid = $vid;
++          $term->vocabulary_machine_name = $vocabulary->machine_name;
++          $term->name = $name;
++          if (taxonomy_term_save($term)) {
++            $term = taxonomy_term_load_multiple(array(), array('name' => trim($name), 'vid' => $vid));
++          }
++        }
++        if ($term) {
++          // If we have a term object add our terms to the node.
++          foreach ($term as $tid => $term_object) {
++            // TODO: handle each language separately
++            if (!property_exists($node, $field_names[$vocabulary->machine_name])) {
++              $node->{$field_names[$vocabulary->machine_name]} = array( LANGUAGE_NONE => array() );
++            }
++            else if (empty($node->{$field_names[$vocabulary->machine_name]})) {
++              $node->{$field_names[$vocabulary->machine_name]} = array( LANGUAGE_NONE => array() );
++            }
++            foreach ($node->{$field_names[$vocabulary->machine_name]} as $lang => $tag_field) {
++              // Don't add terms twice.
++              if ($term && !in_array($tid, $node->{$field_names[$vocabulary->machine_name]}[$lang])) {
++                $node->{$field_names[$vocabulary->machine_name]}[$lang][] = array('tid' => $tid);
++              }
++            }
++          }
++        }
++      }
++    }
++  }
++}

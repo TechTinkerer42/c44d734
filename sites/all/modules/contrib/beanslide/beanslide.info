@@ -1,0 +1,19 @@
+core = "7.x"
+dependencies[] = "bean"
+dependencies[] = "field_collection"
+dependencies[] = "field_group"
+dependencies[] = "image"
+dependencies[] = "libraries"
+dependencies[] = "link"
+dependencies[] = "media"
+description = "Provides a slideshow enabled block"
+files[] = "plugins/bean/slideshow.inc"
+name = "Bean Slide"
+php = "5.2.4"
+
+; Information added by drupal.org packaging script on 2013-04-10
+version = "7.x-1.0-alpha2"
+core = "7.x"
+project = "beanslide"
+datestamp = "1365612324"
+

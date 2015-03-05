@@ -1,0 +1,196 @@
+<?php
+
+/**
+ * @file
+ * Provides geofield proximity filters for views.
+ */
+
+define('GEOFIELD_PROXIMITY_FIELD_TYPE', 'geofield'); // WKT field type.
+define('GEOFIELD_PROXIMITY_REGEX', '/(\-?\d*(\.\d*)?)\s(\-?\d*(\.\d*)?)/'); // Extract lat/lon from a WKT string.
+define('GEOFIELD_PROXIMITY_DEGREE_TO_RADIANTS', 0.01745329252);
+define('GEOFIELD_PROXIMITY_KM_PER_LAT', 111.321);
+define('GEOFIELD_PROXIMITY_DEFAULT_UNIT', 'km');
+define('GEOFIELD_PROXIMITY_DEFAULT_HANDLER', 'google');
+define('GEOFIELD_PROXIMITY_SQL_GREAT_CIRCLE', '(6371.0 * ACOS(SIN((lat * RADIANS(1))) * SIN((:lat2 * RADIANS(1))) + COS((lat * RADIANS(1))) * COS((:lat2 * RADIANS(1))) * COS((lon * RADIANS(1)) - (:lon2 * RADIANS(1)))))');
+
+/**
+ * Implements hook_menu().
+ */
+function geofield_proximity_menu() {
+  $items = array();
+  $items['admin/config/proximity'] = array( // TODO find a better home for this settings page.
+    'title' => 'Proximity search',
+    'description' => 'Adjust proximity settings.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('geofield_proximity_settings'),
+    'access arguments' => array('administer content types'), // TODO use a better permission for this.
+  );
+  return $items;
+}
+
+/**
+ * Settings form.
+ */
+function geofield_proximity_settings($form, &$form_state) {
+  $form = array();
+
+  $form['geofield_proximity_unit'] = array(
+    '#title' => t('Default unit of measurement'),
+    '#type' => 'select',
+    '#required' => TRUE,
+    '#options' => geofield_proximity_get_available_units_for_select(),
+    '#default_value' => variable_get('geofield_proximity_unit', GEOFIELD_PROXIMITY_DEFAULT_UNIT),
+    '#description' => t('Select site wide unit of measurement for geofield proximity filters.'),
+  );
+  
+  $processors = geocoder_handler_info();
+  $available_handlers = array();
+  foreach ($processors as $handler) {
+    $available_handlers[$handler['name']] = $processors[$handler['name']]['title'];
+  }
+
+  $form['geofield_proximity_handler'] = array(
+    '#type' => 'select',
+    '#title' => t('Default Geocoder'),
+    '#prefix' => '<div id="geocoder-handler-div">',
+    '#suffix' => '</div>',
+    '#default_value' => variable_get('geofield_proximity_handler', GEOFIELD_PROXIMITY_DEFAULT_HANDLER),
+    '#options' => $available_handlers,
+    '#description' => t('Select which type of geocoding handler you would like to use by default.'),
+    '#required' => TRUE,
+  );
+
+  $form = system_settings_form($form);
+
+  return $form;
+}
+
+/**
+ * Gets available unit of measurement.
+ */
+function geofield_proximity_get_available_units() {
+  return module_invoke_all('measurement_units');
+}
+
+/**
+ * Gets available unit of measurement as select options.
+ */
+function geofield_proximity_get_available_units_for_select() {
+  $units = geofield_proximity_get_available_units();
+  foreach ($units as $unit => $info) {
+    $units[$unit] = $info['long'];
+  }
+
+  return $units;
+}
+
+/**
+ * Implements hook_measurement_units().
+ *
+ * Expose available units of measurement. To perform conversion
+ * we must implement, for each unit, it respective:
+ * hook_measurement_units_convert_<UNIT>()
+
+function geofield_proximity_measurement_units() {
+  return array(
+    'km' => array(
+      'long' => t('Kilometers'),
+      'short' => t('Km'),
+      'const' => 1,
+    ),
+    'miles' => array(
+      'long' => t('Miles'),
+      'short' => t('Mi'),
+      'const' => 1.609344,
+    ),
+  );
+}
+ */
+
+/**
+ * Conversion helper: convert from $unit to Kilometers.
+ */
+function geofield_proximity_measurement_units_convert($unit, $value) {
+  $units = geofield_proximity_get_available_units();
+  if (isset($units[$unit]) && is_numeric($units[$unit]['const'])) {
+    return $value * $units[$unit]['const'];
+  }
+
+  return $value;
+}
+
+/**
+ * Conversion helper: convert from Kilometers to $unit.
+ */
+function geofield_proximity_measurement_units_convert_back($unit, $value) {
+  $units = geofield_proximity_get_available_units();
+  if (isset($units[$unit]) && is_numeric($units[$unit]['const']) && $units[$unit]['const'] !== 0) {
+    return $value / $units[$unit]['const'];
+  }
+
+  return $value;
+}
+
+/**
+ * Geocoding magic.
+ *
+ * @param $address location to be geocoded.
+ * @param $result_type response format requested.
+ *
+ * @return $locations
+ */
+function geofield_proximity_geocode($address = '') {
+  // prevent geocoding if there's no address.
+  if ($address == '') {
+    return array();
+  }
+  
+  $handler = variable_get('geofield_proximity_handler', GEOFIELD_PROXIMITY_DEFAULT_HANDLER);
+  $geometry = geocoder($handler, $address);
+  $locations = array();
+  
+  if (isset($geometry)) {
+    $boundary = $geometry->boundary();
+
+    // Convert geometry into locations format.
+
+    $location = array();
+    $location['address'] = $boundary->data['geocoder_formatted_address'];
+
+    $location['components'] = array();
+    $components = $boundary->data['geocoder_address_components'];
+    foreach ($components as $component){
+      $location['components'][$component->types[0]] = $component->long_name;
+    }
+    $location['components']['street_address'] = $boundary->data['geocoder_formatted_address'];
+
+    $location['location'] = array();
+    $location['location']['lat'] = $geometry->getY();
+    $location['location']['lng'] = $geometry->getX();
+
+    $location['bounds'] = array();
+    $northeast = array();
+    $location['bounds']['northeast'] = (object) $northeast;
+    $southwest = array();
+    $location['bounds']['southwest'] = (object) $southwest;
+
+    $locations[] = $location;
+  }
+  
+dpm('geometry:');
+//dpm($locations);
+//dpm($geometry);
+
+  return $locations;
+}
+
+/**
+ * Implements hook_views_api().
+ */
+function geofield_proximity_views_api() {
+  return array(
+    'api' => '3.0-alpha1',
+    'path' => drupal_get_path('module', 'geofield_proximity') . '/includes',
+  );
+}
+

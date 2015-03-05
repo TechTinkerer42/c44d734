@@ -1,0 +1,11 @@
+name = core44 Dash
+description = Dashboard interface
+core = 7.x
+version = 7.x-1.0
+package = core44
+php = 5.2
+
+;files[] = includes/core44_dash.admin.inc
+stylesheets[all][] = css/core44_dash.css
+
+;dependencies[] = feeds

@@ -1,0 +1,6 @@
+name = Autotagging API
+package = Autotagging
+description = API for handling Autotagging events.  This module does nothing on its own.  You must install one of the implementing autotagging modules for this to do anything useful.
+dependencies[] = taxonomy
+core = 7.x
+php = 5

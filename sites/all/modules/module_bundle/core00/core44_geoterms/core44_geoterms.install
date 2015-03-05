@@ -1,0 +1,45 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the taxonomy module.
+ */
+
+/**
+ * Implements hook_field_schema().
+ */
+function core44_geoterms_field_schema($field) {
+  return array(
+    'columns' => array(
+      'tid' => array(
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => FALSE,
+      ),
+    ),
+    'indexes' => array(
+      'tid' => array('tid'),
+    ),
+    'foreign keys' => array(
+      'tid' => array(
+        'table' => 'taxonomy_term_data',
+        'columns' => array('tid' => 'tid'),
+      ),
+    ),
+  );
+}
+
+
+/**
+ * Implements hook_field_schema().
+ */
+
+function core44_geoterms_install() {
+
+}
+/**
+ * Implements hook_field_schema().
+ */
+function core44_geoterms_uninstall() {
+
+}

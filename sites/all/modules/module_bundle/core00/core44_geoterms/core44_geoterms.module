@@ -1,0 +1,455 @@
+<?php
+
+/**
+ * @file
+ * Enables the organization of content into categories.
+ */
+
+/**
+ * Users can create new terms in a free-tagging vocabulary when
+ * submitting a taxonomy_autocomplete_widget. We store a term object
+ * whose tid is 'autocreate' as a field data item during widget
+ * validation and then actually create the term if/when that field
+ * data item makes it to taxonomy_field_insert/update().
+ */
+
+
+
+define('GEOTERMS_AUTOCOMPLETE_URL', 'http://maps.google.com/maps/api/geocode');
+define('GEOTERMS_AUTOCOMPLETE_FORMAT', 'json');
+
+
+/**
+ * Implements hook_menu().
+ */
+function core44_geoterms_menu() {
+  $items['geocoder/autocomplete'] = array(
+    'title' => 'Geocoder autocomplete',
+    'page callback' => 'core44_geoterms_autocomplete',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+    'file' => 'core44_geoterms.pages.inc',
+  );
+  return $items;
+}
+
+
+/**
+ * Implements hook_field_info().
+ *
+ * Field settings:
+ * - allowed_values: a list array of one or more vocabulary trees:
+ *   - vocabulary: a vocabulary machine name.
+ *   - parent: a term ID of a term whose children are allowed. This should be
+ *     '0' if all terms in a vocabulary are allowed. The allowed values do not
+ *     include the parent term.
+ *
+ */
+function core44_geoterms_field_info() {
+  return array(
+    'core44_geoterms_term_reference' => array(
+      'label' => t('Geoterms term reference'),
+      'description' => t('This field stores a reference to taxonomy terms genereated by a geocoder autocomplete.'),
+      'default_widget' => 'options_select',
+      'default_formatter' => 'core44_geoterms_term_reference_link',
+      'settings' => array(
+        'allowed_values' => array(
+          array(
+            'vocabulary' => '',
+            'parent' => '0',
+          ),
+        ),
+      ),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_widget_info().
+ */
+function core44_geoterms_field_widget_info() {
+  return array(
+    'core44_geoterms_autocomplete' => array(
+      'label' => t('Geoterms autocomplete term widget'),
+      'field types' => array('core44_geoterms_term_reference'),
+      'settings' => array(
+        'size' => 60,
+        'autocomplete_path' => 'geocoder/autocomplete',
+      ),
+      'behaviors' => array(
+        'multiple values' => FIELD_BEHAVIOR_CUSTOM,
+        'default value' => FIELD_BEHAVIOR_CUSTOM,
+      ),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_validate().
+ *
+ * Taxonomy field settings allow for either a single vocabulary ID, multiple
+ * vocabulary IDs, or sub-trees of a vocabulary to be specified as allowed
+ * values, although only the first of these is supported via the field UI.
+ * Confirm that terms entered as values meet at least one of these conditions.
+ *
+ * Possible error codes:
+ * - 'taxonomy_term_illegal_value': The value is not part of the list of allowed values.
+ */
+function core44_geoterms_field_validate($entity_type, $entity, $field, $instance, $langcode, $items, &$errors) {
+  // Build an array of existing term IDs so they can be loaded with
+  // taxonomy_term_load_multiple();
+  foreach ($items as $delta => $item) {
+    if (!empty($item['tid']) && $item['tid'] != 'autocreate') {
+      $tids[] = $item['tid'];
+    }
+  }
+  if (!empty($tids)) {
+    $terms = taxonomy_term_load_multiple($tids);
+
+    // Check each existing item to ensure it can be found in the
+    // allowed values for this field.
+    foreach ($items as $delta => $item) {
+      $validate = TRUE;
+      if (!empty($item['tid']) && $item['tid'] != 'autocreate') {
+        $validate = FALSE;
+        foreach ($field['settings']['allowed_values'] as $settings) {
+          // If no parent is specified, check if the term is in the vocabulary.
+          if (isset($settings['vocabulary']) && empty($settings['parent'])) {
+            if ($settings['vocabulary'] == $terms[$item['tid']]->vocabulary_machine_name) {
+              $validate = TRUE;
+              break;
+            }
+          }
+          // If a parent is specified, then to validate it must appear in the
+          // array returned by taxonomy_get_parents_all().
+          elseif (!empty($settings['parent'])) {
+            $ancestors = taxonomy_get_parents_all($item['tid']);
+            foreach ($ancestors as $ancestor) {
+              if ($ancestor->tid == $settings['parent']) {
+                $validate = TRUE;
+                break 2;
+              }
+            }
+          }
+        }
+      }
+      if (!$validate) {
+        $errors[$field['field_name']][$langcode][$delta][] = array(
+          'error' => 'taxonomy_term_reference_illegal_value',
+          'message' => t('%name: illegal value.', array('%name' => $instance['label'])),
+        );
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_field_is_empty().
+ */
+function core44_geoterms_field_is_empty($item, $field) {
+  if (!is_array($item) || (empty($item['tid']) && (string) $item['tid'] !== '0')) {
+    return TRUE;
+  }
+  return FALSE;
+}
+
+/**
+ * Implements hook_field_formatter_info().
+ */
+function core44_geoterms_field_formatter_info() {
+  return array(
+    'core44_geoterms_term_reference_link' => array(
+      'label' => t('Link'),
+      'field types' => array('core44_geoterms_term_reference'),
+    ),
+    'core44_geoterms_term_reference_plain' => array(
+      'label' => t('Plain text'),
+      'field types' => array('core44_geoterms_term_reference'),
+    ),
+    'core44_geoterms_term_reference_rss_category' => array(
+      'label' => t('RSS category'),
+      'field types' => array('core44_geoterms_term_reference'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function core44_geoterms_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $element = array();
+
+  // Terms whose tid is 'autocreate' do not exist
+  // yet and $item['taxonomy_term'] is not set. Theme such terms as
+  // just their name.
+
+  switch ($display['type']) {
+    case 'core44_geoterms_term_reference_link':
+      foreach ($items as $delta => $item) {
+        if ($item['tid'] == 'autocreate') {
+          $element[$delta] = array(
+            '#markup' => check_plain($item['name']),
+          );
+        }
+        else {
+          $term = $item['taxonomy_term'];
+          $uri = entity_uri('taxonomy_term', $term);
+          $element[$delta] = array(
+            '#type' => 'link',
+            '#title' => $term->name,
+            '#href' => $uri['path'],
+            '#options' => $uri['options'],
+          );
+        }
+      }
+      break;
+
+    case 'core44_geoterms_term_reference_plain':
+      foreach ($items as $delta => $item) {
+        $name = ($item['tid'] != 'autocreate' ? $item['taxonomy_term']->name : $item['name']);
+        $element[$delta] = array(
+          '#markup' => check_plain($name),
+        );
+      }
+      break;
+
+    case 'core44_geoterms_term_reference_rss_category':
+      foreach ($items as $delta => $item) {
+        $entity->rss_elements[] = array(
+          'key' => 'category',
+          'value' => $item['tid'] != 'autocreate' ? $item['taxonomy_term']->name : $item['name'],
+          'attributes' => array(
+            'domain' => $item['tid'] != 'autocreate' ? url('taxonomy/term/' . $item['tid'], array('absolute' => TRUE)) : '',
+          ),
+        );
+      }
+      break;
+  }
+
+  return $element;
+}
+
+/**
+ * Returns the set of valid terms for a taxonomy field.
+ *
+ * @param $field
+ *   The field definition.
+ * @return
+ *   The array of valid terms for this field, keyed by term id.
+ */
+function core44_geoterms_allowed_values($field) {
+  $options = array();
+  foreach ($field['settings']['allowed_values'] as $tree) {
+    if ($vocabulary = taxonomy_vocabulary_machine_name_load($tree['vocabulary'])) {
+      if ($terms = taxonomy_get_tree($vocabulary->vid, $tree['parent'])) {
+        foreach ($terms as $term) {
+          $options[$term->tid] = str_repeat('-', $term->depth) . $term->name;
+        }
+      }
+    }
+  }
+  return $options;
+}
+
+/**
+ * Implements hook_field_formatter_prepare_view().
+ *
+ * This preloads all taxonomy terms for multiple loaded objects at once and
+ * unsets values for invalid terms that do not exist.
+ */
+function core44_geoterms_field_formatter_prepare_view($entity_type, $entities, $field, $instances, $langcode, &$items, $displays) {
+  $tids = array();
+
+  // Collect every possible term attached to any of the fieldable entities.
+  foreach ($entities as $id => $entity) {
+    foreach ($items[$id] as $delta => $item) {
+      // Force the array key to prevent duplicates.
+      if ($item['tid'] != 'autocreate') {
+        $tids[$item['tid']] = $item['tid'];
+      }
+    }
+  }
+  if ($tids) {
+    $terms = taxonomy_term_load_multiple($tids);
+
+    // Iterate through the fieldable entities again to attach the loaded term data.
+    foreach ($entities as $id => $entity) {
+      $rekey = FALSE;
+
+      foreach ($items[$id] as $delta => $item) {
+        // Check whether the taxonomy term field instance value could be loaded.
+        if (isset($terms[$item['tid']])) {
+          // Replace the instance value with the term data.
+          $items[$id][$delta]['taxonomy_term'] = $terms[$item['tid']];
+        }
+        // Terms to be created are not in $terms, but are still legitimate.
+        elseif ($item['tid'] == 'autocreate') {
+          // Leave the item in place.
+        }
+        // Otherwise, unset the instance value, since the term does not exist.
+        else {
+          unset($items[$id][$delta]);
+          $rekey = TRUE;
+        }
+      }
+
+      if ($rekey) {
+        // Rekey the items array.
+        $items[$id] = array_values($items[$id]);
+      }
+    }
+  }
+}
+
+
+/**
+ * Implements hook_field_widget_form().
+ */
+function core44_geoterms_field_widget_form(&$form, &$form_state, $field, $instance, $langcode, $items, $delta, $element) {
+  $tags = array();
+  foreach ($items as $item) {
+    $tags[$item['tid']] = isset($item['taxonomy_term']) ? $item['taxonomy_term'] : taxonomy_term_load($item['tid']);
+  }
+
+  $element += array(
+    '#type' => 'textfield',
+    '#default_value' => taxonomy_implode_tags($tags),
+    '#autocomplete_path' => 'geocoder/autocomplete',
+    '#size' => $instance['widget']['settings']['size'],
+    '#maxlength' => 1024,
+    '#element_validate' => array('core44_geoterms_autocomplete_validate'),
+  );
+
+  return $element;
+}
+
+
+/**
+ * Form element validate handler for taxonomy term autocomplete element.
+ */
+function core44_geoterms_autocomplete_validate($element, &$form_state) {
+  // Autocomplete widgets do not send their tids in the form, so we must detect
+  // them here and process them independently.
+  $value = array();
+  if ($tags = $element['#value']) {
+    // Collect candidate vocabularies.
+    $field = field_widget_field($element, $form_state);
+    $vocabularies = array();
+    foreach ($field['settings']['allowed_values'] as $tree) {
+      if ($vocabulary = taxonomy_vocabulary_machine_name_load($tree['vocabulary'])) {
+        $vocabularies[$vocabulary->vid] = $vocabulary;
+      }
+    }
+
+    // Translate term names into actual terms.
+    $typed_terms = drupal_explode_tags($tags);
+    foreach ($typed_terms as $key => $typed_term) {
+      // See if the term exists in the chosen vocabulary and return the tid;
+      // otherwise, create a new 'autocreate' term for insert/update.
+      if ($possibilities = taxonomy_term_load_multiple(array(), array('name' => trim($typed_term), 'vid' => array_keys($vocabularies)))) {
+        $term = array_pop($possibilities);
+      }
+      else {
+        $vocabulary = reset($vocabularies);
+
+        if( $key < (count($typed_terms) - 1) ){
+          $parent_key = $key + 1;
+          $parent_term_name = $typed_terms[$parent_key];
+        }else{
+          $parent_term_name = 0;          
+        }
+
+        $term = array(
+          'tid' => 'autocreate',
+          'vid' => $vocabulary->vid,
+          'name' => $typed_term,
+          'parent' => isset($parent_term_name) ? $parent_term_name : '',
+          'vocabulary_machine_name' => $vocabulary->machine_name,
+        );
+      }
+      $value[] = (array)$term;
+    }
+  }
+
+  form_set_value($element, $value, $form_state);
+}
+
+/**
+ * Implements hook_field_widget_error().
+ */
+function core44_geoterms_field_widget_error($element, $error, $form, &$form_state) {
+  form_error($element, $error['message']);
+}
+/**
+ * Implements hook_field_settings_form().
+ */
+function core44_geoterms_field_settings_form($field, $instance, $has_data) {
+  // Get proper values for 'allowed_values_function', which is a core setting.
+  $vocabularies = taxonomy_get_vocabularies();
+  $options = array();
+  foreach ($vocabularies as $vocabulary) {
+    $options[$vocabulary->machine_name] = $vocabulary->name;
+  }
+  $form['allowed_values'] = array(
+    '#tree' => TRUE,
+  );
+
+  foreach ($field['settings']['allowed_values'] as $delta => $tree) {
+    $form['allowed_values'][$delta]['vocabulary'] = array(
+      '#type' => 'select',
+      '#title' => t('Vocabulary'),
+      '#default_value' => $tree['vocabulary'],
+      '#options' => $options,
+      '#required' => TRUE,
+      '#description' => t('The vocabulary which supplies the options for this field.'),
+      '#disabled' => $has_data,
+    );
+    $form['allowed_values'][$delta]['parent'] = array(
+      '#type' => 'value',
+      '#value' => $tree['parent'],
+    );
+  }
+
+  return $form;
+}
+
+/**
+ * Implements hook_field_presave().
+ *
+ * Create any new terms defined in a freetagging vocabulary.
+ */
+function core44_geoterms_field_presave($entity_type, $entity, $field, $instance, $langcode, &$items) {
+  $parents = array();
+  //build array of parent term names keyed by proposed child tid.
+  foreach ($items as $delta => $item) {
+    if (isset($item['parent'])) {
+      $parents[$item['name']] = $item['parent'];
+      $term = (object) $item;
+      unset($term->parent);
+      $items[$delta]['parent'] = 0;
+    }
+  }
+  //save out the new terms so we have TIDs to reference as parents
+  foreach ($items as $delta => $item) {
+    if ($item['tid'] == 'autocreate') {
+      $term = (object) $item;
+      unset($term->tid);
+      taxonomy_term_save($term);
+      $items[$delta]['tid'] = $term->tid;
+    }
+  }
+  $items = array_reverse($items);
+  
+  foreach ($items as $delta => $item) {
+    if($delta > 0){
+      $parent_key = $delta - 1;
+      $term = (object) $item;
+      $term->parent = $items[$parent_key]['tid'];
+      taxonomy_term_save($term);
+    }
+  }
+}
+
+
+
+

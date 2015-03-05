@@ -1,0 +1,8 @@
+core = 7.x
+name = core44 OL Pimp
+dependencies[] = openlayers
+description = Additional tools and behaviors for OpenLayers
+package = core44
+version = 7.x-1.1
+; Behaviors
+behaviors/core44_ol_pimp_behavior_drawfeatures.inc

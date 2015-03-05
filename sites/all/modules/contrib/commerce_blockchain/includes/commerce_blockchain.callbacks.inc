@@ -110,7 +110,12 @@ function commerce_blockchain_submit_form($payment_method, $pane_values, $checkou
     $transaction = commerce_payment_transaction_load($transaction_info['transaction_id']);
     $amount = commerce_currency_amount_to_decimal($transaction->amount, 'BTC');
   }
-
+	$blockchain_root = "https://blockchain.info/"; 
+  $form['bitcoin_payment_qr'] = array(
+    '#type' => 'container',
+    '#prefix' => '',
+    '#suffix' => '<img style="margin:5px" id="qrsend" src="'.$blockchain_root. 'qr?data=bitcoin:'.$transaction->remote_id.'%3Famount='.$amount.'%26label=LogoSumo&size=125" alt=""/>',
+  );    
   $form['bitcoin_payment_address'] = array(
     '#type' => 'container',
     '#prefix' => t('Send @amount BTC to: @address', array('@amount' => $amount, '@address' => $transaction->remote_id)),

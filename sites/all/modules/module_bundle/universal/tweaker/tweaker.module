@@ -1,0 +1,24 @@
+<?php
+/**
+* Unset Dashboard Regions.
+*/
+
+/*
+function tweaker_dashboard_regions_alter($regions) {
+  // Remove the sidebar region defined by the core dashboard module.
+  unset($regions['dashboard_sidebar']);
+}
+*/
+
+
+/**
+ * Implements hook_dashboard_regions().
+ */
+function tweaker_dashboard_regions() {
+  return array(
+    'dashboard_top' => 'Dashboard (top)',
+    'dashboard_main' => 'Dashboard (main)',
+    'dashboard_sidebar' => 'Dashboard (sidebar)',
+    'dashboard_inactive' => 'Dashboard (inactive)',
+  );
+}

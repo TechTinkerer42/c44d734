@@ -1,0 +1,5 @@
+name = test module
+description = module / code development testing
+core = 7.x
+package = core44
+version = 7.x-1.0

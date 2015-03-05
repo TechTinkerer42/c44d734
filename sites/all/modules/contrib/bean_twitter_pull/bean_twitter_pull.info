@@ -1,0 +1,12 @@
+name = Bean: Twitter Pull
+description = Customizable display of twitter feeds
+core = 7.x
+files[] = "plugins/bean/bean_twitter_pull.inc"
+dependencies[] = "twitter_pull"
+dependencies[] = "bean"
+
+; Information added by drupal.org packaging script on 2012-08-22
+version = "7.x-1.0+1-dev"
+core = "7.x"
+project = "bean_twitter_pull"
+datestamp = "1345593998"

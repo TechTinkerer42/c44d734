@@ -1,0 +1,39 @@
+<?php
+
+class JammerPreviewButtonTest extends DrupalWebTestCase {
+  function getInfo() {
+    return array(
+      'name' => 'Jammer Preview Browser Test',
+      'description' => "This tests whether the preview button exists and then is properly removed",
+      'group' => 'Jammer'
+    );
+  }
+
+  function setUp() {
+    parent::setUp('jammer');
+    variable_set('jammer_submit_button_unset_node_types', array('jammerpreviewtest'));
+  }
+
+  function testPreviewButtonNoContentAccess() {
+    $this->drupalCreateContentType(array('type' => 'jammerpreviewtest'));
+    $user = $this->drupalCreateUser(array('access content'));
+    $this->drupalLogin($user);
+    $url = url('node/add/jammerpreviewtest', array('absolute' => TRUE));
+    $this->drupalGet($url);
+    $this->assertNoRaw('id="edit-submit"');
+  }
+
+  function testNoPreviewButtonWithContentAccess() {
+    $this->drupalCreateContentType(array('type' => 'jammerpreviewtest'));
+    $user = $this->drupalCreateUser(array('create jammerpreviewtest content'));
+    $this->drupalLogin($user);
+    $url = url('node/add/jammerpreviewtest', array('absolute' => TRUE));
+    $this->drupalGet($url);
+    $this->assertNoRaw('id="edit-submit"');
+  }
+
+  function tearDown() {
+    variable_del('jammer_submit_button_unset_node_types');
+    parent::tearDown();
+  }
+}

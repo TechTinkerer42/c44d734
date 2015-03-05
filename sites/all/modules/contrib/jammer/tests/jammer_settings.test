@@ -1,0 +1,37 @@
+<?php
+
+class JammerSettingsTest extends DrupalWebTestCase {
+  function getInfo() {
+    return array(
+      'name' => 'Jammer Settings Page Test',
+      'description' => "This tests the Jammer settings page loads for correctness.",
+      'group' => 'Jammer'
+    );
+  }
+
+  function setUp() {
+    parent::setUp('jammer');
+  }
+
+  function testSettingsExists() {
+    $user = $this->drupalCreateUser(array('administer site configuration'));
+    $this->drupalLogin($user);
+    $url = url('admin/config/jammer', array('absolute' => TRUE));
+    $this->drupalGet($url);
+    $this->assertNoText(t('Access denied'));
+    $this->assertText(t('Jammer'));
+  }
+
+  function testSettingsSecured() {
+    $user = $this->drupalCreateUser(array('access content'));
+    $this->drupalLogin($user);
+    $url = url('admin/config/jammer', array('absolute' => TRUE));
+    $this->drupalGet($url);
+    $this->assertNoText(t('Jammer'));
+  }
+
+  function tearDown() {
+    parent::tearDown();
+  }
+
+}

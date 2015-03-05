@@ -1,0 +1,9 @@
+name = Core44 Install Reset
+core = 7.x
+package = core44
+dependencies[] = entity
+version = 7.x-1.0
+project = module_bundle
+
+; Tests
+files[] = test/core44_install_reset.test

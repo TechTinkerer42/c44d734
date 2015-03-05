@@ -1,0 +1,16 @@
+name = core44 Former
+description = Blank module structure
+core = 7.x
+version = 7.x-1.0
+package = core44
+php = 5.2
+
+;dependencies[] = none
+
+;files[] = includes/core44_former.controller.inc
+;files[] = includes/core44_former.inc
+
+;scripts[] = js/core44_former.js
+
+;stylesheets[all][] = css/core44_former.css
+;stylesheets[print][] = css/core44_former.css

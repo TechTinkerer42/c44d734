@@ -1,0 +1,13 @@
+name = "Leaflet GeoJSON"
+description = "API Extension for using Leaflet with GeoJSON data sources."
+
+core = 7.x
+
+dependencies[] = leaflet
+
+; Information added by Drupal.org packaging script on 2014-05-14
+version = "7.x-2.x-dev"
+core = "7.x"
+project = "leaflet_geojson"
+datestamp = "1400027628"
+

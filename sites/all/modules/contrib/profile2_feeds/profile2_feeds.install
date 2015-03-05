@@ -1,0 +1,13 @@
+<?php
+
+/**
+ * @file
+ * Install functions for Profile2 Feeds module.
+ */
+
+/**
+ * Implements hook_enable().
+ */
+function profile2_feeds_enable() {
+  cache_clear_all('plugins:feeds:plugins', 'cache');
+}

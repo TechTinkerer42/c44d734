@@ -1,0 +1,14 @@
+name = recruit base
+description = base functions for recruit installation
+core = 7.x
+version = 7.x-1.0
+package = core44 RECRUIT
+php = 5.2
+
+;files[] = includes/recruit_base.admin.inc
+stylesheets[all][] = css/recruit_base.css
+
+dependencies[] = features_core44_base
+dependencies[] = features_core44_dash
+dependencies[] = core44_dash
+dependencies[] = features_recruit_core

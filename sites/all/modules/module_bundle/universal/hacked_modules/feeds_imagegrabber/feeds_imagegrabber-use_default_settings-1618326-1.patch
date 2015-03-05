@@ -1,0 +1,23 @@
+diff --git a/feeds_imagegrabber.module b/feeds_imagegrabber.module
+index 897c4b8..7389783 100644
+--- a/feeds_imagegrabber.module
++++ b/feeds_imagegrabber.module
+@@ -159,11 +159,15 @@ function feeds_imagegrabber_feeds_set_target($source, $entity, $target, $page_ur
+ 
+   $feed_nid     = $entity->feeds_item->feed_nid;
+   $settings     = feeds_imagegrabber_get_settings($feed_nid);
+-  
+-  if(!$settings || !$settings['enabled']) {
++
++  // Fall back to the defaults.
++  if (!$settings) {
++    $settings = feeds_imagegrabber_get_default_settings();
++  }
++  if (!$settings || !$settings['enabled']) {
+     return FALSE;
+   }
+-  
++
+   if (!feeds_imagegrabber_include_library('url_to_absolute.inc', 'feeds_imagegrabber')) {
+     watchdog('feeds_imagegrabber', 'url conversion script is missing. ', array(), WATCHDOG_ERROR, 'admin/reports/dblog/feeds_imagegrabber');
+     return FALSE;

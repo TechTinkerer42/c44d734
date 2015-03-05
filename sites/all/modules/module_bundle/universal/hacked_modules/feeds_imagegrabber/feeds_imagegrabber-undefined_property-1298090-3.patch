@@ -1,0 +1,13 @@
+diff --git a/feeds_imagegrabber.module b/feeds_imagegrabber.module
+index 897c4b8..782c459 100644
+--- a/feeds_imagegrabber.module
++++ b/feeds_imagegrabber.module
+@@ -97,7 +97,7 @@ function feeds_imagegrabber_node_insert($node) {
+  */
+ function feeds_imagegrabber_node_update($node) {
+   if ($importer_id = feeds_get_importer_id($node->type)) {
+-    if ($node->feeds_imagegrabber['enabled']) {
++    if (isset($node->feeds_imagegrabber['enabled']) && $node->feeds_imagegrabber['enabled']) {
+       $settings = array(
+         'enabled' => $node->feeds_imagegrabber['enabled'],
+         'id_class' => $node->feeds_imagegrabber['id_class'],

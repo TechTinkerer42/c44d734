@@ -1,0 +1,6 @@
+name = Node Hierarchy Extras
+description = Extra Stuff for Node Hierarchy
+package = "Node Hirearchy"
+dependencies[] = nodehierarchy
+core = 7.x
+version = "7.x-0.1"

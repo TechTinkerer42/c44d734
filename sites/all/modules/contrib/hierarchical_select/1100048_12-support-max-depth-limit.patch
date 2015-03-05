@@ -1,0 +1,98 @@
+diff --git a/modules/hs_taxonomy.module b/modules/hs_taxonomy.module
+index 2fc3fb4..5da3cc3 100644
+--- a/modules/hs_taxonomy.module
++++ b/modules/hs_taxonomy.module
+@@ -54,6 +54,7 @@ function hs_taxonomy_form_field_ui_widget_type_form_alter(&$form, &$form_state)
+       'exclude_tid'                => NULL,
+       'root_term'                  => NULL,
+       'entity_count_for_node_type' => NULL,
++      'max_depth'                  => 0,
+     );
+     $config_id = "taxonomy-$vid";
+     $defaults = array(
+@@ -250,6 +251,7 @@ function hs_taxonomy_field_widget_form(&$form, &$form_state, $field, $instance,
+         'exclude_tid'                => NULL,
+         'root_term'                  => (int) $field['settings']['allowed_values'][0]['parent'],
+         'entity_count_for_node_type' => NULL,
++        'max_depth'                  => 0,
+       ),
+     ),
+     '#default_value' => $tids,
+@@ -558,6 +560,7 @@ function hs_taxonomy_hierarchical_select_params() {
+     'exclude_tid',                // Allows a term to be excluded (necessary for the taxonomy_form_term form).
+     'root_term',                  // Displays a fake "<root>" term in the root level (necessary for the taxonomy_form-term form).
+     'entity_count_for_node_type', // Restrict the entity count to a specific node type.
++    'max_depth',                  // Restrict the depth at which taxonomy terms are selectable. 0 means the entire tree, 1 means only the root level, 2 means the first two levels, etc.
+   );
+   return $params;
+ }
+@@ -604,6 +607,10 @@ function hs_taxonomy_hierarchical_select_root_level($params) {
+  * Implementation of hook_hierarchical_select_children().
+  */
+ function hs_taxonomy_hierarchical_select_children($parent, $params) {
++  static $tree;
++  $depth = $params['max_depth'];
++  $vid = $params['vid'];
++
+   if (isset($params['root_term']) && $params['root_term'] && $parent == 0) {
+     return array();
+   }
+@@ -625,6 +632,16 @@ function hs_taxonomy_hierarchical_select_children($parent, $params) {
+     }
+   }
+ 
++  // Keep a static cache of the entire tree, this allows us to quickly look up
++  // if a term is not too deep – because if it's too deep, we don't want to
++  // return any children.
++  if (!isset($tree[$vid])) {
++    $raw_tree = _hs_taxonomy_hierarchical_select_get_tree($vid);
++    foreach ($raw_tree as $term) {
++      $tree[$vid][$term->tid] = $term->depth;
++    }
++  }
++  $terms = ($depth > 0 && $tree[$vid][$parent] + 1 >= $depth) ? array() : _hs_taxonomy_hierarchical_select_get_tree($vid, $parent, -1, 1);
+   return _hs_taxonomy_hierarchical_select_terms_to_options($terms);
+ }
+ 
+@@ -688,7 +705,7 @@ function hs_taxonomy_hierarchical_select_valid_item($item, $params) {
+     }
+   }
+ 
+-  return ($term->vid == $params['vid']);
++  return ($term->vid == $params['vid'] && _hs_taxonomy_term_within_allowed_depth($term->tid, $term->vid, $params['root_term'], $params['max_depth']));
+ }
+ 
+ /**
+@@ -722,6 +739,9 @@ function hs_taxonomy_hierarchical_select_item_get_label($item, $params) {
+ 
+ /**
+  * Implementation of hook_hierarchical_select_create_item().
++ *
++ * TRICKY: No depth check is necessary in this function because HS's internal
++ *         validation prevents an invalid parent.
+  */
+ function hs_taxonomy_hierarchical_select_create_item($label, $parent, $params) {
+   $term = new StdClass();
+@@ -1104,3 +1124,22 @@ function _hs_taxonomy_hierarchical_select_get_depth($vid) {
+   }
+   return $depth;
+ }
++
++function _hs_taxonomy_term_within_allowed_depth($tid, $vid, $root_tid, $allowed_depth) {
++  // If the allowed depth is zero, then every term is allowed!
++  if ($allowed_depth == 0) {
++    return TRUE;
++  }
++  // Otherwise, only allow terms that are within the allowed depth.
++  static $valid_tids;
++  if (!isset($valid_tids[$vid][$root_tid][$allowed_depth])) {
++    $valid_tids[$vid][$root_tid][$allowed_depth] = array();
++    $tree = _hs_taxonomy_hierarchical_select_get_tree($vid, $root_tid);
++    foreach ($tree as $term) {
++      if ($term->depth < $allowed_depth) {
++        $valid_tids[$vid][$root_tid][$allowed_depth][] = $term->tid;
++      }
++    }
++  }
++  return in_array($tid, $valid_tids[$vid][$root_tid][$allowed_depth]);
++}

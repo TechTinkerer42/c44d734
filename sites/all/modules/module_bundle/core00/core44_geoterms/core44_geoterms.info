@@ -1,0 +1,14 @@
+name = core44 Geoterms
+description = Enables the categorization of content.
+package = core44
+version = VERSION
+core = 7.x
+dependencies[] = taxonomy
+dependencies[] = field_ui
+files[] = core44_geoterms.module
+files[] = core44_geoterms.test
+
+; Information added by drush on 2013-02-08
+version = "unknown"
+project = "module_bundle"
+datestamp = "1360321459"

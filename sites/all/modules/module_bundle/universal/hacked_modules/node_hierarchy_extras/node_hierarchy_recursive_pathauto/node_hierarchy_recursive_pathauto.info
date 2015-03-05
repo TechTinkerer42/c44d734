@@ -1,0 +1,8 @@
+name = Node Hierarchy Recursive Pathauto
+description = Recursively update children node's paths
+package = "Node Hierarchy"
+dependencies[] = nodehierarchy
+dependencies[] = pathauto
+core = 7.x
+version = "7.x-0.1"
+

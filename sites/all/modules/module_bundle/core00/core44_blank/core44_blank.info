@@ -1,0 +1,16 @@
+name = core44 Blank
+description = Blank module structure
+core = 7.x
+version = 7.x-1.0
+package = core44
+php = 5.2
+
+;dependencies[] = none
+
+;files[] = includes/core44_blank.controller.inc
+;files[] = includes/core44_blank.inc
+
+;scripts[] = js/core44_blank.js
+
+;stylesheets[all][] = css/core44_blank.css
+;stylesheets[print][] = css/core44_blank.css

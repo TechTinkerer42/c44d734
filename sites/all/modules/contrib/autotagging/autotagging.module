@@ -1,0 +1,234 @@
+<?php
+// $Id$
+
+/*
+ * @file
+ * Module for base Autotagging API.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function autotagging_menu() {
+  $items = array();
+  $items['admin/config/autotagging'] = array(
+    'title' => 'Autotagging',
+    'description' => t('Configure Autotagging of nodes'),
+    'access arguments' => array('administer autotagging'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('autotagging_settings_form'),
+    'file' => 'autotagging.admin.inc',
+    'type' => MENU_NORMAL_ITEM,
+  );
+  $items['ajax/autotagging'] = array(
+    'title' => 'Autotagging AJAX callback',
+    'page callback' => 'autotagging_ajax',
+    'type' => MENU_NORMAL_ITEM,
+    'access arguments' => array('moderate autotagging'),
+  );
+  return $items;
+}
+
+function autotagging_ajax() {
+  $text = strip_tags($_REQUEST['text']);
+  // exclude stop words
+  //$text = preg_replace(explode("\n", variable_get('autotagging_stop_words')), '', $text);
+  $hook = 'autotagging_api_prefetch';
+  module_invoke_all($hook, $node, $text);
+  $ignore_setting = variable_get('autotagging_error_handling', 'Defer');
+  $terms = array();
+  $insert_hook = 'autotagging_api_node_insert';
+  foreach (module_implements($insert_hook) as $module_name) {
+    error_log("Using module " . $module_name);
+    $terms = module_invoke($module_name, $insert_hook, $node, $text);
+    if ($terms === FALSE) {
+      // error occurred processing this node for this service
+      if ($ignore_setting == 'Defer') {
+        // TODO: handle defer logic
+        //
+        break;
+      }
+    }
+  }
+  // allows modules to act on terms before they're saved.
+  $presave_hook = 'autotagging_api_presave';
+  module_invoke_all($presave_hook, $node, $terms);
+  drupal_json_output($terms);
+}
+
+/**
+ * Implements hook_permission().
+ */
+function autotagging_permission() {
+  return array(
+    'administer autotagging' => array(
+      'title' => t('administer autotagging'),
+      'description' => t('Administer autotagging settings'),
+    ),
+    'moderate autotagging' => array(
+      'title' => t('moderate autotagging'),
+      'description' => t('Moderate the results of autotagging operations.'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_node_update().
+ */
+function autotagging_node_presave($node) {
+  $terms = array();
+  // check that this node type is allowed for autotagging
+  $allowed_types = variable_get('autotagging_allowed_types', array());
+
+  if (!in_array($node->type, $allowed_types)) {
+    return NULL;
+  }
+  // Extract text.
+  $text = autotagging_extract_text($node);
+  $prefetch_hook = 'autotagging_api_prefetch';
+  module_invoke_all($prefetch_hook, $node, $text);
+  $ignore_setting = variable_get('autotagging_error_handling', 'Defer');
+  $terms = array();
+  $update_hook = 'autotagging_api_node_update';
+  foreach (module_implements($update_hook) as $module_name) {
+    $terms = module_invoke($module_name, $update_hook, $node, $text);
+    if ($terms === FALSE) {
+      // error occurred processing this node for this service
+      if ($ignore_setting == 'Defer') {
+        // TODO: handle defer logic
+        //
+        break;
+      }
+    }
+    autotagging_add_tags($node, $terms);
+  }
+  // allows modules to act on terms before they're saved.
+  $presave_hook = 'autotagging_api_presave';
+  module_invoke_all($presave_hook, $node, $terms);
+}
+
+/**
+ * Implements hook_node_insert().
+ */
+function autotagging_node_insert($node) {
+  $terms = array();
+  // check that this node type is allowed for autotagging
+  $allowed_types = variable_get('autotagging_allowed_types', array());
+
+  if (!in_array($node->type, $allowed_types)) {
+    return NULL;
+  }
+
+  // Extract text.
+  $text = autotagging_extract_text($node);
+  $prefetch_hook = 'autotagging_api_prefetch';
+  module_invoke_all($prefetch_hook, $node, $text);
+  $ignore_setting = variable_get('autotagging_error_handling', 'Defer');
+  $terms = array();
+  $insert_hook = 'autotagging_api_node_insert';
+  foreach (module_implements($insert_hook) as $module_name) {
+    $terms = module_invoke($module_name, $insert_hook, $node, $text);
+    if ($terms === FALSE) {
+      // error occurred processing this node for this service
+      if ($ignore_setting == 'Defer') {
+        // TODO: handle defer logic
+        //
+        break;
+      }
+    }
+    autotagging_add_tags($node, $terms);
+  }
+  // allows modules to act on terms before they're saved.
+  $presave_hook = 'autotagging_api_presave';
+  module_invoke_all($presave_hook, $node, $terms);
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function autotagging_form_alter(&$form, &$form_state, $form_id) {
+  if (!preg_match('/_node_form$/', $form_id)) {
+    return;
+  }
+  $type = $form['#node']->type;
+  $allowed_types = variable_get('autotagging_allowed_types', array());
+  if (!in_array($type, $allowed_types)) {
+    return;
+  }
+  drupal_add_css(drupal_get_path('module', 'autotagging') . '/autotagging.css');
+  drupal_add_js(drupal_get_path('module', 'autotagging') . '/autotagging.js');
+  $form['field_tags']['autotagging_suggest'] = array(
+    '#type' => 'markup',
+    '#markup' => '<a href="javascript:void(0);" onclick="autotagging_js_suggest();">' . t('Suggest Tags') . '</a><div id="autotagging_suggest"></div>',
+  );
+}
+
+function autotagging_extract_text($node) {
+  // invoke autotagging api
+  $text = array();
+  $text[] = $node->title;
+  // TODO: handle each language separately
+  foreach ($node->body as $lang => $body_field) {
+    foreach ($body_field as $key => $body) {
+      $text[] = str_replace("\n", ' ', strip_tags($body['value']));
+    }
+  }
+  $text = implode(' ', $text);
+  // exclude stop words
+  $text = variable_get('autotagging_stop_words') ? preg_replace(explode("\n", variable_get('autotagging_stop_words')), '', $text) : $text;
+  return $text;
+}
+function autotagging_add_tags(&$node, $terms) {
+  if (isset($terms) && is_array($terms) && !empty($terms)) {
+    // Create an array of term reference field names indexed by vid
+    // so we can figure out what field we're going to assign our terms to.
+    $field_names = array();
+    $fields = field_info_instances('node', $node->type);
+    foreach ($fields as $field_name => $settings) {
+      if ($settings['widget']['module'] == 'taxonomy') {
+        $field_info = field_info_field_by_id($settings['field_id']);
+        if(isset($field_info['settings']['allowed_values'])) {
+          foreach ($field_info['settings']['allowed_values'] as $value) {
+            $field_names[$value['vocabulary']] = $field_name;
+          }
+        }
+      }
+    }
+    // find the vocabulary with which to associate these terms
+    foreach ($terms as $vid => $termlist) {
+      foreach ($termlist as $name) {
+        $vocabulary = taxonomy_vocabulary_load($vid);
+        // Look up term based on given name and vocabulary.
+        $term = taxonomy_term_load_multiple(array(), array('name' => trim($name), 'vid' => $vid));
+        // Add term if no term was found.
+        if (!$term) {
+          $term = new stdClass;
+          $term->vid = $vid;
+          $term->vocabulary_machine_name = $vocabulary->machine_name;
+          $term->name = $name;
+          if (taxonomy_term_save($term)) {
+            $term = taxonomy_term_load_multiple(array(), array('name' => trim($name), 'vid' => $vid));
+          }
+        }
+        if ($term) {
+          // If we have a term object add our terms to the node.
+          foreach ($term as $tid => $term_object) {
+            // TODO: handle each language separately
+            if (!property_exists($node, $field_names[$vocabulary->machine_name])) {
+              $node->{$field_names[$vocabulary->machine_name]} = array( LANGUAGE_NONE => array() );
+            }
+            else if (empty($node->{$field_names[$vocabulary->machine_name]})) {
+              $node->{$field_names[$vocabulary->machine_name]} = array( LANGUAGE_NONE => array() );
+            }
+            foreach ($node->{$field_names[$vocabulary->machine_name]} as $lang => $tag_field) {
+              // Don't add terms twice.
+              if ($term && !in_array($tid, $node->{$field_names[$vocabulary->machine_name]}[$lang])) {
+                $node->{$field_names[$vocabulary->machine_name]}[$lang][] = array('tid' => $tid);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

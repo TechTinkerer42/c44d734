@@ -1,0 +1,311 @@
+diff --git a/acdx_entityreference/acdx_entityreference.info b/acdx_entityreference/acdx_entityreference.info
+new file mode 100644
+index 0000000..d510d40
+--- /dev/null
++++ b/acdx_entityreference/acdx_entityreference.info
+@@ -0,0 +1,11 @@
++; $Id$
++name = Autocomplete Deluxe Entity References Widget
++description = Autocomplete Deluxe widget implementation for entity references.
++package = User interface
++project = acdx_references
++version = VERSION
++core = 7.x
++files[] = acdx_entityreference.module
++dependencies[] = autocomplete_deluxe
++dependencies[] = entityreference
++dependencies[] = entity
+diff --git a/acdx_entityreference/acdx_entityreference.module b/acdx_entityreference/acdx_entityreference.module
+new file mode 100644
+index 0000000..293c90e
+--- /dev/null
++++ b/acdx_entityreference/acdx_entityreference.module
+@@ -0,0 +1,288 @@
++<?php
++// $Id$
++
++/**
++ * Implements hook_field_widget_info().
++ */
++function acdx_entityreference_field_widget_info() {
++  $widgets['entityreference_autocomplete_deluxe'] = array(
++    'label' => t('Autocomplete Deluxe'),
++    'description' => t('An autocomplete text field - with deluxe behavior.'),
++    'field types' => array('entityreference'),
++    'settings' => array(
++      'match_operator' => 'CONTAINS',
++      'size' => 60,
++      // We don't have a default here, because it's not the same between
++      // the two widgets, and the Field API doesn't update default
++      // settings when the widget changes.
++      'path' => '',
++    ),
++  );
++  $widgets['entityreference_autocomplete_deluxe_tags'] = array(
++    'label' => t('Autocomplete Deluxe (tags)'),
++    'description' => t('An autocomplete text field with deluxe tagging behavior.'),
++    'field types' => array('entityreference'),
++    'settings' => array(
++      'match_operator' => 'CONTAINS',
++      'size' => 60,
++      'create_bundle' => '',
++    ),
++    'behaviors' => array(
++      'multiple values' => FIELD_BEHAVIOR_CUSTOM,
++    ),
++  );
++
++  return $widgets;
++}
++
++/**
++ * Implements hook_field_widget_info_alter().
++ */
++function acdx_entityreference_field_widget_info_alter(&$info) {
++  $info['options_select']['field types'][] = 'entityreference';
++  $info['options_buttons']['field types'][] = 'entityreference';
++}
++
++
++/**
++ * Implements hook_field_widget_settings_form().
++ */
++function acdx_entityreference_field_widget_settings_form($field, $instance) {
++  $widget = $instance['widget'];
++  $settings = $widget['settings'] + field_info_widget_settings($widget['type']);
++
++  $form = array();
++
++  if (in_array($widget['type'], array('entityreference_autocomplete_deluxe', 'entityreference_autocomplete_deluxe_tags'))) {
++    $form['match_operator'] = array(
++      '#type' => 'select',
++      '#title' => t('Autocomplete matching'),
++      '#default_value' => $settings['match_operator'],
++      '#options' => array(
++        'STARTS_WITH' => t('Starts with'),
++        'CONTAINS' => t('Contains'),
++      ),
++      '#description' => t('Select the method used to collect autocomplete suggestions. Note that <em>Contains</em> can cause performance issues on sites with thousands of nodes.'),
++    );
++    $form['size'] = array(
++      '#type' => 'textfield',
++      '#title' => t('Size of textfield'),
++      '#default_value' => $settings['size'],
++      '#element_validate' => array('_element_validate_integer_positive'),
++      '#required' => TRUE,
++    );
++    $info = entity_get_info($field['settings']['target_type']);
++    $options = array('' => t("-- Don't create --"));
++    foreach ($info['bundles'] as $bundle_name => $bundle) {
++      $options[$bundle_name] = $bundle['label'];
++    }
++    $form['create_bundle'] = array(
++      '#type' => 'select',
++      '#access' => ($widget['type'] == 'entityreference_autocomplete_deluxe_tags'),
++      '#title' => t('Create new entities'),
++      '#description' => t("When a tag is entered that doesn't match any existing entity, you can create a new entity.  Select a bundle to use for the newly created entity."),
++      '#options' => $options,
++      '#default_value' => isset($settings['create_bundle']) ? $settings['create_bundle'] : NULL,
++    );
++    $form['min_length'] = array(
++      '#type' => 'textfield',
++      '#title' => t('Mininum length.'),
++      '#description' => t('The minimum length of characters to enter to open the suggestion list.'),
++      '#default_value' => isset($settings['min_length']) ? $settings['min_length'] : 0,
++      '#element_validate' => array('_element_validate_integer'),
++    );
++  }
++
++  return $form;
++}
++
++
++/**
++ * Implements hook_field_widget_form().
++ */
++function acdx_entityreference_field_widget_form(&$form, &$form_state, $field, $instance, $langcode, $items, $delta, $element) {
++  $handler = entityreference_get_selection_handler($field, $instance);
++  switch ($instance['widget']['type']) {
++    case 'entityreference_autocomplete_deluxe':
++    case 'entityreference_autocomplete_deluxe_tags':
++      if ($instance['widget']['type'] == 'entityreference_autocomplete_deluxe') {
++        // We let the Field API handles multiple values for us, only take
++        // care of the one matching our delta.
++        if (isset($items[$delta])) {
++          $items = array($items[$delta]);
++        }
++        else {
++          $items = array();
++        }
++      }
++      elseif ($instance['widget']['type'] == 'entityreference_autocomplete_deluxe_tags') {
++        $element['#element_validate'] = array('_acdx_entityreference_autocomplete_tags_validate');
++        $element['#multiple'] = TRUE;
++      }
++
++      $entity_ids = array();
++      $entity_labels = array();
++
++      // Build an array of entities ID.
++      foreach ($items as $item) {
++        $entity_ids[] = $item['target_id'];
++      }
++
++      // Load those entities and loop through them to extract their labels.
++      $entities = entity_load($field['settings']['target_type'], $entity_ids);
++
++      foreach ($entities as $entity_id => $entity) {
++        $label = $handler->getLabel($entity);
++        $key = "$label ($entity_id)";
++        // Labels containing commas or quotes must be wrapped in quotes.
++        if (strpos($key, ',') !== FALSE || strpos($key, '"') !== FALSE) {
++          $key = '"' . str_replace('"', '""', $key) . '"';
++        }
++        $entity_labels[] = $key;
++      }
++      $path = !empty($instance['widget']['settings']['path']) ? $instance['widget']['settings']['path'] : 'acdx_entityreference/autocomplete';
++      $element += array(
++        '#type' => 'autocomplete_deluxe',
++        '#maxlength' => 1024,
++        '#default_value' => implode(', ', $entity_labels),
++        '#autocomplete_deluxe_path' => url($path . '/' . $field['field_name'] . '/' . $instance['entity_type'] . '/' . $instance['bundle'], array('absolute' => TRUE)),
++        '#size' => $instance['widget']['settings']['size'],
++        '#element_validate' => array('_entityreference_autocomplete_validate'),
++        '#min_length' => isset($instance['widget']['settings']['min_length']) ? $instance['widget']['settings']['min_length'] : 0,
++      );
++      if ($instance['widget']['type'] == 'entityreference_autocomplete_deluxe') {
++        return array('target_id' => $element);
++      }
++      return $element;
++  }
++}
++
++/**
++ * Implements hook_menu().
++ */
++function acdx_entityreference_menu() {
++  $items['acdx_entityreference/autocomplete/%/%/%'] = array(
++    'title' => 'Entity Reference Autocomplete Deluxe Callback',
++    'page callback' => 'acdx_entityreference_autocomplete_callback',
++    'page arguments' => array(2, 3, 4, 5),
++    'access callback' => TRUE,
++    'type' => MENU_CALLBACK,
++  );
++  return $items;
++}
++
++/**
++ * Menu callback: autocomplete the label of an entity.
++ */
++function acdx_entityreference_autocomplete_callback($field_name, $entity_type, $bundle_name, $string = '') {
++  $field = field_info_field($field_name);
++  $instance = field_info_instance($entity_type, $field_name, $bundle_name);
++  $matches = array();
++
++  if (!$field || !$instance || $field['type'] != 'entityreference' || !field_access('edit', $field, $entity_type)) {
++    return MENU_ACCESS_DENIED;
++  }
++
++  $handler = entityreference_get_selection_handler($field, $instance);
++
++  // Get an array of matching entities.
++  $referencable = $handler->getReferencableEntities($string, $instance['widget']['settings']['match_operator'], 10);
++
++  // Loop through the entities and convert them into autocomplete output.
++  foreach ($referencable as $referencable_bundle => $entity_labels) {
++    foreach ($entity_labels as $entity_id => $label) {
++      $key = "$label ($entity_id)";
++      // Names containing commas or quotes must be wrapped in quotes.
++      if (strpos($key, ',') !== FALSE || strpos($key, '"') !== FALSE) {
++        $key = '"' . str_replace('"', '""', $key) . '"';
++      }
++      $matches[$key] = check_plain($label);
++    }
++  }
++
++  drupal_json_output($matches);
++}
++
++
++function _acdx_entityreference_autocomplete_validate($element, &$form_state, $form) {
++  // If a value was entered into the autocomplete...
++  $value = '';
++  if (!empty($element['#value'])) {
++    // Take "label (entity id)', match the id from parenthesis.
++    if (preg_match("/.+\((\d+)\)/", $element['#value'], $matches)) {
++      $value = $matches[1];
++    }
++  }
++  // Update the value of this element so the field can validate the product IDs.
++  form_set_value($element, $value, $form_state);
++}
++
++function _acdx_entityreference_autocomplete_tags_validate($element, &$form_state, $form) {
++  $value = array();
++  if (preg_match_all('/"(?:""|[^"])*"|[^",]+/', $element['#value'], $matches)) {
++    if (!empty($element['#entity'])) {
++      $entity = $element['#entity'];
++      $field = field_info_field($element['#field_name']);
++      $field_instance = field_info_instance($element['#entity_type'], $element['#field_name'], $element['#bundle']);
++      foreach ($matches[0] as $match) {
++        if (preg_match('/\((\d+)\)"?$/', $match, $id_matches)) {
++          $value[]['target_id'] = $id_matches[1];
++        }
++        else {
++          $target_id = _acdx_entityreference_create($field['settings']['target_type'], $field_instance['widget']['settings']['create_bundle'], $match);
++
++          $value[] = array(
++            'target_id' => $target_id,
++          );
++        }
++      }
++    }
++  }
++  form_set_value($element, $value, $form_state);
++}
++
++/**
++ * Implements hook_field_widget_error().
++ */
++function acdx_entityreference_field_widget_error($element, $error) {
++  form_error($element['textfield'], $error['message']);
++}
++
++function _acdx_entityreference_create($entity_type, $bundle_name, $label) {
++  $entity_info = entity_get_info($entity_type);
++  $entity_init = array(
++    $entity_info['entity keys']['bundle'] => $bundle_name,
++    $entity_info['entity keys']['label'] => $label,
++  );
++
++  // Allow modules to tweak this for entity types that need special treatment.
++  drupal_alter('acdx_entityreference_create', $entity_init, $entity_type);
++
++  $entity = entity_create($entity_type, $entity_init);
++
++  // Nodes have per-bundle create permissions, and we can't simply pass a
++  // skeleton node object to entity_access() as it would get cached in the
++  // wrong place due to some assumptions that node_access() makes about its
++  // parameters.
++  $access = ($entity_type == 'node') ? node_access('create', $bundle_name) : entity_access('create', $entity_type);
++
++  if ($access) {
++    entity_save($entity_type, $entity);
++    return $entity->{$entity_info['entity keys']['id']};
++  }
++}
++
++/**
++ * Implements hook_acdx_entityreference_create_alter().
++ *
++ * Handle some special cases for core entities.
++ */
++function acdx_entityreference_acdx_entityreference_create_alter(&$entity_init, $entity_type) {
++  global $user;
++  if ($entity_type == 'node' && $user->uid) {
++    $entity_init['uid'] = $user->uid;
++  }
++  if ($entity_type == 'taxonomy_term' && $vocabulary = taxonomy_vocabulary_machine_name_load($entity_init['vocabulary_machine_name'])) {
++    $entity_init['vid'] = $vocabulary->vid;
++  }
++}

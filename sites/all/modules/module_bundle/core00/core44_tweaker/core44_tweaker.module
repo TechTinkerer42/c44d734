@@ -1,0 +1,175 @@
+<?php
+
+/**
+ * Implements hook_block_info().
+ */
+/*
+function core44_tweaker_block_info() {
+  $blocks = array();
+  $blocks['create_content'] = array(
+    'info' => t('Create content'),
+    'cache' => DRUPAL_NO_CACHE,
+    'admin' => TRUE,
+  );
+  return $blocks;
+}
+*/
+
+/**
+ * Implements hook_block_view().
+ */
+/*
+function core44_tweaker_block_view($delta) {
+  switch ($delta) {
+    case 'create_content':
+      $item = menu_get_item('node/add');
+      $links = system_admin_menu_block($item);
+      if (!empty($links)) {
+        $menu = array();
+        foreach ($links as $key => $link) {
+          $menu[$key] = array(
+            'link' => $link + array('in_active_trail' => FALSE),
+            'below' => FALSE,
+          );
+        }
+        return array(
+          'subject' => !empty($item['title']) ? $item['title'] : t('Create content'),
+          'content' => menu_tree_output($menu),
+        );
+      }
+      break;
+  }
+}
+*/
+
+/** 
+* Implements hook_entity_info_alter().
+*/
+function core44_tweaker_entity_info_alter(&$entity_info) {
+
+  $entity_info['node']['view modes']['list'] = array(
+    'label' => t('List view'),
+    'custom settings' => TRUE,
+  ); 
+  //if field collection module enabled, add new view mode
+  if (module_exists('profile2')) {
+    $entity_info['profile2']['view modes']['list'] = array(
+      'label' => t('List view'),
+      'custom settings' => TRUE,
+    ); 
+  }    
+}
+
+/**
+ * Implements hook_menu_alter().
+ */
+function core44_tweaker_menu_alter(&$items) {
+  $items['user/%user_category/edit/profile']['access callback'] = FALSE;
+  $items['user/%uid/edit/%user_category']['access callback'] = FALSE;
+}
+/**
+ * Implements hook_form_FORM_ID_alter() for the user edit form.
+ */
+function core44_tweaker_form_user_profile_form_alter(&$form, &$form_state, $form_id) {
+
+
+  if (in_array('consultant',$form['#user']->roles)){
+    if (($type = profile2_get_types('consultant')) && $type->userCategory) {
+      if (empty($form_state['profiles'])) {
+        $consultant = profile2_load_by_user($form['#user'], 'consultant');
+        if (empty($consultant)) {
+          $consultant = profile_create(array('type' => 'consultant', 'uid' => $form['#user']->uid));
+        }
+        $form_state['profiles'][$consultant->type] = $consultant;
+      }    
+      profile2_attach_form($form, $form_state); 
+      $form['profile_consultant']['#type'] = 'fieldset';   
+      $form['profile_consultant']['#collapsible'] = true;  
+      $form['profile_consultant']['#collapsed'] = false;     
+      $form['profile_consultant']['#title'] = t('Profile');
+      $form['profile_consultant']['#group'] = 'additional_settings';         
+      //try to avoid using und and 0 here??
+      $form['profile_consultant']['field_full_name']['und'][0]['#title'] = '';
+      $form['profile_consultant']['field_full_name']['und'][0]['#type'] = 'container';   
+      //$form['user_picture'] = $form['profile_consultant']['field_user_picture'];
+      //$form['profile_consultant']['field_user_picture'] = false; 
+    }
+  }
+  
+  if (in_array('candidate',$form['#user']->roles)){  
+    if (($type = profile2_get_types('candidate')) && $type->userCategory) {
+      if (empty($form_state['profiles'])) {
+        $candidate = profile2_load_by_user($form['#user'], 'candidate');
+        if (empty($candidate)) {
+          $candidate = profile_create(array('type' => 'candidate', 'uid' => $form['#user']->uid));
+        }
+        $form_state['profiles'][$candidate->type] = $candidate;
+      }
+      profile2_attach_form($form, $form_state);
+      
+      $form['profile_candidate']['#type'] = 'fieldset';
+      $form['profile_candidate']['#group'] = 'additional_settings';          
+      $form['profile_candidate']['#collapsible'] = true;  
+      $form['profile_candidate']['#collapsed'] = false;     
+      $form['profile_candidate']['#title'] = t('Profile');
+      //try to avoid using und and 0 here??
+      $form['profile_candidate']['field_full_name']['und'][0]['#title'] = '';
+      $form['profile_candidate']['field_full_name']['und'][0]['#type'] = 'container';   
+    }
+  }
+   
+  if (in_array('client',$form['#user']->roles)){        
+    if (($type = profile2_get_types('client')) && $type->userCategory) {
+      if (empty($form_state['profiles'])) {
+        $client = profile2_load_by_user($form['#user'], 'client');
+        if (empty($client)) {
+          $client = profile_create(array('type' => 'client', 'uid' => $form['#user']->uid));
+        }
+        $form_state['profiles'][$client->type] = $client;
+      }
+      profile2_attach_form($form, $form_state);
+    } 
+  }
+    
+  $form['settings']['#type'] = 'fieldset';
+  $form['settings']['#title'] = t('Settings');  
+  $form['settings']['#group'] = 'additional_settings';
+  $form['settings']['#collapsible'] = TRUE;
+  $form['settings']['#collapsed'] = FALSE;
+  $form['settings']['#tree'] = TRUE;
+  $form['settings']['#weight'] = 100;
+
+  //set the account elements in collapsed fieldset
+  $form['account']['#type'] = 'fieldset';
+  $form['account']['#collapsible'] = TRUE;  
+  $form['account']['#collapsed'] = TRUE;    
+  $form['account']['#title'] = t('Account');
+  $form['account']['#group'] = 'additional_settings'; 
+
+
+  $form['mimemail']['#tree'] = TRUE;  
+  
+  $form['timezone']['#group'] = 'additional_settings';
+  $form['overlay_control']['#group'] = 'additional_settings';
+  
+  $form['additional_settings'] = array(
+         '#type' => 'vertical_tabs',
+         '#weight' => 99,
+      );       
+  //afterbuild function
+  $form['#after_build'][] = 'user_profile_form_afterbuild';
+
+}
+function user_profile_form_afterbuild($form, $form_state) {
+    $form['settings']['timezone'] = $form['timezone'];
+    $form['settings']['mimemail'] = $form['mimemail'];
+    $form['settings']['overlay_control'] = $form['overlay_control'];          
+      
+    return $form;
+}
+function core44_tweaker_form_alter(&$form, &$form_state, $form_id) {        
+  if(isset($form['field_full_name'])){
+    $form['field_full_name']['und'][0]['#title'] = '';
+/*     $form['field_full_name']['und'][0]['#type'] = 'container';  */    
+  }
+}

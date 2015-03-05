@@ -1,0 +1,54 @@
+<?php
+
+/**
+ * Implements hook_feeds_processor_targets_alter().
+ *
+ * @see FeedsNodeProcessor::getMappingTargets().
+ */
+function node_hierarchy_feeds_mapper_feeds_processor_targets_alter(&$targets, $entity_type, $bundle_name) {
+
+	// Ensure that this is a node entity type
+	if ($entity_type == 'node') {	
+		//error_log('NH FEEDS MAPPER bundle_name='.$bundle_name);	
+		
+		// Ensure that the node type can be a child
+		if (nodehierarchy_node_can_be_child($bundle_name)) {
+			//error_log('NH FEEDS MAPPER '.$bundle_name.' can be child');
+
+			// Add the target definition
+			$targets['node_hierarchy_parent_guid'] = array(
+				'name' => t('Node Hierarchy Parent GUID'),
+				'callback' => 'node_hierarchy_feeds_set_target',
+				'description' => t('The GUID of the parent node.'),
+			);
+			
+		}
+		
+	}
+	
+}
+
+/**
+* Mapper callback for node hierarchy parent guid
+*/
+function node_hierarchy_feeds_set_target($source, $entity, $target, $value) {
+	
+	// Don't process empty values
+	if (empty($value)) return;
+	//error_log('guid value:'.$value);
+
+	// Lookup the supplied parent guid value in the feeds_item table,
+	// to get the node id of the parent
+	$info = db_select('feeds_item')
+		->fields('feeds_item')
+		->condition('entity_type', 'node')
+		->condition('guid', $value)
+		->execute()
+		->fetchObject();
+	$parentid = $info->entity_id;
+    //error_log('parentid:'.$parentid);
+
+	// Set the parent id of the incoming entity
+	$entity->nodehierarchy_menu_links[0]['pnid'] = $parentid;
+	
+}

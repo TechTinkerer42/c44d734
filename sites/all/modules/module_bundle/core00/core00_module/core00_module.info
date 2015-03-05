@@ -1,0 +1,16 @@
+name = core00 Module
+description = Base module for the core00 distribution
+core = 7.x
+version = 7.x-1.0
+package = core00
+php = 5.2
+
+;dependencies[] = none
+
+;files[] = includes/core00_module.controller.inc
+;files[] = includes/core00_module.inc
+
+;scripts[] = js/core00_module.js
+
+;stylesheets[all][] = css/core00_module.css
+;stylesheets[print][] = css/core00_module.css

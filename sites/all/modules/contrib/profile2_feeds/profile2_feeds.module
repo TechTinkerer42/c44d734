@@ -1,0 +1,38 @@
+<?php
+
+/**
+ * @file
+ * Provides feeds integration for Profile2 profiles.
+ */
+
+/**
+ * Implements hook_feeds_plugins().
+ */
+function profile2_feeds_feeds_plugins() {
+  $path = drupal_get_path('module', 'profile2_feeds') . '/plugins';
+  $info = array();
+
+  $info['Profile2_FeedsProfileProcessor'] = array(
+    'name' => 'User Profile processor',
+    'description' => 'Create user profiles.',
+    'help' => 'Create user profiles from parsed content.',
+    'handler' => array(
+      'parent' => 'FeedsProcessor',
+      'class' => 'Profile2_FeedsProfileProcessor',
+      'file' => 'Profile2_FeedsProfileProcessor.inc',
+      'path' => $path,
+    ),
+  );
+  return $info;
+}
+
+/**
+ * Implements hook_help().
+ */
+function profile2_feeds_help($path, $arg) {
+  switch ($path) {
+    case 'admin/help#profile2_feeds':
+      $output = file_get_contents(drupal_get_path('module', 'profile2_feeds') . '/README.txt');
+      return module_exists('markdown') ? filter_xss_admin(module_invoke('markdown', 'filter', 'process', 0, -1, $output)) : '<pre>' . check_plain($output) . '</pre>';
+  }
+}

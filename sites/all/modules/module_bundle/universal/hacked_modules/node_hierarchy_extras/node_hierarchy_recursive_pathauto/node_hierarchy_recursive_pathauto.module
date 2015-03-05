@@ -1,0 +1,239 @@
+<?php
+/**
+* This module does the following:
+*   Gets invoked whenever a node under nodehierarchy control is updated
+*   Get all descendants of that node
+*   Invoke pathauto module on the descendant nodes
+*/
+
+////////// Hook functions
+/**
+ * Implements hook_menu_link_alter().
+ * Called before the data for a modified menu link is saved
+ */
+function node_hierarchy_recursive_pathauto_menu_link_alter(&$link) {
+	
+	// Only handle links provided by the node hierarchy module
+	if ($link['module'] !== 'nodehierarchy') return;
+	
+	// Get the menu link id
+	$mlid = $link['mlid'];
+	//error_log('mlid:'.$mlid);
+
+	// Get the hierarchy link (which also contains the node id
+	$hlink = _nodehierarchy_load_menu_link($mlid);
+	//error_log('hlink[nid]:'.$hlink['nid']);
+
+	// Load the node
+	$node = node_load($hlink['nid']);
+	
+	//error_log('LINK TITLE:'.$link['link_title']);
+	//error_log('NODE TITLE:'.$node->title);
+	
+	// Only mark the menu link as customized if the titles are different
+	if ($link['link_title'] != $node->title) {
+		$link['customized'] = 1;
+	} else {
+		$link['customized'] = 0;
+	}
+		
+}
+
+/**
+ * Implements hook_node_update().
+ * Called when a node is edited
+ */
+function node_hierarchy_recursive_pathauto_node_update($node) {
+	//error_log('NODE UPDATE');
+	
+	// Not sure what this is doing
+    if (module_exists('revisioning') && (isset($node->original_vid) && $node->original_vid != $node->vid)) {
+		break;
+    }
+    
+    // call the update function on the node
+	_node_hierarchy_recursive_pathauto_update($node);
+
+}
+
+/**
+ * Implements hook_menu_link_update().
+ * Called when a menu link is edited or menus are rearranged
+ */
+function node_hierarchy_recursive_pathauto_menu_link_update($link) {	
+	//error_log('MENU LINK UPDATE');
+
+	// Only handle links provided by the node hierarchy module
+	if ($link['module'] !== 'nodehierarchy') return;
+
+	// Get the menu link id
+	$mlid = $link['mlid'];
+	//error_log('mlid:'.$mlid);
+
+	// Get the hierarchy link (which also contains the node id
+	$hlink = _nodehierarchy_load_menu_link($mlid);
+	//error_log('hlink[nid]:'.$hlink['nid']);
+
+	// Load the node
+	$node = node_load($hlink['nid']);
+	//error_log('node->nid:'.$node->nid);
+
+    // call the update function on the node
+	_node_hierarchy_recursive_pathauto_update($node);
+
+}
+
+////////// Internal functions
+
+/**
+ * If necessary, update the children nodes with the pathauto-generated alias.
+ * Called from both node_update and menu_link_alter hooks
+ */
+function _node_hierarchy_recursive_pathauto_update($node) {
+	//error_log('UPDATING NODE');
+	//error_log('node->nid:'.$node->nid);
+	
+	/**
+	* If $node's old_alias or path are not set, or if $node's old_alias and
+	* path are the same, stop.
+	*/
+	//error_log('Path:'.$node->path);
+	//error_log('Alias:'.$node->alias);
+	//if (!isset($node->path) || !isset($node->old_alias)) { return; }
+	//if ($node->old_alias == $node->path) { return; }
+
+	/**
+	* Nodehierarchy currently will return invalid data if the node does not have 
+	* any descendants. Check to make sure that the node's mlid is not zero.
+	*/
+	// Only handle nodes with a valid menu link ??
+	$mlid = _nodehierarchy_get_node_mlid($node->nid);
+	if ($mlid === FALSE) { 
+		//error_log('no node mlid');
+		return;
+	}
+
+	// Get all descendants of the node
+	// Only continue if there are descendants
+	$node_descendants = _nodehierarchy_get_children_menu_links($node->nid);
+	if (empty($node_descendants)) { return; }
+	//error_log('node descendants:'.count($node_descendants));
+
+	// Convert the $node_descendants array into one that the batch API can understand
+	$all_children = array();
+	_node_hierarchy_recursive_pathauto_get_all_children($all_children, $node_descendants);
+	//error_log('all children:'.count($all_children));
+
+	// invoke the pathauto node_update function on the parent node
+	//error_log('calling pathauto for node '.$node->nid);
+	module_invoke('pathauto', 'node_update', $node, NULL, NULL, NULL);
+
+	/*
+	* Pass the current's node aliases in order to calculate if the pass is
+	* automatically aliased or not.
+	*/
+	//$path_info = array(
+	//  'old_alias' => $node->old_alias,
+	//  'path'      => $node->path
+	//);
+
+	// Update the children aliases using the Batch API.
+	$batch = array(
+		'operations' => array(
+			array('_node_hierarchy_recursive_pathauto_update_nodes', array($all_children))//, $path_info))
+		),
+		'finished' => '_node_hierarchy_recursive_pathauto_update_nodes_finished',
+		'title' => 'Updating Paths of Children Nodes'
+	);
+	batch_set($batch);
+	
+}
+
+/**
+ * Get all children of a node as an array of nodes
+ * This is a recursive function and called from the update function
+ */
+function _node_hierarchy_recursive_pathauto_get_all_children(&$all_children, $nodes) {
+	foreach($nodes as $node) {
+		$all_children[] = $node;
+		$node_descendants = _nodehierarchy_get_children_menu_links($node['nid']);
+		if (!empty($node_descendants)) {
+			_node_hierarchy_recursive_pathauto_get_all_children($all_children, $node_descendants);
+		}
+	}
+}
+
+/**
+ * This function processes the nodes and is called using the Batch API
+ */
+function _node_hierarchy_recursive_pathauto_update_nodes($nodes, &$context) {
+	
+	// set up progress
+	if (!isset($context['sandbox']['progress'])) {
+		$context['sandbox']['progress'] = 0;
+		$context['sandbox']['current_node'] = 0;
+		$context['sandbox']['max'] = count($nodes);
+	}
+	
+	// Iterate ??
+	$limit = 3;
+	for ($i = 0; $i < $limit; $i++) {
+		if ($context['sandbox']['progress'] == $context['sandbox']['max']) {
+			break;
+		}
+    
+		// Load the node
+		$node = node_load($nodes[$context['sandbox']['progress']]['nid']);
+
+		//$match_old_alias = strpos($node->path, $path_info['old_alias']);
+		// If the root parent's old alias (passed via $path_info) matches the beginning
+		// of the current node's alias, consider the alias automatically set and update.
+		//if (is_numeric($match_old_alias) && $match_old_alias == '0') {
+		//$placeholders = pathauto_get_placeholders('node', $node);
+		//$pathauto_alias = pathauto_create_alias('node', 'return', $placeholders, "node/{$node->nid}", $node->nid, $node->type, $node->language);
+		//error_log('pathauto alias:'.$pathauto_alias);      
+		//pathauto_nodeapi($node, 'update');
+		
+		// Invoke the node_update function of the pathauto module
+		//error_log('calling pathauto for node '.$node->nid);
+		module_invoke('pathauto', 'node_update', $node, NULL, NULL, NULL);
+
+		//module_invoke('pathauto', 'nodeapi', $node, 'update', NULL, NULL);
+		//module_invoke('pathauto', 'node_update', $node, NULL, NULL, NULL);
+		//$context['results'][] = check_plain($node->title);
+
+		// Update the progress
+		$context['results'][] = check_plain($node->title);
+		$context['sandbox']['progress']++;
+		$context['sandbox']['current_node'] = $node->nid;
+		$context['message'] = t('Now processing %node', array('%node' => $node->title));
+	}
+
+	// update the progress percentage
+	if ($context['sandbox']['progress'] != $context['sandbox']['max']) {
+		$context['finished'] = $context['sandbox']['progress'] / $context['sandbox']['max'];
+	}	
+	
+}
+
+/**
+ * This function runs after nodes are all updated and is called using the Batch API
+ */
+function _node_hierarchy_recursive_pathauto_update_nodes_finished($success, $results, $operations) {
+	
+	// Set the message based on success
+	if ($success) {
+		$message = count($results) .' child node paths updated.';
+		//$message .= theme('item_list', $results);
+	} else {
+		// An error occurred.
+		// $operations contains the operations that remained unprocessed.
+		$error_operation = reset($operations);
+		$message = t('An error occurred while processing %error_operation with arguments: @arguments', array('%error_operation' => $error_operation[0], '@arguments' => print_r($error_operation[1], TRUE)));
+	}
+	drupal_set_message($message);
+}
+
+
+
+

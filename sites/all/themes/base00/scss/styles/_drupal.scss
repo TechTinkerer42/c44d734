@@ -1,0 +1,478 @@
+/*******************************************************************************
+ * SYSTEM > _drupal.scss
+ ******************************************************************************/
+
+.js .no-js{
+    display: none;
+    cursor: default;
+}
+.js .help{
+    color: $link-color;
+    cursor: pointer;
+}
+
+.admin {
+    padding-top: 20px;
+}
+.compact-link {
+    margin: 0 0 1.42857em;
+}
+
+.system-themes-list,
+.system-themes-list--disabled,
+.theme-selector {
+    padding-top: $base-line-height;
+}
+.progress-data {
+    background: none repeat scroll 0 0 #EEEEEE;
+    @include border-radius($border-radius-base);
+    color: #555555;
+    float: left;
+    font-size: 1em;
+    margin-bottom: 1.5em;
+    padding: 5px 10px;
+    width: 100%;
+}
+html.js .form-autocomplete {
+    background-image: url("../images/throbber.gif");
+    background-position: 99.5% 13px;
+}
+html.js .form-autocomplete.throbbing {
+  background-position: 99.5% -12px;
+}
+.active {
+    color: $link-color;
+}
+.more-help,
+.more-link {
+    background: url("../images/buttons.png") no-repeat scroll -800px 50%;
+    padding-left: 27px;
+}
+.system-status-report .ok .status-icon {
+    background-image: url("../../../../../../misc/message-16-ok.png"); //move to theme
+}
+.system-status-report .status-icon {
+  float: left;
+  margin: 4px 10px 4px 0;
+}
+
+#dblog-filter-form .form-actions {
+    float: left;
+    padding: 20px;
+    width: 100%;
+}
+#dblog-filter-form .form-item-type, .form-item-severity {
+    width: 100%;
+}
+.update table.version tr, .update table.version td {
+    line-height: 3em;
+}
+.form-actions.form-wrapper{
+    background: none repeat scroll 0 0 $gray-lighter;
+    border-radius: 4px 4px 4px 4px;
+    margin-bottom: 20px;
+    padding: 10px;
+    
+    input.btn {
+      float: right;
+    }
+}
+label.checkbox,
+label.option{
+    font-weight: bold;
+    @include border-radius($border-radius-base);
+    background-color: transparent;
+    padding-left: 20px;
+}
+.pager__item {
+    padding: 0;
+}
+//remove the indent on config pages
+.admin-panel .admin-panel__body {
+    padding-left: 0;
+}
+.filter-help a {
+    display: block;
+}
+/*******************************************************************************
+ * TABS > _drupal.scss
+ ******************************************************************************/
+
+/* Tabs */
+.action-tools.btn-group,
+.tabs.btn-group{
+    border-bottom: medium none;
+    height: 40px;
+    margin: 0;
+    z-index: 0;
+  
+  .btn {
+    height: 40px;
+    line-height: 38px;
+    padding: 0;    
+    a {
+      background-color: transparent;
+/*       height: 36px; */
+      padding: 0 0.8em;
+      text-decoration: none;
+      float: left;
+      color: #fff;
+    }   
+  }  
+  li {
+    margin: 0;
+    padding: 0;    
+  }
+  button.btn {
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 1.5em;
+    padding: 0 12px;
+  }
+}
+.action-tools.btn-group ul,
+.action-tools.btn-group ul {
+  margin: 0;
+}
+.action-tools .single-action li,
+.action-tools .main-action li{
+    height: 40px;
+    line-height: 38px;
+    padding-left: 24px;
+}
+.action-tools .glyphicon{
+    float: left;
+    line-height: 34px;
+    margin-right: 0;
+    padding: 2px 0 0 10px;
+}
+
+.tabs .btn-group.secondary-tabs{
+    line-height: 24px;
+    margin-right: 5px;
+    margin-left: 0px;    
+    .btn {
+      height: 24px;
+      line-height: 22px; //Why??
+      margin: 0;
+      padding: 0 6px;
+      .caret {
+
+      }
+    
+    }
+    .btn.current{
+      min-width: 50px;
+    }
+    li a {
+      float: none;
+/*       line-height: 36px; */
+      text-align: left;
+      text-shadow: none;
+      padding: 3px 20px;
+    }
+    ul {
+      margin: 0;
+      padding: 5px 0;
+    }
+}
+
+/*******************************************************************************
+ * TABLES > _drupal.scss
+ ******************************************************************************/
+
+th, tr.even, tr.odd{
+    background-color: inherit;
+}
+.tabledrag-handle {
+
+}
+.tabledrag-handle .handle {
+    background-position: 3px 4px;
+    float: none;
+    height: 20px;
+    margin: 0 10px 0 0;
+    width: 20px;
+}
+.tabledrag-toggle-weight-wrapper {
+    margin-top: 2em;
+    position: relative;
+    text-align: right;
+    a.tabledrag-toggle-weight {
+      background: none repeat scroll 0 0 #EEEEEE;
+      border-radius: 4px 4px 4px 4px;
+      font-size: 75%;
+      padding: 3px 12px;
+      position: absolute;
+      right: 0;
+      top: -25px;
+    }
+}
+.merge-up, .merge-up td {
+  border-top-width: 1px !important;
+}
+.merge-down, .merge-down td {
+  border-bottom-width: 1px !important;
+}
+
+td.permissions{
+  border-left: 0 none !important;
+}
+th.radio, 
+td.radio,
+th.checkbox,
+td.checkbox {
+    display: table-cell;
+    margin-bottom: 0;
+    margin-top: 0;
+    min-height: 0;
+}
+.table thead > tr > th, 
+.table tbody > tr > th, 
+.table thead > tr > td, 
+.table tbody > tr > td {
+    vertical-align: middle;
+}
+.sticky-header {
+    background-color: #333333;
+    color: #FFFFFF;
+    height: 40px;
+    top: 0 !important;
+    z-index: 10;
+    th {
+      padding: 9px;
+      font-weight: normal;
+    }
+}
+/*******************************************************************************
+ * FORMS > _drupal.scss
+ ******************************************************************************/
+.fieldset-legend .summary {
+    color: $gray;
+    @include adjust-font-size-to(14px);
+    font-weight: 200;
+}
+
+.form-item .description, 
+.form-actions .description {
+    color: #999999;
+    font-style: italic;
+    line-height: 20px;
+    margin: 0;
+    padding: 0;   
+}
+.form-type-radio .description {
+/*     margin-left: -20px; */
+}
+
+.form-item label, 
+.form-actions label {
+    display: inline-block !important;
+}
+/*
+.label .marker, .form-required {
+    color: #fff;
+}
+*/
+.form-managed-file{
+  @include clearfix();
+
+    .upload-wrapper{
+      position: relative; 
+      float: left;
+      width: 100%;
+    }
+    .file-size,
+    .file{
+/*       float: left; */
+       margin: 13px 5px;
+    }
+    .btn{
+      float: right;
+    }
+    button[value="Upload"]{
+      border-radius: 0 4px 4px 0;
+      float: right;
+      margin: 0 !important;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 40px;
+      font-size: 20px;
+      line-height: 1em;
+/*       line-height: 2em; */
+      span.glyphicon{
+        color: darken($btn-success-bg, 15%);
+        text-shadow:lighten($btn-success-bg, 15%) 0px 1px 0px;
+        margin: 0;   
+      }
+      &.disabled {
+        @include button-variant($btn-dark-color, $btn-dark-bg, $btn-dark-border);
+        span.glyphicon{
+          color: darken($btn-dark-bg, 15%);
+          text-shadow:lighten($btn-dark-bg, 15%) 0px 1px 0px;
+        }        
+      }      
+    }
+}
+td .file-widget.form-managed-file{
+ float: left; 
+}
+/*
+.form-checkboxes .form-item, 
+.form-radios .form-item {
+    margin-bottom: 0;
+}
+*/
+.checkbox, .checkbox {
+    text-align: left;
+}
+.form-type-managed-file .form-managed-file{
+  position: relative;
+}
+#edit-managed-file{
+/*
+    background: none repeat scroll 0 0 #EEE;
+    padding: 12px 14px;
+*/
+}
+#edit-managed-file #edit-managed-file-upload-button{
+/*     float: right; */
+}
+#edit-options {
+  width: 100%;
+  
+  .form-type-select{
+    float: left;
+    width: 90.5%;
+  }
+  button.btn[type="submit"],
+  input.btn[type="submit"] {
+    border-color: #AAAAAA;
+    border-radius: 0 4px 4px 0;
+    float: right;
+    margin: 0 0 0 -0.5%;
+    width: 10%;
+  }
+}
+
+.filter-wrapper .form-item {
+    float: none;
+    padding: 0;
+}
+.filter-guidelines,
+.filter-guidelines ul.tips {
+    clear: left;
+    padding: 0;
+}
+.filter-guidelines ul.tips {
+    margin: 1.5em 0;
+}
+.filter-help {
+    float: right;
+    padding: 0;
+    font-size: 75%;
+}
+#autocomplete {
+    border: 1px solid #cccccc;
+}
+.form-actions.form-wrapper {
+ @include clearfix(); 
+}
+
+/*******************************************************************************
+ * BLOCK > _drupal.scss
+ ******************************************************************************/
+.block {
+    margin-bottom: 20px;
+}
+.navbar .block{
+  margin: (($navbar-height - 50) / 2) 0;
+}
+
+/*******************************************************************************
+ * REGION > _drupal.scss
+ ******************************************************************************/
+.nav-bottom{
+    float: right;
+    right: 50%;
+    position: relative; 
+}
+
+.l-region--nav-bottom{
+    float: right;
+    right: -50%;
+    position: relative;
+}
+
+/*******************************************************************************
+ * MISC > _drupal.scss
+ ******************************************************************************/
+.submitted {
+    color: $gray;
+    font-style: italic;
+    @include adjust-font-size-to(12px);
+}
+.image-widget-data {
+    float: none;
+}
+
+html.overlay-open, html.overlay-open body {
+    height: 100% !important;
+}
+html.js body.overlay {
+    padding: 3% !important;
+}
+
+.overlay-modal-background .progress{
+	 	margin: auto;
+    position: relative;
+    top: 48%;
+    width: 300px;
+}
+#overlay-close, 
+#overlay-close:hover {
+    background: none repeat scroll 0 0 #222222;
+    border: 1px solid #000000;
+    color: #555555;
+    font-size: 26px;
+    height: 39px;
+    line-height: 1.38;
+    right: 10px;
+    top: 16px;
+    width: 39px;
+    &.c44icon-:before { @include inc-icon(scubox,$scubox_close); }
+}
+
+#overlay-close:hover {
+	color: #999;
+}
+#overlay{
+	max-width: 1280px;
+	margin: auto;
+}
+#overlay-content{
+	.l-main{
+		box-shadow: none;
+	}
+}
+ul#overlay-tabs {
+    position: absolute;
+    right: 60px;
+    top: 20px;
+}
+
+.feed-icon {
+			&.c44icon-:before {
+			color: $gray;
+	    font-size: 20px;
+	    height: 20px;
+	    line-height: 1em;
+	    margin: 5px 0 0 0;
+	    padding: 0;
+	    text-indent: 0;
+	    width: 20px;
+	    display: block;	    
+			@include inc-icon(c44_d7,$fontawesome_rss);		
+		}
+}

@@ -1,0 +1,34 @@
+<?php
+
+/**
+ * @file
+ * Implements a Bitcoin currency type in Drupal Commerce.
+ */
+
+/**
+ * Implements hook_commerce_currency_info().
+ *
+ * Add Bitcoin to the possible list of default currencies.
+ *
+ * @return array
+ *   An associative array of the Bitcoin currency characteristics.
+ */
+function commerce_btc_commerce_currency_info() {
+  return array(
+    'BTC' => array(
+			'code' => 'BTC',
+			'numeric_code' => '',
+			'name' => t('Bitcoin'),
+			'symbol' => '',
+			'major_unit' => t('Bitcoin'),
+			'minor_unit' => t('Satoshi'),
+			'decimals' => 8,
+			'thousands_separator' => '',
+			'decimal_separator' => '.',
+			'symbol_placement' => 'before',
+			'code_placement' => 'after',
+			'format_callback' => '',
+/* 			'conversion_rate' => 0.0008, */
+    ),
+  );
+}

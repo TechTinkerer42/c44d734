@@ -1,0 +1,491 @@
+@charset "UTF-8";
+/*******************************************************************************
+ * _utils.scss
+ *
+ * Sass offers come very useful features, these include variables functions and
+ * mixins. Extensions such as Compass and Susy can also be used to provide extra
+ * functions and mixins to be used throughout the theme. This file acts as a
+ * single place for defining these things, which can then be accessed by
+ * importing _utils.scss where required. The following should be defined in this
+ * file
+ * - Custom Sass mixins for the theme.
+ * - Custom Sass functions for the theme.
+ * - Overriding the default variables provided by extensions such as Compass.
+ * - Defining new variables for:
+ *      - Colors.
+ *      - Font sizes and families.
+ *      - Layout and grid sizing.
+ ******************************************************************************/
+/*******************************************************************************
+ * Imports
+ ******************************************************************************/
+/*******************************************************************************
+ * _variables.scss
+ *
+ * Here we define all the global variable in used by core01_theme
+ *
+ ******************************************************************************/
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/* '' */
+/*******************************************************************************
+ * _variables.scss
+ *
+ * Here we define all the global variable in used by core01_theme
+ *
+ ******************************************************************************/
+/*******************************************************************************
+ * Settings
+ ******************************************************************************/
+/*******************************************************************************
+ * Grid Variables
+ ******************************************************************************/
+/*******************************************************************************
+ * Media Layouts
+ ******************************************************************************/
+/* 0, 640px */
+/* 641px, 1024px */
+/* 1025px, 1440px */
+/* 1441px, 1920px */
+/* 1921px */
+/*******************************************************************************
+ * Typography Variables
+ ******************************************************************************/
+/*******************************************************************************
+ * Bootstrap3 Variables
+ ******************************************************************************/
+/*******************************************************************************
+ * Custom variables
+ ******************************************************************************/
+/*******************************************************************************
+ * Functions
+ ******************************************************************************/
+/*******************************************************************************
+ * Mixins
+ ******************************************************************************/
+/*
+   Animation example, for spinners
+*/
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/base00\/scss\/styles\/utils\/_mixins\.scss}line{font-family:\00003380}}
+.animate-spin {
+  -moz-animation: spin 2s infinite linear;
+  -o-animation: spin 2s infinite linear;
+  -webkit-animation: spin 2s infinite linear;
+  animation: spin 2s infinite linear;
+  display: inline-block;
+}
+
+@-moz-keyframes spin {
+  /* line 388, ../../../../../base00/scss/styles/utils/_mixins.scss */
+  0% {
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  /* line 395, ../../../../../base00/scss/styles/utils/_mixins.scss */
+  100% {
+    -moz-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+
+@-webkit-keyframes spin {
+  /* line 403, ../../../../../base00/scss/styles/utils/_mixins.scss */
+  0% {
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  /* line 410, ../../../../../base00/scss/styles/utils/_mixins.scss */
+  100% {
+    -moz-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+
+@-o-keyframes spin {
+  /* line 418, ../../../../../base00/scss/styles/utils/_mixins.scss */
+  0% {
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  /* line 425, ../../../../../base00/scss/styles/utils/_mixins.scss */
+  100% {
+    -moz-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+
+@-ms-keyframes spin {
+  /* line 433, ../../../../../base00/scss/styles/utils/_mixins.scss */
+  0% {
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  /* line 440, ../../../../../base00/scss/styles/utils/_mixins.scss */
+  100% {
+    -moz-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+
+@keyframes spin {
+  /* line 448, ../../../../../base00/scss/styles/utils/_mixins.scss */
+  0% {
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  /* line 455, ../../../../../base00/scss/styles/utils/_mixins.scss */
+  100% {
+    -moz-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+
+/*******************************************************************************
+ * Helper classes
+ ******************************************************************************/
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Library\/Ruby\/Gems\/2\.0\.0\/gems\/compass-0\.12\.4\/frameworks\/compass\/stylesheets\/compass\/typography\/_vertical_rhythm\.scss}line{font-family:\0000361}}
+* html {
+  font-size: 87.5%;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Library\/Ruby\/Gems\/2\.0\.0\/gems\/compass-0\.12\.4\/frameworks\/compass\/stylesheets\/compass\/typography\/_vertical_rhythm\.scss}line{font-family:\0000364}}
+html {
+  font-size: 14px;
+  line-height: 1.42857em;
+}
+
+/*******************************************************************************
+ * _layout.scss
+ *
+ * Styling of the "simple" layout demonstrating the Compass grid extension Susy
+ * and building mobile first layouts.
+ ******************************************************************************/
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/sumo\/scss\/styles\/layouts\/brand-filter\.layout\.scss}line{font-family:\0000311}}
+.l-title-inner, .l-main-inner, .l-footer {
+  margin: auto;
+  max-width: 1280px;
+  padding: 20px;
+  width: 100%;
+  float: none;
+  position: relative;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/sumo\/scss\/styles\/layouts\/brand-filter\.layout\.scss}line{font-family:\0000319}}
+#console {
+  padding: 0 10px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/sumo\/scss\/styles\/layouts\/brand-filter\.layout\.scss}line{font-family:\0000322}}
+a.navbar-brand {
+  margin: 0;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/sumo\/scss\/styles\/layouts\/brand-filter\.layout\.scss}line{font-family:\0000326}}
+.nav-inner {
+  display: block;
+  height: 100%;
+  margin: auto !important;
+  max-width: 1220px;
+  position: relative;
+  width: 100%;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/sumo\/scss\/styles\/layouts\/brand-filter\.layout\.scss}line{font-family:\0000334}}
+#cart-link {
+  position: absolute;
+  right: 0;
+  top: 10px;
+}
+
+/*
+body {
+    padding-top: 110px;
+}
+*/
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/sumo\/scss\/styles\/layouts\/brand-filter\.layout\.scss}line{font-family:\0000345}}
+.navbar {
+  background: none repeat scroll 0 0 #333;
+  margin-bottom: 0;
+  z-index: 999;
+}
+
+/*
+.navbar-header {
+    float: none;
+    margin: 0 auto;
+    width: 275px;
+}
+*/
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/sumo\/scss\/styles\/layouts\/brand-filter\.layout\.scss}line{font-family:\0000357}}
+#tabs {
+  display: none;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/sumo\/scss\/styles\/layouts\/brand-filter\.layout\.scss}line{font-family:\0000360}}
+.l-title.not-overlay h1.page-title, .l-title.not-overlay .h1.page-title {
+  float: none;
+  margin-right: 0;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/sumo\/scss\/styles\/layouts\/brand-filter\.layout\.scss}line{font-family:\0000364}}
+.l-title.not-overlay, .l-title.not-overlay .l-title-inner {
+  text-align: center;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/sumo\/scss\/styles\/layouts\/brand-filter\.layout\.scss}line{font-family:\0000367}}
+.navbar-header {
+  height: 100%;
+}
+
+/*
+.navbar {
+    border-radius: 0;
+    box-shadow: 0 -5px 12px #000000;
+    height: 110px;
+    max-height: 110px;
+    min-height: 110px !important;
+}
+.navbar-brand img {
+    height: 90px;
+    margin-top: 9px;
+}
+*/
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/sumo\/scss\/styles\/layouts\/brand-filter\.layout\.scss}line{font-family:\0000384}}
+.tags a.active {
+  background-color: #D31A69;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/sumo\/scss\/styles\/layouts\/brand-filter\.layout\.scss}line{font-family:\0000391}}
+.navbar {
+  border-radius: 0;
+  box-shadow: 0 -5px 12px #000000;
+  height: 50px;
+  max-height: 50px;
+  min-height: 50px !important;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/sumo\/scss\/styles\/layouts\/brand-filter\.layout\.scss}line{font-family:\0000398}}
+.navbar-header {
+  float: none;
+  margin: 0 auto;
+  width: 118px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/sumo\/scss\/styles\/layouts\/brand-filter\.layout\.scss}line{font-family:\00003103}}
+body {
+  padding-top: 50px;
+}
+
+@media (min-width: 640px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/sumo\/scss\/styles\/layouts\/brand-filter\.layout\.scss}line{font-family:\00003110}}
+  .view-display-id-filter_tax .views-row,
+  .view-display-id-brand_filter .views-row {
+    width: 50%;
+  }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/sumo\/scss\/styles\/layouts\/brand-filter\.layout\.scss}line{font-family:\00003114}}
+  a.tag-menu,
+  a.home {
+    overflow: visible;
+    width: auto;
+  }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/sumo\/scss\/styles\/layouts\/brand-filter\.layout\.scss}line{font-family:\00003118}}
+  .navbar-brand img {
+    height: 70px;
+    margin-top: 9px;
+  }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/sumo\/scss\/styles\/layouts\/brand-filter\.layout\.scss}line{font-family:\00003122}}
+  .navbar {
+    border-radius: 0;
+    box-shadow: 0 -5px 12px #000000;
+    height: 90px;
+    max-height: 90px;
+    min-height: 90px !important;
+  }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/sumo\/scss\/styles\/layouts\/brand-filter\.layout\.scss}line{font-family:\00003129}}
+  .navbar-header {
+    width: 205px;
+  }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/sumo\/scss\/styles\/layouts\/brand-filter\.layout\.scss}line{font-family:\00003132}}
+  body {
+    padding-top: 90px;
+  }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/sumo\/scss\/styles\/layouts\/brand-filter\.layout\.scss}line{font-family:\00003135}}
+  #cart-link {
+    top: 20px;
+  }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/sumo\/scss\/styles\/layouts\/brand-filter\.layout\.scss}line{font-family:\00003137}}
+  #cart-link .c44icon-:before {
+    font-size: 52px !important;
+  }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/sumo\/scss\/styles\/layouts\/brand-filter\.layout\.scss}line{font-family:\00003141}}
+  .toggle-block {
+    top: 90px;
+  }
+}
+@media (min-width: 1024px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/sumo\/scss\/styles\/layouts\/brand-filter\.layout\.scss}line{font-family:\00003147}}
+  .view-display-id-filter_tax .views-row,
+  .view-display-id-brand_filter .views-row {
+    width: 33.333%;
+  }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/sumo\/scss\/styles\/layouts\/brand-filter\.layout\.scss}line{font-family:\00003150}}
+  .navbar-brand img {
+    height: 90px;
+    margin-top: 9px;
+  }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/sumo\/scss\/styles\/layouts\/brand-filter\.layout\.scss}line{font-family:\00003154}}
+  .navbar {
+    border-radius: 0;
+    box-shadow: 0 -5px 12px #000000;
+    height: 110px;
+    max-height: 110px;
+    min-height: 110px !important;
+  }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/sumo\/scss\/styles\/layouts\/brand-filter\.layout\.scss}line{font-family:\00003161}}
+  .navbar-header {
+    width: 255px;
+  }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/sumo\/scss\/styles\/layouts\/brand-filter\.layout\.scss}line{font-family:\00003164}}
+  body {
+    padding-top: 110px;
+  }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/sumo\/scss\/styles\/layouts\/brand-filter\.layout\.scss}line{font-family:\00003167}}
+  #cart-link {
+    top: 30px;
+  }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/sumo\/scss\/styles\/layouts\/brand-filter\.layout\.scss}line{font-family:\00003169}}
+  #cart-link .c44icon-:before {
+    font-size: 52px !important;
+  }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/sumo\/scss\/styles\/layouts\/brand-filter\.layout\.scss}line{font-family:\00003173}}
+  .toggle-block {
+    top: 110px;
+  }
+}
+/* #### Desktops #### */
+/*
+@media screen and (min-width: 1300px){
+		.view-display-id-brand_filter .views-row {
+    	width: 25%;
+    }	
+}
+*/
+/* #### Mobile Phones Landscape #### */
+@media screen and (max-device-width: 640px) and (orientation: landscape) {
+  /* some CSS here */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/sumo\/scss\/styles\/layouts\/brand-filter\.layout\.scss}line{font-family:\00003190}}
+  .navbar-fixed-top {
+    position: relative !important;
+  }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/sumo\/scss\/styles\/layouts\/brand-filter\.layout\.scss}line{font-family:\00003193}}
+  .l-main-inner {
+    padding-top: 20px !important;
+  }
+}

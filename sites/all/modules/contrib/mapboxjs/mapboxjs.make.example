@@ -1,0 +1,10 @@
+api = 2
+
+core = 7.x
+
+projects[libraries] = 2
+
+libraries[mapboxjs][download][type] = "get"
+libraries[mapboxjs][download][url] = "https://github.com/mapbox/mapbox.js/archive/v0.6.7.tar.gz"
+libraries[mapboxjs][directory_name] = "mapboxjs"
+libraries[mapboxjs][destination] = "libraries"

@@ -1,0 +1,61 @@
+diff --git a/commerce_express_checkout.module b/commerce_express_checkout.module
+index a9bfb2f..e13a8df 100644
+--- a/commerce_express_checkout.module
++++ b/commerce_express_checkout.module
+@@ -155,9 +155,37 @@ function commerce_express_checkout_generate_links_submit($form, &$form_state){
+ }
+ 
+ function commerce_express_checkout_generate_checkout_button($product_id){
+-  return '<span style="display: inline-block; padding: 10px; border: 1px solid #CCCCCC; border-radius: 20px; background-color: #EEEEEE;"><a href="'.url("commerce-express-checkout/".$product_id.'/'.drupal_hmac_base64($product_id, drupal_get_private_key().drupal_get_hash_salt()), array('absolute' => TRUE)).'" style="text-decoration: none; font-weight: bold; color: #666666">'.t('Express Checkout').'</a></span>';
++  $vars = array();
++  $vars['link'] = commerce_express_checkout_generate_product_url($product_id);
++
++  return theme('commerce_express_checkout_button', $vars);
++}
++
++function commerce_express_checkout_generate_checkout_button_code($product_id) {
++  $button = commerce_express_checkout_generate_checkout_button($product_id);
++  return '<p>This is how it will look like, copy the code below and paste it anywhere on your site or on any external site you want to put a buy link on:<p>'
++  .$button.'</p></p>'
++  .htmlentities($button);
++}
++
++function commerce_express_checkout_generate_product_url($product_id) {
++  return url(
++    "commerce-express-checkout/".$product_id.'/'.drupal_hmac_base64(
++      $product_id,
++      drupal_get_private_key().drupal_get_hash_salt()
++    ),
++    array('absolute' => TRUE)
++  );
+ }
+ 
+-function commerce_express_checkout_generate_checkout_button_code($product_id){
+-  return '<p>This is how it will look like, copy the code below and paste it anywhere on your site or on any external site you want to put a buy link on:<p>'.commerce_express_checkout_generate_checkout_button($product_id).'</p></p>'.'&ltspan style="display: inline-block; padding: 10px; border: 1px solid #CCCCCC; border-radius: 20px; background-color: #EEEEEE;"&gt&lta href="'.url("commerce-express-checkout/".$product_id.'/'.drupal_hmac_base64($product_id, drupal_get_private_key().drupal_get_hash_salt()), array('absolute' => TRUE)).'" style="text-decoration: none; font-weight: bold; color: #666666"&gt'.t('Express Checkout').'&lt/a&gt&lt/span&gt';
++/**
++ * Implements hook_theme()
++ */
++function commerce_express_checkout_theme($existing, $type, $theme, $path) {
++  return array(
++    'commerce_express_checkout_button' => array(
++      'variables' => array('link' => NULL),
++      'template' => 'commerce_express_checkout_button',
++    ),
++  );
+ }
+\ No newline at end of file
+diff --git a/commerce_express_checkout_button.tpl.php b/commerce_express_checkout_button.tpl.php
+new file mode 100644
+index 0000000..beae5b3
+--- /dev/null
++++ b/commerce_express_checkout_button.tpl.php
+@@ -0,0 +1,8 @@
++<?
++/**
++ * $link - link to express checkout of current product;
++ */
++?>
++<span style="display: inline-block; padding: 10px; border: 1px solid #CCCCCC; border-radius: 20px; background-color: #EEEEEE;">
++  <a href="<?php print $link; ?>" style="text-decoration: none; font-weight: bold; color: #666666"><?php print t('Express Checkout'); ?></a>
++</span>
+\ No newline at end of file

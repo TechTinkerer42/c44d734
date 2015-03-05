@@ -1,0 +1,121 @@
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/c44d726\/sites\/all\/themes\/base00\/scss\/overlay-child\.scss}line{font-family:\000031}}
+html.js {
+  background: transparent !important;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/c44d726\/sites\/all\/themes\/base00\/scss\/overlay-child\.scss}line{font-family:\000037}}
+html.js body {
+  background: transparent !important;
+  padding: 40px 100px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/c44d726\/sites\/all\/themes\/base00\/scss\/overlay-child\.scss}line{font-family:\0000314}}
+#overlay {
+  display: block;
+  position: relative;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/c44d726\/sites\/all\/themes\/base00\/scss\/overlay-child\.scss}line{font-family:\0000319}}
+#overlay-titlebar {
+  position: relative;
+  z-index: 100;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/c44d726\/sites\/all\/themes\/base00\/scss\/overlay-child\.scss}line{font-family:\0000324}}
+#overlay-title {
+  display: none;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/c44d726\/sites\/all\/themes\/base00\/scss\/overlay-child\.scss}line{font-family:\0000326}}
+#overlay-close-wrapper {
+  position: absolute;
+  right: 0px;
+  width: 30px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/c44d726\/sites\/all\/themes\/base00\/scss\/overlay-child\.scss}line{font-family:\0000333}}
+#overlay-close,
+#overlay-close:hover {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  background: #222222 url(../images/buttons.png) -4000px 50% no-repeat;
+  display: block;
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  margin: 5px;
+  padding: 0px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/c44d726\/sites\/all\/themes\/base00\/scss\/overlay-child\.scss}line{font-family:\0000347}}
+#overlay-close:active {
+  background: #333333 url(images/buttons.png) -4400px 50% no-repeat;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/c44d726\/sites\/all\/themes\/base00\/scss\/overlay-child\.scss}line{font-family:\0000349}}
+#overlay-content {
+  background: #fff;
+  position: relative;
+  padding: 0px 0px 10px;
+  min-height: 400px;
+  border-radius: 7px;
+  box-shadow: #111 0px 0px 10px;
+  -moz-border-radius: 6px 6px 5px 5px;
+  -moz-box-shadow: #111 0px 0px 10px;
+  -webkit-border-radius: 6px 6px 5px 5px;
+  -webkit-box-shadow: #111 0px 0px 10px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/c44d726\/sites\/all\/themes\/base00\/scss\/overlay-child\.scss}line{font-family:\0000363}}
+#overlay-content .limiter {
+  margin: 0px 20px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/c44d726\/sites\/all\/themes\/base00\/scss\/overlay-child\.scss}line{font-family:\0000365}}
+#branding {
+  border-radius: 5px 5px 0px 0px;
+  -moz-border-radius: 5px 5px 0px 0px;
+  -webkit-border-radius: 5px 5px 0px 0px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/c44d726\/sites\/all\/themes\/base00\/scss\/overlay-child\.scss}line{font-family:\0000371}}
+#branding .limiter {
+  margin-left: 0px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/c44d726\/sites\/all\/themes\/base00\/scss\/overlay-child\.scss}line{font-family:\0000374}}
+#branding .breadcrumb-depth-0 a,
+#branding .breadcrumb-depth-0 span {
+  border-radius: 5px 0px 0px 0px;
+  -moz-border-radius: 5px 0px 0px 0px;
+  -webkit-border-radius: 5px 0px 0px 0px;
+}
+
+/**
+ * Tabs on the overlay.
+ */
+/* #overlay-tabs { display:none; } */
+/**
+ * Shortcut integration.
+ */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/c44d726\/sites\/all\/themes\/base00\/scss\/overlay-child\.scss}line{font-family:\0000388}}
+#overlay-titlebar .add-or-remove-shortcuts {
+  position: absolute;
+  top: 5px;
+  right: 25px;
+  padding: 0px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/c44d726\/sites\/all\/themes\/base00\/scss\/overlay-child\.scss}line{font-family:\0000395}}
+#overlay-titlebar .add-or-remove-shortcuts a {
+  background-color: #444;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/c44d726\/sites\/all\/themes\/base00\/scss\/overlay-child\.scss}line{font-family:\0000397}}
+#overlay-titlebar .add-or-remove-shortcuts a:active {
+  background-color: #333;
+  text-shadow: #555 0px 1px 0px;
+}

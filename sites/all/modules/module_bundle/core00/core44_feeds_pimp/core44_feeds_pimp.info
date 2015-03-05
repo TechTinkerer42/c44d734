@@ -1,0 +1,17 @@
+name = core44 Feeds Pimp
+description = Custom plugins and tweaks for Feeds API
+core = 7.x
+version = 7.x-1.0
+package = core44
+php = 5.2
+
+files[] = includes/FeedsBeanProcessor.inc
+files[] = includes/FeedsHTTPFetcherExtended.inc
+files[] = includes/FeedsHTTPFetcherSupport.inc
+files[] = includes/FeedsTermProcessorExtended.inc
+files[] = includes/FeedsNodeProcessorExtended.inc
+files[] = includes/FeedsVocabProcessor.inc
+
+dependencies[] = feeds
+;dependencies[] = bean
+;dependencies[] = uuid

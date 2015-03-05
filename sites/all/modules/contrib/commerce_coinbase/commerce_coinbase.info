@@ -1,0 +1,14 @@
+name = Commerce Coinbase
+description = Implements Coinbase Bitcoin API for use with Drupal Commerce.
+package = Commerce (contrib)
+dependencies[] = commerce
+dependencies[] = commerce_payment
+dependencies[] = libraries
+core = 7.x
+
+; Information added by Drupal.org packaging script on 2013-12-09
+version = "7.x-1.0-beta2"
+core = "7.x"
+project = "commerce_coinbase"
+datestamp = "1386554013"
+

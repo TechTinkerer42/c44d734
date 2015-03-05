@@ -1,0 +1,587 @@
+//    
+//    div.vertical-tabs {
+//        margin: 0 0 1.45em 15em;
+//    }
+//    
+//    /* style guide */
+
+/*******************************************************************************
+ * ADMINISRTATION > _contrib.scss
+ ******************************************************************************/
+#admin-menu {
+  background: none repeat scroll 0 0 #000000;
+  text-transform: uppercase;
+} 
+#admin-menu li{
+ line-height: inherit; 
+}
+#admin-menu .admin-menu-search input {
+  background-color: #555555;
+  color: #eeeeee;
+  font-size: 12px;
+  height: 20px;
+  min-height: 20px;
+  padding-left: 8px;
+  margin-top: -1px;   
+}
+
+/*******************************************************************************
+ * CHOSEN > _contrib.scss
+ ******************************************************************************/
+
+.chosen-container-multi .search-field input[type="text"],
+.chosen-container-single .chosen-search input[type="text"] {
+	height: auto;
+  line-height: $line-height-base;
+  margin: 0 0 20px 0;
+  max-height: 100%;
+  padding: 10px;
+  @include border-radius($border-radius-base);
+}
+.container-inline div.chosen-search {
+  display: block;
+}
+.chosen-container {
+  width: 100% !important;
+  margin-bottom: 10px;
+}
+.chosen-container-multi .chosen-choices,
+.chosen-container-single .chosen-single {
+  height: 40px;
+  line-height: 40px;
+}
+li.search-choice .search-choice-close {
+    right: 6px !important;
+    top: 10px !important;
+    
+}
+#edit-options .chosen-container-single .chosen-single {
+  @include border-right-radius(0);
+}
+.chosen-container-single .chosen-single div b {
+    background-position: 0 10px;
+}
+.search-choice > span {
+    display: block;
+    padding: 6px 11px;
+}
+.chosen-container.chosen-with-drop .chosen-drop {
+    padding: 5px;
+}
+.chosen-container-active.chosen-with-drop .chosen-single div b {
+  background-position: -18px 12px;
+}
+.chosen-container .chosen-results li {
+    line-height: 40px;
+    height: 40px;
+    padding: 0 5px;  
+}
+.chosen-container-multi .chosen-choices {
+    @include border-radius($border-radius-base);
+    margin-bottom: 0px;
+}
+.chosen-container-single .chosen-search input {
+    //background-image: url("chosen-sprite.png"); USE THIS TO RPLACE SEARCH ICON IN DROPDOWNS
+}
+.chosen-container-multi .chosen-choices .search-choice .search-choice-close {
+    top: 10px;
+}
+.chosen-container-multi .chosen-choices .search-choice {
+    line-height: 20px;
+}
+.chosen-container .chosen-results li.highlighted {
+  
+  @include border-radius($border-radius-base);
+  @include gradient-vertical($start-color: $dropdown-link-hover-bg, $end-color: darken($dropdown-link-hover-bg, 5%));  
+}
+.chosen-container-active .chosen-single {
+    border: 1px solid $brand-primary;
+}
+.chosen-container.error .chosen-single, .chosen-container.error .chosen-single span {
+    line-height: 40px;
+}
+.chosen-container.error .chosen-choices, .chosen-container.error .chosen-single {
+    border: 1px solid #FF0000;
+}
+/*******************************************************************************
+ * VERTCAL TABS > _contrib.scss
+ ******************************************************************************/
+
+.vertical-tabs fieldset.vertical-tabs-pane {
+  padding: 9px 10px 10px 10px;
+}
+.vertical-tabs ul.vertical-tabs-list li a {
+    padding: 19px 20px 20px;
+}
+.vertical-tabs ul.vertical-tabs-list .summary {
+    color: $gray;
+    @include adjust-font-size-to(12px);
+    font-style: italic;
+    //line-height: 19px;
+}
+div.vertical-tabs {
+  border: 1px solid #CCCCCC;
+  margin: 31px 0 20px 15em;
+}
+
+/*******************************************************************************
+ * CTOOLS > _contrib.scss
+ ******************************************************************************/
+#ctools-export-ui-list-form .form-item {
+    float: none;
+}
+th.ctools-export-ui-operations, 
+td.ctools-export-ui-operations {
+    text-align: left;
+    vertical-align: top !important;
+		.ctools-dropbutton {
+		    position: absolute;
+		    right: 30px;
+		    text-align: left;
+		}    
+}
+#ctools-export-ui-list-form .form-submit {
+    margin-right: 5px;
+    margin-top: 0;
+}
+
+/*******************************************************************************
+ * CTOOLS > _contrib.scss
+ ******************************************************************************/
+
+fieldset.features-export-component.collapsed,
+fieldset.features-export-component {
+    background-color: transparent;
+}
+
+/*******************************************************************************
+ * FEATURES > _contrib.scss
+ ******************************************************************************/
+
+form div.buttons {
+    text-align: left;
+}
+
+/*******************************************************************************
+ * AUTOCOMPLETE DELUXE > _contrib.scss
+ ******************************************************************************/
+
+input.autocomplete-deluxe-form.autocomplete-deluxe-multiple {
+box-shadow: none;
+}
+//hidden input
+div.autocomplete-deluxe-container input.autocomplete-deluxe-form {
+    background-color: transparent;
+    float: left;
+    height: 34px;
+    margin: 2px 0;
+    min-height: 34px;
+    padding: 0 5px;
+}
+//Fake input
+div.autocomplete-deluxe-multiple {
+  display: block;
+  min-height: $base-input-height;
+  height: 40px;
+  padding: 0 5px;  
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  color: $gray;
+  vertical-align: middle;
+  background-color: $input-bg;
+  border: 1px solid $input-border;
+  @include border-radius($input-border-radius);
+  @include box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
+  @include transition(border-color ease-in-out .15s, box-shadow ease-in-out .15s);
+  width: 100%;
+  background-image: none;
+  margin: 0 0 10px 0;
+  &:focus {
+    border-color: rgba(82,168,236,.8);
+    outline: 0;
+    @include box-shadow(inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6));
+  }    
+}
+
+//is this in use?
+.autocomplete-deluxe-item {
+  display: inline-block;
+  padding: $padding-base-vertical $padding-base-horizontal;
+  margin-bottom: 0; // For input.btn
+  font-size: $font-size-base;
+  font-weight: 500;
+  line-height: $line-height-base;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: $border-radius-base;
+  white-space: nowrap;
+  
+   box-shadow: none;
+   background-image: none;
+}
+
+.autocomplete-deluxe-item-remove {
+  margin-left: 10px;
+}
+.autocomplete-deluxe-item-remove.glyphicon.glyphicon-remove {
+  margin: 0;
+  padding-left: 8px;
+  position: relative;
+  top: 2px;
+}
+.autocomplete-deluxe-container .btn {
+    float: left;
+    height: 28px;
+    line-height: $line-height-base;
+    margin: 5px 5px 5px 0;
+    padding: 4px 7px 3px 10px !important;
+}
+div.autocomplete-deluxe-throbber {
+    margin-top: 7px;
+}
+.autocomplete-deluxe-highlight-char {
+    color: $link-color;
+    font-weight: bold;
+}
+
+.has-error {
+.autocomplete-deluxe-container{
+	border-color: $state-danger-text;
+}
+.autocomplete-deluxe-form.form-text.form-control:focus {
+  border-color: inherit;
+  box-shadow: none;
+}
+}
+
+.ui-menu .ui-menu-item {
+	a {
+		line-height: 40px;
+	  height: 40px;
+	  padding: 0 5px; 
+		  margin: 0 !important;
+	 	&:hover,&:focus {
+		  @include border-radius($border-radius-base);
+		  @include gradient-vertical($start-color: $dropdown-link-hover-bg, $end-color: darken($dropdown-link-hover-bg, 5%)); 
+		  color: #fff;
+		  .autocomplete-deluxe-highlight-char{
+			 color: #fff; 
+		  }
+		} 
+	} 
+}
+
+/*******************************************************************************
+ * MODULE FILTER > _contrib.scss
+ ******************************************************************************/
+
+#module-filter-squeeze{
+   border-left: 0 none;
+    padding: 0 1.5em;
+}
+table.package {
+    border-right: 1px solid #DDDDDD !important;
+}
+#module-filter-wrapper .form-type-textfield {
+    padding: 0;
+}
+#module-filter-left ul li a {
+    padding: 1.5em 1em;
+}
+#module-filter-left ul li {
+    margin-right: -3px;
+}
+
+/*******************************************************************************
+ * MEDIA  > _contrib.scss
+ ******************************************************************************/
+
+#media-browser-page-wrapper{
+/*
+    background-clip: padding-box;
+    background-color: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 6px 6px 6px 6px;
+    box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+    outline: medium none;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); 
+*/ 
+    
+    padding: 40px 20px;
+
+    .ui-tabs .ui-tabs-panel {
+      padding: 1em 0 0 0;
+    }
+    #branding{
+      border-bottom: 1px solid #DDDDDD;
+      padding: 0.5em 0;
+    }
+}
+.media-item .label-wrapper {
+
+    overflow: hidden;
+
+}
+#media-browser-page{
+/*  padding: 20px;  */
+}
+body.page-media-browser{
+/*   padding: 20px; */
+  background-color: transparent;
+  overflow: hidden;
+}
+.ui-dialog.media-wrapper .ui-dialog-content {
+/*
+    height: 100% !important;
+    width: 100% !important; 
+*/   
+}
+#media-browser-tabset #branding h1 {
+    height: auto;
+}
+#media-tabs-wrapper {
+/*     margin-top: 1em; */
+}
+.fake-submit,
+.fake-cancel{
+/*
+  @include btn();
+  height: 36px;
+  margin-right: 5px;  
+*/
+}
+.fake-cancel{
+/*   @include btn-default(); */
+}
+.fake-submit{
+/*   @include btn-primary(); */
+}
+
+.media-widget .button {
+  margin-right: 5px;
+}
+
+#media-browser-page-wrapper {
+  .form-actions input, 
+  .form-actions a ,
+  #edit-actions input, 
+  #edit-actions a {
+    float: right;
+    margin-top: 5px;
+  }
+  .form-actions #edit-previous, 
+  #edit-actions #edit-previous{
+    float: left;
+  }
+}
+
+.ui-dialog.media-wrapper{
+  background: transparent;
+  border-radius: 0 0 0 0;
+  bottom: 0 !important;
+  left: 0 !important;
+  overflow-x: auto;
+  overflow-y: scroll;
+  position: fixed;
+  right: 0 !important;
+  top: 0 !important;
+  width: 100% !important;
+
+  z-index: $zindex-modal-background;
+  -webkit-overflow-scrolling: touch;
+}
+iframe#mediaBrowser{
+  /*     overflow: hidden; */
+  left: 0;
+  padding: 0px;
+  position: relative;
+  right: 0;
+  top: 0;
+  width: auto;
+  z-index: 1050;
+  
+  left: 50%;
+  margin-left: -335px;
+  padding-bottom: 0px;
+  padding-top: 0px;
+  right: auto;
+  width: 670px;     
+}
+#media-browser-page{
+  background-clip: padding-box;
+  background-color: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 6px 6px 6px 6px;
+  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  outline: medium none;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);  
+  position: relative;
+}
+#media-browser-tabset{
+    padding: 20px;    
+}
+label.media-filename {
+    color: #555555 !important;
+    margin: 0;
+    position: relative;
+    top: 3px;
+}
+
+/*******************************************************************************
+ * VIEWS  > _contrib.scss
+ ******************************************************************************/
+
+/* Views Admin UI */
+.views-edit-view.views-admin {
+	.label {
+	    color: #333333;
+	    font-size: 13px;
+	    padding: 5px 0;
+	}
+	.views-display-column{
+		.ctools-toggle.ctools-toggle-collapsed {
+		    margin-top: 13px;
+		}
+	}
+
+	.views-displays .secondary li {
+		&.btn {
+	    height: auto;
+	    margin-bottom: 0 !important;
+			a {
+		    background-color: transparent;
+		    border: 0 none;
+		    padding: 3px 12px;
+			}
+		}
+		ul.action-list {
+			li{
+				padding: 10px 0 !important;
+			}
+			.btn {
+		    background-color: transparent;
+		    border: 0 none;
+		    box-shadow: none !important;
+		    color: #333333;
+		    height: auto;
+		    padding: 3px 12px;	
+	
+			}
+		}
+	}
+}
+#views-ui-preview-form .form-type-textfield {
+    margin-top: 0;
+}
+
+/* Views Output */
+.views-exposed-widgets .views-exposed-widget {
+  width: 100%;
+  padding: 0;
+}
+.views-exposed-form .views-exposed-widget .form-submit {
+    margin-top: 20px;
+}
+.view-empty{
+	border: 5px dashed $gray-lighter;
+  padding: 10% 5%;
+  text-align: center;
+}
+
+/*******************************************************************************
+ * RESIZE LISTENER  > _contrib.scss
+ ******************************************************************************/
+
+.resize-sensor, .resize-sensor > div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+/*******************************************************************************
+ * STYLEGUIDE  > _contrib.scss
+ ******************************************************************************/
+
+div.styleguide {
+    border-bottom: 1px solid red;
+    border-top: 0 solid #777777;
+    padding-top: 19px;
+}
+#styleguide-header{
+    padding: 21px 20px 20px;
+}
+h2.styleguide {
+    margin: 0;
+    padding: 0;
+    @include adjust-font-size-to(15px,1);
+/*     margin: 1.5em; */
+/*     padding: 0; */
+/*     text-transform: uppercase; */
+}
+.styleguide-description {
+    margin: 0;
+    @include adjust-font-size-to(13px,1);
+}
+
+/*******************************************************************************
+ * NAME  > _contrib.scss
+ ******************************************************************************/
+.name-title-wrapper,
+.name-family-wrapper,
+.name-given-wrapper {
+    width: 38%;
+    margin-right: 2% !important;
+}
+.name-title-wrapper {
+    width: 20%;
+}
+.name-family-wrapper {
+    margin-right: 0 !important;
+}
+/*******************************************************************************
+ * CONTEXT  > _contrib.scss
+ ******************************************************************************/
+#context-blockform .context-blockform-selector {
+    height: 40em;
+}
+#context-blockform td.blocks .label {
+    background: none repeat scroll 0 0 #AAAAAA;
+}
+#context-blockform td.blocks .label a {
+    background: none repeat scroll 0 0 #EEEEEE;
+    border-radius: 3px;
+    color: #555555;
+    padding: 6px;
+}
+.context-plugin-form .tabledrag-toggle-weight-wrapper{
+	display: none !important;
+}
+/*******************************************************************************
+ * CONTEXTUAL LINKS  > _contrib.scss
+ ******************************************************************************/
+.contextual-links-wrapper {
+    z-index: 500;
+}
+.contextual-links-trigger {
+    background: none !important;
+    font-size: 17px;
+    height: 25px;
+    text-indent: 0;
+    color: $gray-light;
+    &:hover,&:focus{
+	    color: $gray;
+    } 
+    &:before{
+	    @include inc-icon(c44_d7,$fontawesome_cog);
+    } 	
+}
+.contextual-links {
+    top: 24px;
+}

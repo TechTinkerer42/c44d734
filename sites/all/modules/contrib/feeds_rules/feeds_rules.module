@@ -1,0 +1,113 @@
+<?php
+
+/**
+ * @file
+ *  Feeds rules module provides different rules implementations for feeds:
+ *
+ *  - FeedsRulesProcessor Plugin to pass parsed items to a rule instead of
+ *    directly creating a node/user/term.
+ */
+
+
+/**
+ * Implements hook_ctools_plugin_api().
+ */
+function feeds_rules_ctools_plugin_api($owner, $api) {
+  if ($owner == 'feeds' && $api == 'plugins') {
+    return array('version' => 1);
+  }
+}
+
+
+/**
+* Implements hook_feeds_plugins().
+*/
+function feeds_rules_feeds_plugins() {
+  $info = array();
+  $info['FeedsRulesProcessor'] = array(
+    'name' => 'Rules processor',
+    'description' => 'Pass data to rules.',
+    'help' => 'Handle parsed content by passing it to any defined rule.',
+    'handler' => array(
+      'parent' => 'FeedsProcessor',
+      'class' => 'FeedsRulesProcessor',
+      'file' => 'FeedsRulesProcessor.inc',
+      'path' => drupal_get_path('module', 'feeds_rules') .'/plugins',
+    ),
+  );
+  return $info;
+}
+
+/**
+ * Implements hook_entity_info().
+ *
+ * Provides a pseudo log entity type, so handling for feeds is easier.
+ *
+ */
+function feeds_rules_entity_info() {
+  $return = array(
+    'feeds_rules_action' => array(
+      'label' => t('Feeds Rules import action'),
+      'controller class' => 'EntityAPIController',
+      'metadata controller class' => 'FeedsRulesActionMetadataController',
+      'base table' => 'feeds_rules_action',
+      'fieldable' => FALSE,
+      'entity keys' => array(
+        'id' => 'id',
+        //'bundle' => 'component',
+      ),
+      //'bundle keys' => array(
+      //  'bundle' => 'component',
+      //),
+      'bundles' => array(),
+      'view modes' => array(),
+    ),
+  );
+  return $return;
+}
+
+/**
+ * Implements hook_feeds_after_import().
+ */
+function feeds_rules_feeds_after_import(FeedsSource $source) {
+  rules_invoke_event('feeds_after_import', $source);
+}
+
+/**
+ * Extend the defaults.
+ */
+class FeedsRulesActionMetadataController extends EntityDefaultMetadataController {
+
+  public function entityPropertyInfo() {
+    $info = parent::entityPropertyInfo();
+    $properties = &$info[$this->type]['properties'];
+
+    $properties['component'] = array(
+      'label' => t('Component'),
+      'description' => t('The rules component (action / rule set)'),
+      'getter callback' => 'entity_property_getter_method',
+      'schema field' => 'component',
+    );
+
+    $properties['params'] = array(
+      'label' => t('Parameters'),
+      'description' => t('Array of action parameters.'),
+      'getter callback' => 'entity_property_getter_method',
+      'schema field' => 'params',
+    );
+    $properties['provided'] = array(
+      'label' => t('Provided'),
+      'description' => t('Array of provided action parameters.'),
+      'getter callback' => 'entity_property_getter_method',
+      'schema field' => 'provided',
+    );
+    $properties['executed'] = array(
+      'label' => t('Executed'),
+      'description' => t('Timestamp of moment, rule component was executed.'),
+      'getter callback' => 'entity_property_getter_method',
+      'schema field' => 'executed',
+    );
+
+    return $info;
+  }
+}

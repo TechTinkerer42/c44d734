@@ -1,0 +1,31 @@
+<?php
+/**
+ * @file
+ * Code for the Features: core00 feature.
+ */
+
+include_once 'core00_core.features.inc';
+
+
+// Attept to add tpl for core bean types
+/*
+function core00_core_theme_registry_alter(&$theme_registry) {
+  $mod_path = drupal_get_path('module', 'core00_core'); 
+  $hooks = array('node','block','bean');  // you can do this to any number of template theme hooks
+  // insert our module
+  foreach ($hooks as $h) {
+    if(!is_array($theme_registry[$h]['theme path'])){
+      $theme_registry[$h]['theme path'] = array($theme_registry[$h]['theme path']);
+    }
+    _core00_core_insert_after_first_element($theme_registry[$h]['theme path'], $mod_path);
+  }
+}
+
+function _core00_core_insert_after_first_element(&$a, $element) {
+  $first_element = array_shift($a);
+  array_unshift($a, $first_element, $element);
+}
+*/
+
+
+

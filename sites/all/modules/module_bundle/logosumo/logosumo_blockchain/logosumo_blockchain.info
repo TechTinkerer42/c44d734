@@ -1,0 +1,7 @@
+name = Logo Sumo Blockchain
+description = Implements Blockchain receive payments API for use with Drupal Commerce.
+package = Logo Sumo
+dependencies[] = commerce
+dependencies[] = commerce_payment
+;dependencies[] = commerce_btc
+core = 7.x

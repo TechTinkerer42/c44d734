@@ -1,0 +1,42 @@
+/**
+ * @file
+ * Drupal-specific CSS fixes for the Chosen module
+ */
+
+#bulk-domain-check-search-form .control-group.textarea,
+#bulk-domain-check-search-form .control-group.textfield{
+    float: left;
+    padding-right: 10px;
+    width: 60%;
+}
+#bulk-domain-check-search-form .control-group.form-item-prefix{
+	width: 20%;
+}
+#bulk-domain-check-search-form .control-group.form-item-suffix{
+	width: 20%;
+  padding-right: 0px;
+}
+#tld .form-item.checkbox {
+    background: none repeat scroll 0 0 #EEEEEE;
+    border-radius: 4px;
+    float: left;
+    margin: 0 10px 10px 0 !important;    
+
+}
+#tld .form-item.checkbox label {
+    margin: 0;
+    padding: 10px 15px 10px 30px;
+}
+#edit-tld-fieldset {
+	clear: both;
+	margin-bottom: 1em !important;
+}
+iframe#vocab-links {
+    border: 0 none;
+    height: 100%;
+    width: 100%;
+/*     display: none; */
+}
+block-bean-vocabularies{
+	
+}

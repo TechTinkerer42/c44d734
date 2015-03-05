@@ -1,0 +1,12 @@
+name = MapBox.JS field
+description = Provides a field for rendering MapBox.js maps.
+core = 7.x
+
+dependencies[] = mapboxjs
+
+; Information added by drupal.org packaging script on 2013-10-01
+version = "7.x-1.0-alpha1+70-dev"
+core = "7.x"
+project = "mapboxjs"
+datestamp = "1380585888"
+

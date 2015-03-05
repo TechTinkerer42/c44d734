@@ -1,0 +1,792 @@
+/*******************************************************************************
+ * _icons.scss
+ *
+ * Overrides for bootstrap glyicons and additional sets
+ * sub-components and modifiers.
+ ******************************************************************************/
+@import "icons/icon-variables";
+@import "icons/icon-mixins";
+
+
+// Example include icon, use this to a minimum to avoid css bulk
+// .selector-to-prepend:before{
+//   @include force-icon(c44_d7,$c44_d7_tasks);
+// }
+
+
+
+/* Set font family and include font */ // face() requires 'path to directory from root fonts folder', 'face name'
+
+/* Foundicons */
+//  @include face(foundicons,general_foundicons);
+
+//  [class*="zf-gen#{$iconClass}"]:before {
+//font-family: "general_foundicons";
+//  }
+
+//  @include face(foundicons,general_enclosed_foundicons);
+//  [class*="zf-enc#{$iconClass}"]:before {
+//font-family: "general_enclosed_foundicons";
+//  }
+
+//  @include face(foundicons,social_foundicons);
+
+//  [class*="zf-soc#{$iconClass}"]:before {
+//font-family: "social_foundicons";
+//  }
+
+//  @include face(foundicons,accessibility_foundicons);
+
+//  [class*="zf-acc#{$iconClass}"]:before {
+//font-family: "accessibility_foundicons";
+//  }
+
+/* Fontello custom */
+@include face(fontello/c44_d7/font,c44_d7);
+
+[class*="#{$iconClass}c44-d7"]:before {
+  font-family: "c44_d7";
+}
+
+
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+font-family: 'c44_d7';
+src: url('../fonts/fontello/c44_d7/font/c44_d7.svg?22656033#c44_d7') format('svg');
+  }
+}
+*/
+
+
+
+
+
+/* Global classes */
+
+//check width, display, line height
+[class^="#{$iconClass}"]:before, 
+[class*=" #{$iconClass}"]:before {
+ 
+  display: inline;
+  width: auto;
+  height: auto;
+  line-height: inherit;
+  vertical-align: baseline;
+  background-image: none;
+  background-position: 0 0;
+  background-repeat: repeat;
+  
+  
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+ 
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  /* opacity: .8; */
+ 
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+ 
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+ 
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: .2em;
+  padding-right: 0.2em;
+  
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+ 
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+
+
+//  /* ZF general icons */
+//  @include i-class(zf-gen,-settings,"\f000");
+//  @include i-class(zf-gen,-heart,"\f001");
+//  @include i-class(zf-gen,-star,"\f002");
+//  @include i-class(zf-gen,-plus,"\f003");
+//  @include i-class(zf-gen,-minus,"\f004");
+//  @include i-class(zf-gen,-checkmark,"\f005");
+//  @include i-class(zf-gen,-remove,"\f006");
+//  @include i-class(zf-gen,-mail,"\f007");
+//  @include i-class(zf-gen,-calendar,"\f008");
+//  @include i-class(zf-gen,-page,"\f009");
+//  @include i-class(zf-gen,-tools,"\f00a");
+//  @include i-class(zf-gen,-globe,"\f00b");
+//  @include i-class(zf-gen,-home,"\f00c");
+//  @include i-class(zf-gen,-quote,"\f00d");
+//  @include i-class(zf-gen,-people,"\f00e");
+//  @include i-class(zf-gen,-monitor,"\f00f");
+//  @include i-class(zf-gen,-laptop,"\f010");
+//  @include i-class(zf-gen,-phone,"\f011");
+//  @include i-class(zf-gen,-cloud,"\f012");
+//  @include i-class(zf-gen,-error,"\f013");
+//  @include i-class(zf-gen,-right-arrow,"\f014");
+//  @include i-class(zf-gen,-left-arrow,"\f015");
+//  @include i-class(zf-gen,-up-arrow,"\f016");
+//  @include i-class(zf-gen,-down-arrow,"\f017");
+//  @include i-class(zf-gen,-trash,"\f018");
+//  @include i-class(zf-gen,-add-doc,"\f019");
+//  @include i-class(zf-gen,-edit,"\f01a");
+//  @include i-class(zf-gen,-lock,"\f01b");
+//  @include i-class(zf-gen,-unlock,"\f01c");
+//  @include i-class(zf-gen,-refresh,"\f01d");
+//  @include i-class(zf-gen,-paper-clip,"\f01e");
+//  @include i-class(zf-gen,-video,"\f01f");
+//  @include i-class(zf-gen,-photo,"\f020");
+//  @include i-class(zf-gen,-graph,"\f021");
+//  @include i-class(zf-gen,-idea,"\f022");
+//  @include i-class(zf-gen,-mic,"\f023");
+//  @include i-class(zf-gen,-cart,"\f024");
+//  @include i-class(zf-gen,-address-book,"\f025");
+//  @include i-class(zf-gen,-compass,"\f026");
+//  @include i-class(zf-gen,-flag,"\f027");
+//  @include i-class(zf-gen,-location,"\f028");
+//  @include i-class(zf-gen,-clock,"\f029");
+//  @include i-class(zf-gen,-folder,"\f02a");
+//  @include i-class(zf-gen,-inbox,"\f02b");
+//  @include i-class(zf-gen,-website,"\f02c");
+//  @include i-class(zf-gen,-smiley,"\f02d");
+//  @include i-class(zf-gen,-search,"\f02e");
+//  
+//  /* ZF general enclosed icons */
+//  @include i-class(zf-enc,-settings,"\f000");
+//  @include i-class(zf-enc,-heart,"\f001");
+//  @include i-class(zf-enc,-star,"\f002");
+//  @include i-class(zf-enc,-plus,"\f003");
+//  @include i-class(zf-enc,-minus,"\f004");
+//  @include i-class(zf-enc,-checkmark,"\f005");
+//  @include i-class(zf-enc,-remove,"\f006");
+//  @include i-class(zf-enc,-mail,"\f007");
+//  @include i-class(zf-enc,-calendar,"\f008");
+//  @include i-class(zf-enc,-page,"\f009");
+//  @include i-class(zf-enc,-tools,"\f00a");
+//  @include i-class(zf-enc,-globe,"\f00b");
+//  @include i-class(zf-enc,-home,"\f00c");
+//  @include i-class(zf-enc,-quote,"\f00d");
+//  @include i-class(zf-enc,-people,"\f00e");
+//  @include i-class(zf-enc,-monitor,"\f00f");
+//  @include i-class(zf-enc,-laptop,"\f010");
+//  @include i-class(zf-enc,-phone,"\f011");
+//  @include i-class(zf-enc,-cloud,"\f012");
+//  @include i-class(zf-enc,-error,"\f013");
+//  @include i-class(zf-enc,-right-arrow,"\f014");
+//  @include i-class(zf-enc,-left-arrow,"\f015");
+//  @include i-class(zf-enc,-up-arrow,"\f016");
+//  @include i-class(zf-enc,-down-arrow,"\f017");
+//  @include i-class(zf-enc,-trash,"\f018");
+//  @include i-class(zf-enc,-add-doc,"\f019");
+//  @include i-class(zf-enc,-edit,"\f01a");
+//  @include i-class(zf-enc,-lock,"\f01b");
+//  @include i-class(zf-enc,-unlock,"\f01c");
+//  @include i-class(zf-enc,-refresh,"\f01d");
+//  @include i-class(zf-enc,-paper-clip,"\f01e");
+//  @include i-class(zf-enc,-video,"\f01f");
+//  @include i-class(zf-enc,-photo,"\f020");
+//  @include i-class(zf-enc,-graph,"\f021");
+//  @include i-class(zf-enc,-idea,"\f022");
+//  @include i-class(zf-enc,-mic,"\f023");
+//  @include i-class(zf-enc,-cart,"\f024");
+//  @include i-class(zf-enc,-address-book,"\f025");
+//  @include i-class(zf-enc,-compass,"\f026");
+//  @include i-class(zf-enc,-flag,"\f027");
+//  @include i-class(zf-enc,-location,"\f028");
+//  @include i-class(zf-enc,-clock,"\f029");
+//  @include i-class(zf-enc,-folder,"\f02a");
+//  @include i-class(zf-enc,-inbox,"\f02b");
+//  @include i-class(zf-enc,-website,"\f02c");
+//  @include i-class(zf-enc,-smiley,"\f02d");
+//  @include i-class(zf-enc,-search,"\f02e");
+//  
+//  /* ZF social icons */
+//  @include i-class(zf-soc,-thumb-up,"\f000");
+//  @include i-class(zf-soc,-thumb-down,"\f001");
+//  @include i-class(zf-soc,-rss,"\f002");
+//  @include i-class(zf-soc,-facebook,"\f003");
+//  @include i-class(zf-soc,-twitter,"\f004");
+//  @include i-class(zf-soc,-pinterest,"\f005");
+//  @include i-class(zf-soc,-github,"\f006");
+//  @include i-class(zf-soc,-path,"\f007");
+//  @include i-class(zf-soc,-linkedin,"\f008");
+//  @include i-class(zf-soc,-dribbble,"\f009");
+//  @include i-class(zf-soc,-stumble-upon,"\f00a");
+//  @include i-class(zf-soc,-behance,"\f00b");
+//  @include i-class(zf-soc,-reddit,"\f00c");
+//  @include i-class(zf-soc,-google-plus,"\f00d");
+//  @include i-class(zf-soc,-youtube,"\f00e");
+//  @include i-class(zf-soc,-vimeo,"\f00f");
+//  @include i-class(zf-soc,-flickr,"\f010");
+//  @include i-class(zf-soc,-slideshare,"\f011");
+//  @include i-class(zf-soc,-picassa,"\f012");
+//  @include i-class(zf-soc,-skype,"\f013");
+//  @include i-class(zf-soc,-steam,"\f014");
+//  @include i-class(zf-soc,-instagram,"\f015");
+//  @include i-class(zf-soc,-foursquare,"\f016");
+//  @include i-class(zf-soc,-delicious,"\f017");
+//  @include i-class(zf-soc,-chat,"\f018");
+//  @include i-class(zf-soc,-torso,"\f019");
+//  @include i-class(zf-soc,-tumblr,"\f01a");
+//  @include i-class(zf-soc,-video-chat,"\f01b");
+//  @include i-class(zf-soc,-digg,"\f01c");
+//  @include i-class(zf-soc,-wordpress,"\f01d");
+//  
+//  /* ZF accessibility icons */
+//  @include i-class(zf-acc,-wheelchair,"\f000");
+//  @include i-class(zf-acc,-speaker,"\f001");
+//  @include i-class(zf-acc,-fontsize,"\f002");
+//  @include i-class(zf-acc,-eject,"\f003");
+//  @include i-class(zf-acc,-view-mode,"\f004");
+//  @include i-class(zf-acc,-eyeball,"\f005");
+//  @include i-class(zf-acc,-asl,"\f006");
+//  @include i-class(zf-acc,-person,"\f007");
+//  @include i-class(zf-acc,-question,"\f008");
+//  @include i-class(zf-acc,-adult,"\f009");
+//  @include i-class(zf-acc,-child,"\f00a");
+//  @include i-class(zf-acc,-glasses,"\f00b");
+//  @include i-class(zf-acc,-cc,"\f00c");
+//  @include i-class(zf-acc,-blind,"\f00d");
+//  @include i-class(zf-acc,-braille,"\f00e");
+//  @include i-class(zf-acc,-iphone-home,"\f00f");
+//  @include i-class(zf-acc,-w3c,"\f010");
+//  @include i-class(zf-acc,-css,"\f011");
+//  @include i-class(zf-acc,-key,"\f012");
+//  @include i-class(zf-acc,-hearing-impaired,"\f013");
+//  @include i-class(zf-acc,-male,"\f014");
+//  @include i-class(zf-acc,-female,"\f015");
+//  @include i-class(zf-acc,-network,"\f016");
+//  @include i-class(zf-acc,-guidedog,"\f017");
+//  @include i-class(zf-acc,-universal-access,"\f018");
+//  @include i-class(zf-acc,-elevator,"\f019");
+
+//Fontello sets CORE44 D7 BASE
+@include i-class(c44-d7,-openid,"\e814"); /* '' */
+@include i-class(c44-d7,-druplicon,"\e839"); /* '' */
+@include i-class(c44-d7,-content-types,"\e816"); /* '' */
+@include i-class(c44-d7,-site-information,"\e83a"); /* '' */
+@include i-class(c44-d7,-home,"\e80d"); /* '' */
+@include i-class(c44-d7,-regional-settings,"\e829"); /* '' */
+@include i-class(c44-d7,-triggers,"\e83d"); /* '' */
+@include i-class(c44-d7,-tools,"\e832"); /* '' */
+@include i-class(c44-d7,-settings,"\e844"); /* '' */
+@include i-class(c44-d7,-warning,"\e841"); /* '' */
+@include i-class(c44-d7,-system,"\e81e"); /* '' */
+@include i-class(c44-d7,-configuration,"\e808"); /* '' */
+@include i-class(c44-d7,-field-ui,"\e825"); /* '' */
+@include i-class(c44-d7,-content-authoring,"\e81f"); /* '' */
+@include i-class(c44-d7,-ok,"\e842"); /* '' */
+@include i-class(c44-d7,-error,"\e843"); /* '' */
+@include i-class(c44-d7,-add-content,"\e80e"); /* '' */
+@include i-class(c44-d7,-modules,"\e804"); /* '' */
+@include i-class(c44-d7,-appearance,"\e805"); /* '' */
+@include i-class(c44-d7,-actions,"\e83c"); /* '' */
+@include i-class(c44-d7,-clean-urls,"\e806"); /* '' */
+@include i-class(c44-d7,-reports,"\e807"); /* '' */
+@include i-class(c44-d7,-add-user,"\e820"); /* '' */
+@include i-class(c44-d7,-help,"\e80a"); /* '' */
+@include i-class(c44-d7,-info,"\e83e"); /* '' */
+@include i-class(c44-d7,-term,"\e80f"); /* '' */
+@include i-class(c44-d7,-taxonomy,"\e815"); /* '' */
+@include i-class(c44-d7,-comments,"\e813"); /* '' */
+@include i-class(c44-d7,-account-settings,"\e831"); /* '' */
+@include i-class(c44-d7,-search-and-metadata,"\e82e"); /* '' */
+@include i-class(c44-d7,-structure,"\e803"); /* '' */
+@include i-class(c44-d7,-login,"\e80b"); /* '' */
+@include i-class(c44-d7,-logout,"\e80c"); /* '' */
+@include i-class(c44-d7,-publish,"\e818"); /* '' */
+@include i-class(c44-d7,-languages,"\e827"); /* '' */
+@include i-class(c44-d7,-testing,"\e82f"); /* '' */
+@include i-class(c44-d7,-support,"\e837"); /* '' */
+@include i-class(c44-d7,-performance,"\e801"); /* '' */
+@include i-class(c44-d7,-statistics,"\e83b"); /* '' */
+@include i-class(c44-d7,-maintenance-mode,"\e824"); /* '' */
+@include i-class(c44-d7,-ip-address-blocking,"\e822"); /* '' */
+@include i-class(c44-d7,-blocks,"\e812"); /* '' */
+@include i-class(c44-d7,-draggable,"\e823"); /* '' */
+@include i-class(c44-d7,-path,"\e81b"); /* '' */
+@include i-class(c44-d7,-search-settings,"\e834"); /* '' */
+@include i-class(c44-d7,-text-formats,"\e81d"); /* '' */
+@include i-class(c44-d7,-feed,"\e817"); /* '' */
+@include i-class(c44-d7,-tasks,"\e821"); /* '' */
+@include i-class(c44-d7,-feed-aggregator,"\e828"); /* '' */
+@include i-class(c44-d7,-development,"\e82a"); /* '' */
+@include i-class(c44-d7,-menu,"\e811"); /* '' */
+@include i-class(c44-d7,-cron,"\e81c"); /* '' */
+@include i-class(c44-d7,-dashboard,"\e838"); /* '' */
+@include i-class(c44-d7,-logging-and-errors,"\e82c"); /* '' */
+@include i-class(c44-d7,-url-aliases,"\e835"); /* '' */
+@include i-class(c44-d7,-link-shortcuts,"\e800"); /* '' */
+@include i-class(c44-d7,-file-system,"\e82b"); /* '' */
+@include i-class(c44-d7,-image-toolkit,"\e833"); /* '' */
+@include i-class(c44-d7,-regional-and-language,"\e826"); /* '' */
+@include i-class(c44-d7,-media,"\e809"); /* '' */
+@include i-class(c44-d7,-poll,"\e81a"); /* '' */
+@include i-class(c44-d7,-user,"\e840"); /* '' */
+@include i-class(c44-d7,-people,"\e83f"); /* '' */
+@include i-class(c44-d7,-books,"\e810"); /* '' */
+@include i-class(c44-d7,-content,"\e802"); /* '' */
+@include i-class(c44-d7,-translate-interface,"\e82d"); /* '' */
+@include i-class(c44-d7,-update,"\e845"); /* '' */
+@include i-class(c44-d7,-roles,"\e830"); /* '' */
+@include i-class(c44-d7,-permissions,"\e819"); /* '' */
+@include i-class(c44-d7,-date-and-time,"\e836"); /* '' */
+
+
+
+/* CORE ITEMS */
+.c44icon-{
+  
+  /* Admin menu */
+  &.path-admin:before{
+@include inc-icon(c44_d7,$maki_police); 
+  }
+
+/* Dashboard menu */
+&.path-admin-dashboard:before{
+@include inc-icon(c44_d7,$fontawesome_gauge); 
+}
+
+/* Content menu */
+&.path-admin-content:before{
+@include inc-icon(c44_d7,$fontawesome_briefcase); 
+}
+ &.path-admin-content-book:before{
+   @include inc-icon(c44_d7,$entypo_book); 
+ } 
+ &.path-admin-content-comment:before{
+   @include inc-icon(c44_d7,$fontawesome_comment); 
+ } 
+
+/* Structure menu */
+&.path-admin-structure:before{
+@include inc-icon(c44_d7,$iconic_share);
+}
+ &.path-admin-structure-block:before{
+   @include inc-icon(c44_d7,$iconic_box); 
+ }
+ &.path-admin-structure-types:before{
+   @include inc-icon(c44_d7,$iconic_layers); 
+ }
+ &.path-admin-structure-contact:before{
+   @include inc-icon(c44_d7,$iconic_pencil_alt); 
+ }
+ &.path-admin-structure-forum:before{
+   @include inc-icon(c44_d7,$entypo_chat);
+ }
+ &.path-admin-structure-menu:before{
+   @include inc-icon(c44_d7,$fontawesome_menu); 
+ }
+ &.path-admin-structure-taxonomy:before{
+   @include inc-icon(c44_d7,$fontawesome_tags); 
+ }
+
+/*   Appearance menu */  
+&.path-admin-appearance:before{
+@include inc-icon(c44_d7,$elusive_glasses);
+}  
+
+/* People menu */  
+&.path-admin-people:before{
+@include inc-icon(c44_d7,$entypo_users);
+}
+
+/* Modules menu */  
+&.path-admin-modules:before{
+@include inc-icon(c44_d7,$typicons_puzzle);
+}
+
+/* Config menu */
+&.path-admin-config:before{
+@include inc-icon(c44_d7,$fontawesome_cog_alt);
+}
+ /* People menu */   
+ &.path-admin-config-people:before{
+   @include inc-icon(c44_d7,$entypo_users);
+ }
+ &.path-admin-config-people-accounts:before{
+@include inc-icon(c44_d7,$typicons_vcard);
+ }
+ &.path-admin-config-people-ip-blocking:before{
+@include inc-icon(c44_d7,$maki_roadblock);
+ }
+ 
+ /* System menu */
+ &.path-admin-config-system:before{
+   @include inc-icon(c44_d7,$fontawesome_off);
+ } 
+ &.path-admin-config-system-site-information:before{
+@include inc-icon(c44_d7,$entypo_info);
+ }
+ &.path-admin-config-system-statistics:before{
+@include inc-icon(c44_d7,$iconic_chart_pie);
+ } 
+ &.path-admin-config-system-actions:before{
+@include inc-icon(c44_d7,$fontawesome_flash);
+ }   
+ &.path-admin-config-system-cron:before{
+@include inc-icon(c44_d7,$iconic_list_nested);
+ } 
+
+/* Content menu */ 
+&.path-admin-config-content:before{
+ @include inc-icon(c44_d7,$entypo_feather);
+}   
+   &.path-admin-config-content-formats:before{
+ @include inc-icon(c44_d7,$elusive_fontsize);
+   }   
+
+/* UI menu */ 
+&.path-admin-config-user-interface:before{
+ @include inc-icon(c44_d7,$fontawesome_desktop);
+} 
+   &.path-admin-config-user-interface-shortcut:before{
+ @include inc-icon(c44_d7,$fontawesome_link_ext_alt);
+   }
+
+/* Dev menu */
+&.path-admin-config-development:before{
+ @include inc-icon(c44_d7,$fontawesome_beaker);
+} 
+   &.path-admin-config-development-performance:before{
+ @include inc-icon(c44_d7,$entypo_gauge);
+   }
+   &.path-admin-config-development-logging:before{
+ @include inc-icon(c44_d7,$fontawesome_stethoscope);
+   }
+   &.path-admin-config-development-maintenance:before{
+ @include inc-icon(c44_d7,$entypo_traffic_cone);
+   }
+   &.path-admin-config-development-testing:before{
+ @include inc-icon(c44_d7,$entypo_thermometer);
+   }
+
+/* Media menu */ 
+&.path-admin-config-media:before{
+ @include inc-icon(c44_d7,$iconic_video);
+}
+   &.path-admin-config-media-file-system:before{
+ @include inc-icon(c44_d7,$entypo_box);
+   }
+   &.path-admin-config-media-image-styles:before{
+ @include inc-icon(c44_d7,$entypo_picture);
+   } 
+   &.path-admin-config-media-image-toolkit:before{
+ @include inc-icon(c44_d7,$iconic_brush);
+   }  
+
+/* Search menu */
+&.path-admin-config-search:before{
+ @include inc-icon(c44_d7,$entypo_address);
+}  
+
+/*  Regional menu */
+&.path-admin-config-regional:before{
+@include inc-icon(c44_d7,$modernpics_globe);
+}
+ &.path-admin-config-regional-settings:before{
+   @include inc-icon(c44_d7,$modernpics_globe);
+ } 
+ &.path-admin-config-regional-date-time:before{
+   @include inc-icon(c44_d7,$modernpics_globe);
+ } 
+ &.path-admin-config-regional-language:before{
+   @include inc-icon(c44_d7,$modernpics_globe);
+ } 
+ &.path-admin-config-regional-translate:before{
+   @include inc-icon(c44_d7,$modernpics_globe);
+ } 
+ 
+/*  Web Services menu */
+&.path-admin-config-services:before{
+@include inc-icon(c44_d7,$iconic_exchange);
+}
+ &.path-admin-config-services-rss-publishing:before{
+   @include inc-icon(c44_d7,$fontawesome_rss);
+ }
+ &.path-admin-config-services-aggregator:before{
+   @include inc-icon(c44_d7,$modernpics_signal);
+ }
+
+/*  Workflow menu */
+&.path-admin-config-workflow:before{
+@include inc-icon(c44_d7,$entypo_shuffle);
+}
+
+/*  Reports menu */
+&.path-admin-reports:before{
+@include inc-icon(c44_d7,$mfglabs_newspaper);
+} 
+&.path-admin-reports-status:before{
+ @include inc-icon(c44_d7,$elusive_chart);
+}
+&.path-admin-reports-updates:before{
+ @include inc-icon(c44_d7,$fontawesome_arrows_cw);
+}
+&.path-admin-reports-dblog:before{
+ @include inc-icon(c44_d7,$entypo_database);
+}
+&.path-admin-reports-fields:before{
+ @include inc-icon(c44_d7,$mfglabs_newspaper);
+}
+&.path-admin-reports-hits:before{
+ @include inc-icon(c44_d7,$entypo_publish);
+}
+&.path-admin-reports-access-denied:before{
+ @include inc-icon(c44_d7,$fontawesome_block);
+}
+&.path-admin-reports-page-not-found:before{
+ @include inc-icon(c44_d7,$entypo_help_circled);
+}
+&.path-admin-reports-referrers:before{
+ @include inc-icon(c44_d7,$fontawesome_megaphone);
+}
+&.path-admin-reports-search:before{
+ @include inc-icon(c44_d7,$fontawesome_search);
+}
+&.path-admin-reports-pages:before{
+ @include inc-icon(c44_d7,$iconic_popup);
+}
+&.path-admin-reports-visitors:before{
+ @include inc-icon(c44_d7,$elusive_group);
+}
+
+/*  Help menu */
+&.path-admin-help:before{
+@include inc-icon(c44_d7,$fontawesome_help);
+}
+}
+
+
+/* CONTRIB ITEMS */
+// Example include icon, use this to a minimum to avoid css bulk
+.c44icon-{
+/* BEAN */
+&.path-admin-content-blocks:before{
+@include inc-icon(c44_d7,$iconic_box); 
+}
+/*
+&.path-admin-structure-block-types:before{
+@include inc-icon(c44_d7,$iconic_box); 
+}
+*/
+
+/* FILE */
+&.path-admin-content-file:before{
+@include inc-icon(c44_d7,$fontawesome_doc_inv); 
+} 
+&.path-admin-structure-file-types:before{
+@include inc-icon(c44_d7,$fontawesome_doc_text_inv); 
+}
+
+/* CONTEXT */
+&.path-admin-structure-context:before{
+@include inc-icon(c44_d7,$iconic_target); 
+}
+
+/* CRUMBS */
+&.path-admin-structure-crumbs:before{
+@include inc-icon(c44_d7,$entypo_dot_3); 
+}
+/* COMMERCE */
+&.path-checkout:before,&.path-cart:before,{
+	@include inc-icon(c44_d7,$zocial_cart); 
+}
+/* FEATURES */
+&.path-admin-structure-features:before{
+@include inc-icon(c44_d7,$fontawesome_gift);
+}
+  
+/* VIEWS */
+&.path-admin-structure-views:before{
+@include inc-icon(c44_d7,$entypo_database); 
+}
+
+/* STYLEGUIDE */
+&.path-admin-appearance-styleguide:before{
+@include inc-icon(c44_d7,$fontelico_emo_sunglasses);
+}
+/* CUSTOM ERROR */
+&.path-admin-config-system-customerror:before{
+@include inc-icon(c44_d7,$entypo_alert);
+}
+
+/* MIMEMAIL */
+&.path-admin-config-system-mailsystem:before{
+@include inc-icon(c44_d7,$fontawesome_mail_alt);
+}   
+&.path-admin-config-system-mimemail:before{
+@include inc-icon(c44_d7,$fontawesome_mail);
+}
+
+/* UUID */
+&.path-admin-config-system-uuid:before{
+@include inc-icon(c44_d7,$iconic_hash);
+}
+
+/*  DIFF */
+&.path-admin-config-content-diff:before{
+@include inc-icon(c44_d7,$fontawesome_fork);
+}
+
+/* FENCES */
+&.path-admin-config-content-fences:before{
+@include inc-icon(c44_d7,$maki_prison);
+}
+
+/*  TITLE */
+&.path-admin-config-content-title:before{
+@include inc-icon(c44_d7,$elusive_fontsize);
+}
+
+/* ADMIN MENU */
+&.path-admin-config-administration:before{
+@include inc-icon(c44_d7,$maki_police);
+}
+
+/* RULES */
+&.path-admin-config-workflow-rules:before{
+@include inc-icon(c44_d7,$iconic_split);
+}
+
+/* HACKED */
+&.path-admin-reports-hacked:before{
+@include inc-icon(c44_d7,$fontawesome_scissors);
+}
+
+/* NAME */
+&.path-admin-config-regional-name:before{
+@include inc-icon(c44_d7,$fontawesome_font);
+}
+
+
+
+
+/* Network Links */
+//&.duckduckgo:before {@include inc-icon(c44_d7,$zocial_duckduckgo)}  
+&.aim:before {@include inc-icon(c44_d7,$zocial_aim)}
+&.delicious:before {@include inc-icon(c44_d7,$zocial_delicious)}
+&.paypal:before {@include inc-icon(c44_d7,$zocial_paypal)}
+&.flattr:before {@include inc-icon(c44_d7,$zocial_flattr)}
+&.android:before {@include inc-icon(c44_d7,$zocial_android)}
+&.eventful:before {@include inc-icon(c44_d7,$zocial_eventful)}
+&.smashmag:before {@include inc-icon(c44_d7,$zocial_smashmag)}
+&.gplus:before {@include inc-icon(c44_d7,$zocial_gplus)}
+&.wikipedia:before {@include inc-icon(c44_d7,$zocial_wikipedia)}
+&.lanyrd:before {@include inc-icon(c44_d7,$zocial_lanyrd)}
+&.calendar:before {@include inc-icon(c44_d7,$zocial_calendar)}
+&.stumbleupon:before {@include inc-icon(c44_d7,$zocial_stumbleupon)}
+&.fivehundredpx:before {@include inc-icon(c44_d7,$zocial_fivehundredpx)}
+&.pinterest:before {@include inc-icon(c44_d7,$zocial_pinterest)}
+&.bitcoin:before {@include inc-icon(c44_d7,$zocial_bitcoin)}
+&.w3c:before {@include inc-icon(c44_d7,$zocial_w3c)}
+&.foursquare:before {@include inc-icon(c44_d7,$zocial_foursquare)}
+&.html5:before {@include inc-icon(c44_d7,$zocial_html5)}
+&.ie:before {@include inc-icon(c44_d7,$zocial_ie)}
+&.call:before {@include inc-icon(c44_d7,$zocial_call)}
+&.grooveshark:before {@include inc-icon(c44_d7,$zocial_grooveshark)}
+&.ninetyninedesigns:before {@include inc-icon(c44_d7,$zocial_ninetyninedesigns)}
+&.forrst:before {@include inc-icon(c44_d7,$zocial_forrst)}
+&.digg:before {@include inc-icon(c44_d7,$zocial_digg)}
+&.spotify:before {@include inc-icon(c44_d7,$zocial_spotify)}
+&.reddit:before {@include inc-icon(c44_d7,$zocial_reddit)}
+&.guest:before {@include inc-icon(c44_d7,$zocial_guest)}
+&.gowalla:before {@include inc-icon(c44_d7,$zocial_gowalla)}
+&.appstore:before {@include inc-icon(c44_d7,$zocial_appstore)}
+&.blogger:before {@include inc-icon(c44_d7,$zocial_blogger)}
+&.cc:before {@include inc-icon(c44_d7,$zocial_cc)}   
+&.dribbble:before {@include inc-icon(c44_d7,$zocial_dribbble)}
+&.evernote:before {@include inc-icon(c44_d7,$zocial_evernote)}
+&.flickr:before {@include inc-icon(c44_d7,$zocial_flickr)} 
+&.google:before {@include inc-icon(c44_d7,$zocial_google)} 
+&.viadeo:before {@include inc-icon(c44_d7,$zocial_viadeo)} 
+&.instapaper:before {@include inc-icon(c44_d7,$zocial_instapaper)}
+&.weibo:before {@include inc-icon(c44_d7,$zocial_weibo)}
+&.klout:before {@include inc-icon(c44_d7,$zocial_klout)}  
+&.linkedin:before {@include inc-icon(c44_d7,$zocial_linkedin)}
+&.meetup:before {@include inc-icon(c44_d7,$zocial_meetup)} 
+&.vk:before {@include inc-icon(c44_d7,$zocial_vk)} 
+&.plancast:before {@include inc-icon(c44_d7,$zocial_plancast)}
+&.disqus:before {@include inc-icon(c44_d7,$zocial_disqus)} 
+&.rss:before {@include inc-icon(c44_d7,$zocial_rss)}
+&.skype:before {@include inc-icon(c44_d7,$zocial_skype)}  
+&.twitter:before {@include inc-icon(c44_d7,$zocial_twitter)}
+&.youtube:before {@include inc-icon(c44_d7,$zocial_youtube)}
+&.vimeo:before {@include inc-icon(c44_d7,$zocial_vimeo)}  
+&.windows:before {@include inc-icon(c44_d7,$zocial_windows)}
+&.xing:before {@include inc-icon(c44_d7,$zocial_xing)}   
+&.yahoo:before {@include inc-icon(c44_d7,$zocial_yahoo)}  
+&.chrome:before {@include inc-icon(c44_d7,$zocial_chrome)} 
+&.email:before {@include inc-icon(c44_d7,$zocial_email)}  
+&.macstore:before {@include inc-icon(c44_d7,$zocial_macstore)}
+&.myspace:before {@include inc-icon(c44_d7,$zocial_myspace)}
+&.podcast:before {@include inc-icon(c44_d7,$zocial_podcast)}
+&.amazon:before {@include inc-icon(c44_d7,$zocial_amazon)} 
+&.steam:before {@include inc-icon(c44_d7,$zocial_steam)}  
+&.cloudapp:before {@include inc-icon(c44_d7,$zocial_cloudapp)}
+&.dropbox:before {@include inc-icon(c44_d7,$zocial_dropbox)}
+&.ebay:before {@include inc-icon(c44_d7,$zocial_ebay)}   
+&.facebook:before {@include inc-icon(c44_d7,$zocial_facebook)}
+&.github:before {@include inc-icon(c44_d7,$zocial_github)} 
+&.googleplay:before {@include inc-icon(c44_d7,$zocial_googleplay)}
+&.itunes:before {@include inc-icon(c44_d7,$zocial_itunes)} 
+&.plurk:before {@include inc-icon(c44_d7,$zocial_plurk)}  
+&.songkick:before {@include inc-icon(c44_d7,$zocial_songkick)}
+&.lastfm:before {@include inc-icon(c44_d7,$zocial_lastfm)} 
+&.gmail:before {@include inc-icon(c44_d7,$zocial_gmail)}  
+&.pinboard:before {@include inc-icon(c44_d7,$zocial_pinboard)}
+&.openid:before {@include inc-icon(c44_d7,$zocial_openid)} 
+&.quora:before {@include inc-icon(c44_d7,$zocial_quora)}  
+&.soundcloud:before {@include inc-icon(c44_d7,$zocial_soundcloud)}
+&.tumblr:before {@include inc-icon(c44_d7,$zocial_tumblr)} 
+&.eventasaurus:before {@include inc-icon(c44_d7,$zocial_eventasaurus)}
+&.wordpress:before {@include inc-icon(c44_d7,$zocial_wordpress)} 
+&.yelp:before {@include inc-icon(c44_d7,$zocial_yelp)}   
+&.intensedebate:before {@include inc-icon(c44_d7,$zocial_intensedebate)}
+&.eventbrite:before {@include inc-icon(c44_d7,$zocial_eventbrite)}
+&.scribd:before {@include inc-icon(c44_d7,$zocial_scribd)} 
+&.posterous:before {@include inc-icon(c44_d7,$zocial_posterous)} 
+&.stripe:before {@include inc-icon(c44_d7,$zocial_stripe)} 
+&.opentable:before {@include inc-icon(c44_d7,$zocial_opentable)} 
+&.cart:before {@include inc-icon(c44_d7,$zocial_cart)} 
+&.print:before {@include inc-icon(c44_d7,$zocial_print)}  
+&.angellist:before {@include inc-icon(c44_d7,$zocial_angellist)} 
+&.instagram:before {@include inc-icon(c44_d7,$zocial_instagram)} 
+&.dwolla:before {@include inc-icon(c44_d7,$zocial_dwolla)} 
+&.appnet:before {@include inc-icon(c44_d7,$zocial_appnet)} 
+&.statusnet:before {@include inc-icon(c44_d7,$zocial_statusnet)} 
+&.acrobat:before {@include inc-icon(c44_d7,$zocial_acrobat)}
+&.drupal:before {@include inc-icon(c44_d7,$zocial_drupal)} 
+&.buffer:before {@include inc-icon(c44_d7,$zocial_buffer)} 
+&.pocket:before {@include inc-icon(c44_d7,$zocial_pocket)} 
+&.github-circled:before {@include inc-icon(c44_d7,$zocial_github-circled)}
+&.bitbucket:before {@include inc-icon(c44_d7,$zocial_bitbucket)} 
+&.lego:before {@include inc-icon(c44_d7,$zocial_lego)}   
+&.login:before {@include inc-icon(c44_d7,$zocial_login)}  
+&.stackoverflow:before {@include inc-icon(c44_d7,$zocial_stackoverflow)} 
+&.hackernews:before {@include inc-icon(c44_d7,$zocial_hackernews)}
+&.lkdto:before {@include inc-icon(c44_d7,$zocial_lkdto)}
+
+
+}
+
+
+.dropdown .c44icon- {
+margin-left: -0.7em;
+margin-right: 0.3em;
+}
+
+
+
+
+
+

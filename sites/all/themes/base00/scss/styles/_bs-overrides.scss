@@ -1,0 +1,478 @@
+//
+// bootstrap additions and overrides
+// --------------------------------------------------
+
+//TO MOVE
+
+#no-support{
+ margin-bottom: $line-height-computed !important;
+ color: $brand-warning !important;
+}
+
+
+
+/*******************************************************************************
+ * normalize
+ ******************************************************************************/
+
+/*******************************************************************************
+ * scaffolding
+ ******************************************************************************/
+a,
+a:hover,
+a:focus {
+  text-decoration: none;
+}
+/*******************************************************************************
+ * type
+ ******************************************************************************/
+// Body text
+// -------------------------
+/* Default paragraph styles */
+p { 
+  @include rhythm(0,0,0,1,$base-font-size);   
+  font, kbd, samp, tt {
+    line-height: 1.2em;
+  }
+  code, small, strong, var, u, em {
+    line-height: 1.2em; // Stop these elements breaking vertical rhythm
+  }
+  code {
+    position: relative;
+    top: -1px;
+  }
+}
+// Emphasis & misc
+// -------------------------
+small { @include adjust-font-size-to(12px,1); line-height: $line-height-base; }
+big { @include adjust-font-size-to(16px,1); }
+b, strong  { font-weight: bold; line-height: 1em; }
+em  { font-style: italic; line-height: $line-height-base; }
+cite { 
+  @include adjust-font-size-to(12px,1);
+  float: left;
+  font-style: italic;
+  width: 100%;
+  color: $gray;
+}
+caption { 
+  @include adjust-font-size-to(12px,1);
+  font-style: italic;
+  color: $gray;
+}
+tt {
+  @include adjust-font-size-to($base-font-size,1);
+}
+figure {
+  @include rhythm(0.5,0,0,0.5,$base-font-size);
+}
+sub, sup, big {
+  line-height: 1em;        
+}
+// Headings
+// -------------------------
+h1,
+h2,
+h3 {
+  margin-top: $line-height-computed;
+  margin-bottom: ($line-height-computed / 2);
+}
+h4,
+h5,
+h6 {
+  margin-top: ($line-height-computed / 2);
+  margin-bottom: ($line-height-computed / 2);
+}
+h1, .h1 {
+  @include adjust-font-size-to(38px,2);  
+  @include rhythm(0,0,0,0,38px);  
+  small { font-size: ceil($font-size-base * 1.70); } // ~24px
+  &.page-title{
+    float: left;
+    margin-right: 10px;
+  }
+} // ~38px
+h2, .h2 { 
+  @include adjust-font-size-to(32px,2);  
+  @include rhythm(0,0,0,0,32px);  
+  small { font-size: ceil($font-size-base * 1.25); } // ~18px
+} // ~32px
+h3, .h3 { 
+  @include adjust-font-size-to(24px,2);  
+  @include rhythm(0,0,0,0,24px);  
+  small { font-size: $font-size-base; }
+} // ~24px
+h4, .h4 { 
+  @include adjust-font-size-to(18px,2);  
+  @include rhythm(0,0,0,0,18px);  
+  small { font-size: $font-size-base; } 
+} // ~18px
+h5, .h5 { 
+  @include adjust-font-size-to(14px,1);  
+  @include rhythm(0,0,0,0,14px);  
+}
+h6, .h6 { 
+  @include adjust-font-size-to(12px,1);  
+  @include rhythm(0,0,0,0,12px);  
+} // ~12px
+
+ul, ol{
+  padding-left: 0;
+}
+
+// Horizontal rules
+hr {
+  margin: (($line-height-computed / 2) - 1) 0;
+  border: 0;
+  border-top: 1px solid $hr-border;
+  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid rgba(255,255,255,.5);
+}
+// Blockquotes
+blockquote {
+  float: left;
+  width: 100%;
+}
+/*******************************************************************************
+ * code
+ ******************************************************************************/
+
+/*******************************************************************************
+ * grid
+ ******************************************************************************/
+ 
+/*******************************************************************************
+ * tables
+ ******************************************************************************/
+.table-bordered {
+  > thead > tr {
+    > th,
+    > td {
+      border-bottom-width: 1px;
+      border-bottom-color: darken($table-border-color, 10%);
+    }
+  }
+} 
+/*******************************************************************************
+ * forms
+ ******************************************************************************/
+
+.form-control {
+  @include border-radius($border-radius-base);
+  height: 40px;
+  min-height: 40px;
+  line-height: $base-rhythm-unit;
+  @include rhythm(0,0,0,0.5,$base-font-size); 
+}
+// Indent the labels to position radios/checkboxes as hanging
+.radio,
+.checkbox {
+  margin-top: 0px;
+  margin-bottom: 20px;
+  padding-left: 0;
+}
+.radio input[type="radio"],
+.radio-inline input[type="radio"],
+.checkbox input[type="checkbox"],
+.checkbox-inline input[type="checkbox"] {
+  margin-top: 0;
+}
+//fix offset checkboxes in tables
+td .form-radio.radio,
+td .form-checkbox.checkbox {
+    margin: 0;
+}
+
+// Reset height since textareas have rows
+textarea {
+  height: auto;
+  line-height: $line-height-base;
+  margin: 0 0 20px 0;
+  max-height: 100%;
+  padding: 10px;
+}
+.resizable-textarea {
+  textarea {
+    @include border-top-radius($border-radius-base);
+    @include border-bottom-radius(0);  
+    max-width: 100%;
+    min-width: 100%;
+    width: 100%;
+    padding: 10px;
+  }
+  .grippie { margin-bottom: 17px; }
+}
+/*
+input[type="password"] {
+    //@include adjust-font-size-to(32px);
+    @include rhythm(0.25,0,0,0.25,32px);    
+    padding-top: 10px;
+    padding-bottom: 10px;     
+}
+*/
+
+/*******************************************************************************
+ * buttons
+ ******************************************************************************/
+
+.btn-dark {
+  @include button-variant($btn-dark-color, $btn-dark-bg, $btn-dark-border);
+}
+
+//fix heights on buttons
+.btn {
+  padding: 0;
+  height: $base-line-height * 2;
+  @include adjust-font-size-to($base-font-size);
+  @include rhythm-borders(1, 0.5, emCalc($base-font-size), solid);
+  padding-left: $padding-base-horizontal;
+  padding-right: $padding-base-horizontal;
+  .glyphicon{
+    margin: 0 10px 0 0;
+  }  
+}
+
+a#edit-cancel,
+button,
+.button,
+input[type="button"] {
+  @include btn();
+  @include button-variant($btn-dark-color, $btn-dark-bg, $btn-dark-border);
+}
+
+
+// Button Sizes
+// --------------------------------------------------
+
+.btn-mini, input[type="submit"].btn-mini, input[type="button"].btn-mini {
+  padding: 0;
+  height: $base-line-height;
+  font-size: $font-size-mini;
+  @include rhythm-borders(1, 0, emCalc($font-size-mini), solid);
+  padding-left: $padding-base-horizontal;
+  padding-right: $padding-base-horizontal;
+  @include border-radius($border-radius-mini);
+}
+
+.btn-small, input[type="submit"].btn-small, input[type="button"].btn-small{
+  padding: 0;
+  height: $base-line-height;
+  font-size: $font-size-small;
+  @include rhythm-borders(1, 0, emCalc($font-size-small), solid);
+  padding-left: $padding-small-horizontal;
+  padding-right: $padding-small-horizontal;
+  @include border-radius($border-radius-small);
+}
+
+.btn-large, input[type="submit"].btn-large, input[type="button"].btn-large {
+  padding: 0;
+  height: $base-line-height * 3;
+  font-size: $font-size-large;
+  @include rhythm-borders(1, 0, emCalc($font-size-large), solid);
+  padding-left: $padding-large-horizontal;
+  padding-right: $padding-large-horizontal;
+  @include border-radius($border-radius-large);
+}
+
+
+/*******************************************************************************
+ * component-animations
+ ******************************************************************************/   
+ 
+/*******************************************************************************
+ * glyphicons
+ ******************************************************************************/
+ 
+/*******************************************************************************
+ * dropdowns
+ ******************************************************************************/
+//make sure dropdowns are above nav bar
+.dropdown-menu{
+  z-index: 1001;  
+}
+ul.dropdown-menu{
+	background-color: #222;
+	padding: 0 !important;	
+	overflow: hidden;
+	border-radius: 4px;
+	font-size: 90%;
+	li a {
+		background-color: #222;
+		color: #fff;
+		height: auto !important;
+		padding: 0.695em 20px !important;		
+		&:hover{
+			  background: $brand-primary !important;
+			  color: #fff !important;
+		}
+	}
+}
+
+/*******************************************************************************
+ * button-groups
+ ******************************************************************************/
+// Make block buttons in vertical groups
+.btn-group,
+.btn-group-vertical {
+  .btn-block {
+    float: left;
+  }
+}
+.btn-group.primary-tabs .btn {
+  z-index: 250;
+}
+
+/*******************************************************************************
+ * input-groups
+ ******************************************************************************/
+ 
+/*******************************************************************************
+ * navs
+ ******************************************************************************/
+ 
+/*******************************************************************************
+ * navbar
+ ******************************************************************************/
+.navbar {
+    z-index: 249;
+    border: 0;
+}
+.navbar-brand {
+    padding: 20px 0;
+    line-height: 45px;    
+}
+
+/*******************************************************************************
+ * breadcrumbs
+ ******************************************************************************/  
+
+ .breadcrumb {
+  @include adjust-font-size-to(12px);
+  @include rhythm(0, 0.5, 0.5, 1,12px);
+  text-transform: uppercase;
+  border: 0;
+}
+
+/*******************************************************************************
+ * pagination
+ ******************************************************************************/
+ 
+/*******************************************************************************
+ * pager
+ ******************************************************************************/
+ 
+/*******************************************************************************
+ * labels
+ ******************************************************************************/ 
+.label {
+	text-transform: uppercase;
+	.glyphicon {
+    left: -2px;
+    position: relative;
+    top: 2px;
+   }
+}
+
+/*******************************************************************************
+ * badges
+ ******************************************************************************/
+ 
+/*******************************************************************************
+ * jumbotron
+ ******************************************************************************/  
+ 
+/*******************************************************************************
+ * thumbnails
+ ******************************************************************************/
+ 
+/*******************************************************************************
+ * alerts
+ ******************************************************************************/
+ 
+/*******************************************************************************
+ * progress-bars
+ ******************************************************************************/  
+// Outer container
+.progress .bar,
+.progress {
+  height: $line-height-computed * 2;
+  border-color: $gray;
+}
+// Bar of progress
+.progress .filled {
+  float: left;
+  width: 0%;
+  height: 100%;
+  font-size: $font-size-small;
+  line-height: $line-height-computed;
+  color: $progress-bar-color;
+  text-align: center;
+  background-color: $progress-bar-bg;
+  @include box-shadow(inset 0 -1px 0 rgba(0,0,0,.15));
+  @include transition(width .6s ease);
+   
+  @include gradient-striped();
+  background-size: 40px 40px;
+  @include animation(progress-bar-stripes 2s linear infinite);
+}
+
+
+/*******************************************************************************
+ * media
+ ******************************************************************************/
+ 
+/*******************************************************************************
+ * list-group
+ ******************************************************************************/  
+ 
+/*******************************************************************************
+ * panels
+ ******************************************************************************/
+.panel {
+/*   padding: 15px; */
+  border: 1px solid #ddd;
+}
+
+/*******************************************************************************
+ * alerts
+ ******************************************************************************/
+ 
+/*******************************************************************************
+ * wells
+ ******************************************************************************/ 
+ 
+/*******************************************************************************
+ * close
+ ******************************************************************************/ 
+ 
+/*******************************************************************************
+ * modals
+ ******************************************************************************/  
+ 
+/*******************************************************************************
+ * tooltip
+ ******************************************************************************/ 
+ 
+/*******************************************************************************
+ * popovers
+ ******************************************************************************/ 
+ 
+/*******************************************************************************
+ * carousel
+ ******************************************************************************/   
+.carousel-caption {
+  background: none repeat scroll 0 0 rgba(0, 0, 0, 0.6);
+  padding: 20px 20px 30px;
+  p {
+    font-size: 21px;
+    line-height: 1.4;
+    margin-bottom: 20px;
+  }
+}
+/*******************************************************************************
+ * utilities
+ ******************************************************************************/ 
+ 
+/*******************************************************************************
+ * responsive-utilities
+ ******************************************************************************/

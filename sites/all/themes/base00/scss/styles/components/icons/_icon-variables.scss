@@ -1,0 +1,2247 @@
+/*******************************************************************************
+ * _icon-variables.scss
+ *
+ * Overrides for bootstrap glyicons and additional sets
+ * sub-components and modifiers.
+ ******************************************************************************/
+
+$iconClass: "c44icon-";
+
+//Fontello sets CORE44 D7 BASE
+$brandico_blogger_rect: "\ee4b"; /* ""*/
+$brandico_blogger: "\ee4a"; /* ""*/
+$brandico_box_rect: "\ee58"; /* ""*/
+$brandico_box: "\ee57"; /* ""*/
+$brandico_deviantart: "\ee4c"; /* ""*/
+$brandico_diigo: "\ee56"; /* ""*/
+$brandico_facebook_rect: "\ee37"; /* ""*/
+$brandico_facebook: "\ee36"; /* ""*/
+$brandico_friendfeed_rect: "\ee49"; /* ""*/
+$brandico_friendfeed: "\ee48"; /* ""*/
+$brandico_github_text: "\ee3f"; /* ""*/
+$brandico_github: "\ee40"; /* ""*/
+$brandico_googleplus_rect: "\ee3e"; /* ""*/
+$brandico_icq: "\ee42"; /* ""*/
+$brandico_instagram_filled: "\ee55"; /* ""*/
+$brandico_instagram: "\ee54"; /* ""*/
+$brandico_jabber: "\ee4d"; /* ""*/
+$brandico_lastfm_rect: "\ee4f"; /* ""*/
+$brandico_lastfm: "\ee4e"; /* ""*/
+$brandico_linkedin_rect: "\ee51"; /* ""*/
+$brandico_linkedin: "\ee50"; /* ""*/
+$brandico_odnoklassniki_rect: "\ee47"; /* ""*/
+$brandico_odnoklassniki: "\ee46"; /* ""*/
+$brandico_picasa: "\ee52"; /* ""*/
+$brandico_skype: "\ee41"; /* ""*/
+$brandico_tudou: "\ee59"; /* ""*/
+$brandico_tumblr_rect: "\ee3d"; /* ""*/
+$brandico_tumblr: "\ee3c"; /* ""*/
+$brandico_twitter_bird: "\ee39"; /* ""*/
+$brandico_twitter: "\ee38"; /* ""*/
+$brandico_vimeo_rect: "\ee3b"; /* ""*/
+$brandico_vimeo: "\ee3a"; /* ""*/
+$brandico_vkontakte_rect: "\ee45"; /* ""*/
+$brandico_win8: "\ee5b"; /* ""*/
+$brandico_wordpress: "\ee53"; /* ""*/
+$brandico_yandex_rect: "\ee44"; /* ""*/
+$brandico_yandex: "\ee43"; /* ""*/
+$brandico_youku: "\ee5a"; /* ""*/
+$duckduckgo: "\edcf"; /* ""*/
+$elusive_accessibility: "\ef46"; /* ""*/
+$elusive_address_book_alt: "\ef3c"; /* ""*/
+$elusive_address_book: "\ef3b"; /* ""*/
+$elusive_adjust: "\ef26"; /* ""*/
+$elusive_adult: "\ef42"; /* ""*/
+$elusive_align_center: "\ef19"; /* ""*/
+$elusive_align_justify: "\ef1b"; /* ""*/
+$elusive_align_left: "\ef18"; /* ""*/
+$elusive_align_right: "\ef1a"; /* ""*/
+$elusive_arrows_cw: "\eeef"; /* ""*/
+$elusive_asl: "\ef3d"; /* ""*/
+$elusive_asterisk: "\ef2a"; /* ""*/
+$elusive_attach_circled: "\ee8b"; /* ""*/
+$elusive_attach: "\ee8a"; /* ""*/
+$elusive_backward_circled: "\eefb"; /* ""*/
+$elusive_backward: "\eefa"; /* ""*/
+$elusive_barcode: "\ef23"; /* ""*/
+$elusive_basket_circled: "\eec6"; /* ""*/
+$elusive_basket: "\eec5"; /* ""*/
+$elusive_behance: "\ef4a"; /* ""*/
+$elusive_bell: "\eeaa"; /* ""*/
+$elusive_blind: "\ef44"; /* ""*/
+$elusive_block: "\eed4"; /* ""*/
+$elusive_blogger: "\ef4b"; /* ""*/
+$elusive_bold: "\ef14"; /* ""*/
+$elusive_book: "\ef25"; /* ""*/
+$elusive_bookmark_empty: "\ee95"; /* ""*/
+$elusive_bookmark: "\ee94"; /* ""*/
+$elusive_braille: "\ef24"; /* ""*/
+$elusive_briefcase: "\ef1f"; /* ""*/
+$elusive_calendar_circled: "\eec8"; /* ""*/
+$elusive_calendar: "\eec7"; /* ""*/
+$elusive_camera: "\ee72"; /* ""*/
+$elusive_cancel_circled2: "\ee7e"; /* ""*/
+$elusive_cancel_circled: "\ee7d"; /* ""*/
+$elusive_cancel: "\ee7c"; /* ""*/
+$elusive_cc: "\ef4c"; /* ""*/
+$elusive_certificate: "\ef35"; /* ""*/
+$elusive_chart_circled: "\ef2f"; /* ""*/
+$elusive_chart: "\ef2e"; /* ""*/
+$elusive_check_empty: "\ef29"; /* ""*/
+$elusive_check: "\ef28"; /* ""*/
+$elusive_child: "\ef43"; /* ""*/
+$elusive_clipboard: "\ef32"; /* ""*/
+$elusive_clock_circled: "\eed1"; /* ""*/
+$elusive_clock: "\eed0"; /* ""*/
+$elusive_cloud_circled: "\ef0f"; /* ""*/
+$elusive_cloud: "\ef0e"; /* ""*/
+$elusive_cog_circled: "\eec1"; /* ""*/
+$elusive_cog: "\eec0"; /* ""*/
+$elusive_cogs: "\eec2"; /* ""*/
+$elusive_comment_alt: "\eea9"; /* ""*/
+$elusive_comment: "\eea8"; /* ""*/
+$elusive_compass_circled: "\eeb2"; /* ""*/
+$elusive_compass: "\eeb1"; /* ""*/
+$elusive_credit_card: "\ef30"; /* ""*/
+$elusive_css: "\ef4d"; /* ""*/
+$elusive_cw_circled: "\eeee"; /* ""*/
+$elusive_cw: "\eeed"; /* ""*/
+$elusive_delicious: "\ef4e"; /* ""*/
+$elusive_desktop_circled: "\ef05"; /* ""*/
+$elusive_desktop: "\ef04"; /* ""*/
+$elusive_deviantart: "\ef4f"; /* ""*/
+$elusive_digg: "\ef50"; /* ""*/
+$elusive_doc_circled: "\eeb6"; /* ""*/
+$elusive_doc_new_circled: "\eeb8"; /* ""*/
+$elusive_doc_new: "\eeb7"; /* ""*/
+$elusive_doc: "\eeb5"; /* ""*/
+$elusive_down_circled: "\eee5"; /* ""*/
+$elusive_down_hand: "\eee9"; /* ""*/
+$elusive_down_open: "\eedd"; /* ""*/
+$elusive_down: "\eee1"; /* ""*/
+$elusive_download_alt: "\ee9b"; /* ""*/
+$elusive_download: "\ee9a"; /* ""*/
+$elusive_dribbble: "\ef51"; /* ""*/
+$elusive_edit_alt: "\eea5"; /* ""*/
+$elusive_edit_circled: "\eea4"; /* ""*/
+$elusive_edit: "\eea3"; /* ""*/
+$elusive_eject: "\eef9"; /* ""*/
+$elusive_error_alt: "\eeae"; /* ""*/
+$elusive_error: "\eead"; /* ""*/
+$elusive_exclamation: "\eeac"; /* ""*/
+$elusive_export: "\eea0"; /* ""*/
+$elusive_eye_off: "\ee91"; /* ""*/
+$elusive_eye: "\ee90"; /* ""*/
+$elusive_facebook: "\ef52"; /* ""*/
+$elusive_fast_backward: "\eefc"; /* ""*/
+$elusive_fast_forward: "\eefd"; /* ""*/
+$elusive_female: "\ef49"; /* ""*/
+$elusive_filter: "\ef37"; /* ""*/
+$elusive_fire: "\ef2c"; /* ""*/
+$elusive_flag_circled: "\ee97"; /* ""*/
+$elusive_flag: "\ee96"; /* ""*/
+$elusive_flickr: "\ef53"; /* ""*/
+$elusive_flight: "\ef10"; /* ""*/
+$elusive_folder_circled: "\eeba"; /* ""*/
+$elusive_folder_close: "\eebb"; /* ""*/
+$elusive_folder_open: "\eebc"; /* ""*/
+$elusive_folder: "\eeb9"; /* ""*/
+$elusive_font: "\ef12"; /* ""*/
+$elusive_fontsize: "\ef13"; /* ""*/
+$elusive_forward_circled: "\eeff"; /* ""*/
+$elusive_forward: "\eefe"; /* ""*/
+$elusive_foursquare: "\ef54"; /* ""*/
+$elusive_friendfeed_rect: "\ef56"; /* ""*/
+$elusive_friendfeed: "\ef55"; /* ""*/
+$elusive_gauge: "\ef38"; /* ""*/
+$elusive_gift: "\ef2b"; /* ""*/
+$elusive_github_text: "\ef58"; /* ""*/
+$elusive_github: "\ef57"; /* ""*/
+$elusive_glass: "\ee5c"; /* ""*/
+$elusive_glasses: "\ef3e"; /* ""*/
+$elusive_globe_alt: "\ef0d"; /* ""*/
+$elusive_globe: "\ef0c"; /* ""*/
+$elusive_googleplus: "\ef59"; /* ""*/
+$elusive_group_circled: "\ee6a"; /* ""*/
+$elusive_group: "\ee69"; /* ""*/
+$elusive_guidedog: "\ef45"; /* ""*/
+$elusive_hdd: "\ef33"; /* ""*/
+$elusive_headphones: "\eecf"; /* ""*/
+$elusive_hearing_impaired: "\ef3f"; /* ""*/
+$elusive_heart_circled: "\ee63"; /* ""*/
+$elusive_heart_empty: "\ee64"; /* ""*/
+$elusive_heart: "\ee62"; /* ""*/
+$elusive_help_circled: "\ee84"; /* ""*/
+$elusive_help: "\ee83"; /* ""*/
+$elusive_home_circled: "\ee87"; /* ""*/
+$elusive_home: "\ee86"; /* ""*/
+$elusive_inbox_alt: "\ef0b"; /* ""*/
+$elusive_inbox_circled: "\ef0a"; /* ""*/
+$elusive_inbox: "\ef09"; /* ""*/
+$elusive_indent_left: "\ef1d"; /* ""*/
+$elusive_indent_right: "\ef1e"; /* ""*/
+$elusive_info_circled: "\ee85"; /* ""*/
+$elusive_instagram: "\ef5a"; /* ""*/
+$elusive_iphone_home: "\ef40"; /* ""*/
+$elusive_italic: "\ef15"; /* ""*/
+$elusive_key: "\ef34"; /* ""*/
+$elusive_laptop_circled: "\ef07"; /* ""*/
+$elusive_laptop: "\ef06"; /* ""*/
+$elusive_leaf: "\ef11"; /* ""*/
+$elusive_left_circled: "\eee6"; /* ""*/
+$elusive_left_hand: "\eeea"; /* ""*/
+$elusive_left_open: "\eede"; /* ""*/
+$elusive_left: "\eee2"; /* ""*/
+$elusive_lightbulb_alt: "\eed3"; /* ""*/
+$elusive_lightbulb: "\eed2"; /* ""*/
+$elusive_linkedin: "\ef5b"; /* ""*/
+$elusive_list: "\ef1c"; /* ""*/
+$elusive_location_circled: "\eeb0"; /* ""*/
+$elusive_location: "\eeaf"; /* ""*/
+$elusive_lock_circled: "\ee8d"; /* ""*/
+$elusive_lock_open_alt: "\ee8f"; /* ""*/
+$elusive_lock_open: "\ee8e"; /* ""*/
+$elusive_lock: "\ee8c"; /* ""*/
+$elusive_magnet: "\ef2d"; /* ""*/
+$elusive_mail_circled: "\ee61"; /* ""*/
+$elusive_mail: "\ee60"; /* ""*/
+$elusive_male: "\ef48"; /* ""*/
+$elusive_megaphone: "\ef31"; /* ""*/
+$elusive_mic_circled: "\eeca"; /* ""*/
+$elusive_mic: "\eec9"; /* ""*/
+$elusive_minus_circled: "\ee82"; /* ""*/
+$elusive_minus: "\ee81"; /* ""*/
+$elusive_move: "\eeda"; /* ""*/
+$elusive_music: "\ee5d"; /* ""*/
+$elusive_network: "\ef08"; /* ""*/
+$elusive_off: "\ef20"; /* ""*/
+$elusive_ok_circled2: "\ee7b"; /* ""*/
+$elusive_ok_circled: "\ee7a"; /* ""*/
+$elusive_ok: "\ee79"; /* ""*/
+$elusive_path: "\ef5c"; /* ""*/
+$elusive_pause_circled: "\eef7"; /* ""*/
+$elusive_pause: "\eef6"; /* ""*/
+$elusive_pencil_circled: "\eea2"; /* ""*/
+$elusive_pencil: "\eea1"; /* ""*/
+$elusive_person: "\ef41"; /* ""*/
+$elusive_phone_circled: "\eebf"; /* ""*/
+$elusive_phone: "\eebe"; /* ""*/
+$elusive_photo_circled: "\ee74"; /* ""*/
+$elusive_photo: "\ee73"; /* ""*/
+$elusive_picasa: "\ef5d"; /* ""*/
+$elusive_picture: "\ee71"; /* ""*/
+$elusive_pinterest: "\ef5e"; /* ""*/
+$elusive_play_circled2: "\eef3"; /* ""*/
+$elusive_play_circled: "\eef2"; /* ""*/
+$elusive_play: "\eef1"; /* ""*/
+$elusive_plus_circled: "\ee80"; /* ""*/
+$elusive_plus: "\ee7f"; /* ""*/
+$elusive_print: "\eea6"; /* ""*/
+$elusive_qrcode: "\ef22"; /* ""*/
+$elusive_quote_circled: "\ee9f"; /* ""*/
+$elusive_quote: "\ee9e"; /* ""*/
+$elusive_record: "\eef8"; /* ""*/
+$elusive_reddit: "\ef5f"; /* ""*/
+$elusive_resize_full_alt: "\eed6"; /* ""*/
+$elusive_resize_full: "\eed5"; /* ""*/
+$elusive_resize_horizontal: "\eed9"; /* ""*/
+$elusive_resize_small: "\eed7"; /* ""*/
+$elusive_resize_vertical: "\eed8"; /* ""*/
+$elusive_retweet: "\eea7"; /* ""*/
+$elusive_right_circled: "\eee7"; /* ""*/
+$elusive_right_hand: "\eeeb"; /* ""*/
+$elusive_right_open: "\eedf"; /* ""*/
+$elusive_right: "\eee3"; /* ""*/
+$elusive_road: "\ef21"; /* ""*/
+$elusive_rss: "\eebd"; /* ""*/
+$elusive_search_circled: "\ee5f"; /* ""*/
+$elusive_search: "\ee5e"; /* ""*/
+$elusive_share: "\ee9d"; /* ""*/
+$elusive_shuffle: "\eef0"; /* ""*/
+$elusive_signal: "\ef03"; /* ""*/
+$elusive_skype: "\ef60"; /* ""*/
+$elusive_slideshare: "\ef61"; /* ""*/
+$elusive_smiley_circled: "\ef3a"; /* ""*/
+$elusive_smiley: "\ef39"; /* ""*/
+$elusive_stackoverflow: "\ef62"; /* ""*/
+$elusive_star_circled: "\ee66"; /* ""*/
+$elusive_star_empty: "\ee67"; /* ""*/
+$elusive_star: "\ee65"; /* ""*/
+$elusive_step_backward: "\ef00"; /* ""*/
+$elusive_step_forward: "\ef01"; /* ""*/
+$elusive_stop_circled: "\eef5"; /* ""*/
+$elusive_stop: "\eef4"; /* ""*/
+$elusive_stumbleupon: "\ef63"; /* ""*/
+$elusive_tag: "\ee92"; /* ""*/
+$elusive_tags: "\ee93"; /* ""*/
+$elusive_target: "\ef02"; /* ""*/
+$elusive_tasks: "\ef36"; /* ""*/
+$elusive_text_height: "\ef16"; /* ""*/
+$elusive_text_width: "\ef17"; /* ""*/
+$elusive_th_large: "\ee75"; /* ""*/
+$elusive_th_list: "\ee77"; /* ""*/
+$elusive_th: "\ee76"; /* ""*/
+$elusive_thumbs_down: "\ee99"; /* ""*/
+$elusive_thumbs_up: "\ee98"; /* ""*/
+$elusive_tint: "\ef27"; /* ""*/
+$elusive_torso: "\ee6b"; /* ""*/
+$elusive_trash_circled: "\eeb4"; /* ""*/
+$elusive_trash: "\eeb3"; /* ""*/
+$elusive_tumblr: "\ef65"; /* ""*/
+$elusive_twitter: "\ef64"; /* ""*/
+$elusive_universal_access: "\ef47"; /* ""*/
+$elusive_up_circled: "\eee8"; /* ""*/
+$elusive_up_hand: "\eeec"; /* ""*/
+$elusive_up_open: "\eee0"; /* ""*/
+$elusive_up: "\eee4"; /* ""*/
+$elusive_upload: "\ee9c"; /* ""*/
+$elusive_user: "\ee68"; /* ""*/
+$elusive_video_alt: "\ee6e"; /* ""*/
+$elusive_video_chat: "\ee70"; /* ""*/
+$elusive_video_circled: "\ee6d"; /* ""*/
+$elusive_video: "\ee6c"; /* ""*/
+$elusive_videocam: "\ee6f"; /* ""*/
+$elusive_view_mode: "\ee78"; /* ""*/
+$elusive_vimeo: "\ef66"; /* ""*/
+$elusive_vkontakte: "\ef67"; /* ""*/
+$elusive_volume_down: "\eecc"; /* ""*/
+$elusive_volume_off: "\eecb"; /* ""*/
+$elusive_volume_up: "\eece"; /* ""*/
+$elusive_volume: "\eecd"; /* ""*/
+$elusive_w3c: "\ef68"; /* ""*/
+$elusive_warning: "\eeab"; /* ""*/
+$elusive_website_circled: "\ee89"; /* ""*/
+$elusive_website: "\ee88"; /* ""*/
+$elusive_wordpress: "\ef69"; /* ""*/
+$elusive_wrench_circled: "\eec4"; /* ""*/
+$elusive_wrench: "\eec3"; /* ""*/
+$elusive_youtube: "\ef6a"; /* ""*/
+$elusive_zoom_in: "\eedb"; /* ""*/
+$elusive_zoom_out: "\eedc"; /* ""*/
+$entypo_address: "\e9c7"; /* ""*/
+$entypo_adjust: "\e9ed"; /* ""*/
+$entypo_air: "\ea54"; /* ""*/
+$entypo_alert: "\e9c5"; /* ""*/
+$entypo_archive: "\e9d7"; /* ""*/
+$entypo_arrow_combo: "\e9f4"; /* ""*/
+$entypo_arrows_ccw: "\ea17"; /* ""*/
+$entypo_attach: "\e9a9"; /* ""*/
+$entypo_attention: "\e9c4"; /* ""*/
+$entypo_back_in_time: "\ea30"; /* ""*/
+$entypo_back: "\e9a6"; /* ""*/
+$entypo_bag: "\e9e0"; /* ""*/
+$entypo_basket: "\e9df"; /* ""*/
+$entypo_battery: "\ea2f"; /* ""*/
+$entypo_behance: "\ea9b"; /* ""*/
+$entypo_bell: "\e9c3"; /* ""*/
+$entypo_block: "\e9ee"; /* ""*/
+$entypo_book_open: "\e9d4"; /* ""*/
+$entypo_book: "\e9d5"; /* ""*/
+$entypo_bookmark: "\e9ae"; /* ""*/
+$entypo_bookmarks: "\e9af"; /* ""*/
+$entypo_box: "\e9d8"; /* ""*/
+$entypo_briefcase: "\ea41"; /* ""*/
+$entypo_brush: "\ea46"; /* ""*/
+$entypo_bucket: "\ea5b"; /* ""*/
+$entypo_calendar: "\e9e1"; /* ""*/
+$entypo_camera: "\e995"; /* ""*/
+$entypo_cancel_circled: "\e99a"; /* ""*/
+$entypo_cancel_squared: "\e99b"; /* ""*/
+$entypo_cancel: "\e999"; /* ""*/
+$entypo_cc_by: "\ea67"; /* ""*/
+$entypo_cc_nc_eu: "\ea69"; /* ""*/
+$entypo_cc_nc_jp: "\ea6a"; /* ""*/
+$entypo_cc_nc: "\ea68"; /* ""*/
+$entypo_cc_nd: "\ea6c"; /* ""*/
+$entypo_cc_pd: "\ea6d"; /* ""*/
+$entypo_cc_remix: "\ea70"; /* ""*/
+$entypo_cc_sa: "\ea6b"; /* ""*/
+$entypo_cc_share: "\ea6f"; /* ""*/
+$entypo_cc_zero: "\ea6e"; /* ""*/
+$entypo_cc: "\ea66"; /* ""*/
+$entypo_ccw: "\ea15"; /* ""*/
+$entypo_cd: "\ea34"; /* ""*/
+$entypo_chart_area: "\ea4d"; /* ""*/
+$entypo_chart_bar: "\ea4c"; /* ""*/
+$entypo_chart_line: "\ea4b"; /* ""*/
+$entypo_chart_pie: "\ea4a"; /* ""*/
+$entypo_chat: "\e9c2"; /* ""*/
+$entypo_check: "\e998"; /* ""*/
+$entypo_clipboard: "\ea57"; /* ""*/
+$entypo_clock: "\e9e8"; /* ""*/
+$entypo_cloud_thunder: "\ea39"; /* ""*/
+$entypo_cloud: "\ea38"; /* ""*/
+$entypo_code: "\e9ba"; /* ""*/
+$entypo_cog: "\e9db"; /* ""*/
+$entypo_comment: "\e9c1"; /* ""*/
+$entypo_compass: "\e9cb"; /* ""*/
+$entypo_credit_card: "\ea55"; /* ""*/
+$entypo_cup: "\e9cc"; /* ""*/
+$entypo_cw: "\ea16"; /* ""*/
+$entypo_database: "\ea59"; /* ""*/
+$entypo_db_shape: "\eaa0"; /* ""*/
+$entypo_direction: "\e9ca"; /* ""*/
+$entypo_doc_landscape: "\e9d0"; /* ""*/
+$entypo_doc_text_inv: "\e9d2"; /* ""*/
+$entypo_doc_text: "\e9d1"; /* ""*/
+$entypo_doc: "\e9ce"; /* ""*/
+$entypo_docs: "\e9cf"; /* ""*/
+$entypo_dot_1: "\ea43"; /* ""*/
+$entypo_dot_2: "\ea44"; /* ""*/
+$entypo_dot_3: "\ea45"; /* ""*/
+$entypo_down_bold: "\ea0d"; /* ""*/
+$entypo_down_circled: "\e9f5"; /* ""*/
+$entypo_down_dir: "\ea09"; /* ""*/
+$entypo_down_open_big: "\ea01"; /* ""*/
+$entypo_down_open_mini: "\e9fd"; /* ""*/
+$entypo_down_open: "\e9f9"; /* ""*/
+$entypo_down_thin: "\ea11"; /* ""*/
+$entypo_down: "\ea05"; /* ""*/
+$entypo_download: "\e9b3"; /* ""*/
+$entypo_dribbble_circled: "\ea85"; /* ""*/
+$entypo_dribbble: "\ea84"; /* ""*/
+$entypo_drive: "\ea5a"; /* ""*/
+$entypo_dropbox: "\ea90"; /* ""*/
+$entypo_droplet: "\ea53"; /* ""*/
+$entypo_erase: "\ea49"; /* ""*/
+$entypo_evernote: "\ea91"; /* ""*/
+$entypo_export: "\e9bb"; /* ""*/
+$entypo_eye: "\e9ac"; /* ""*/
+$entypo_facebook_circled: "\ea7a"; /* ""*/
+$entypo_facebook_squared: "\ea7b"; /* ""*/
+$entypo_facebook: "\ea79"; /* ""*/
+$entypo_fast_backward: "\ea24"; /* ""*/
+$entypo_fast_forward: "\ea23"; /* ""*/
+$entypo_feather: "\e9bd"; /* ""*/
+$entypo_flag: "\e9b0"; /* ""*/
+$entypo_flash: "\ea3a"; /* ""*/
+$entypo_flashlight: "\e98a"; /* ""*/
+$entypo_flattr: "\ea92"; /* ""*/
+$entypo_flickr_circled: "\ea74"; /* ""*/
+$entypo_flickr: "\ea73"; /* ""*/
+$entypo_flight: "\ea3c"; /* ""*/
+$entypo_floppy: "\ea56"; /* ""*/
+$entypo_flow_branch: "\ea5f"; /* ""*/
+$entypo_flow_cascade: "\ea5e"; /* ""*/
+$entypo_flow_line: "\ea61"; /* ""*/
+$entypo_flow_parallel: "\ea62"; /* ""*/
+$entypo_flow_tree: "\ea60"; /* ""*/
+$entypo_folder: "\e9d6"; /* ""*/
+$entypo_forward: "\e9b8"; /* ""*/
+$entypo_gauge: "\ea64"; /* ""*/
+$entypo_github_circled: "\ea72"; /* ""*/
+$entypo_github: "\ea71"; /* ""*/
+$entypo_globe: "\ea37"; /* ""*/
+$entypo_google_circles: "\ea9c"; /* ""*/
+$entypo_gplus_circled: "\ea7d"; /* ""*/
+$entypo_gplus: "\ea7c"; /* ""*/
+$entypo_graduation_cap: "\ea4f"; /* ""*/
+$entypo_heart_empty: "\e98d"; /* ""*/
+$entypo_heart: "\e98c"; /* ""*/
+$entypo_help_circled: "\e9a3"; /* ""*/
+$entypo_help: "\e9a2"; /* ""*/
+$entypo_home: "\e9a7"; /* ""*/
+$entypo_hourglass: "\e9e9"; /* ""*/
+$entypo_inbox: "\ea35"; /* ""*/
+$entypo_infinity: "\ea48"; /* ""*/
+$entypo_info_circled: "\e9a5"; /* ""*/
+$entypo_info: "\e9a4"; /* ""*/
+$entypo_instagram: "\ea8f"; /* ""*/
+$entypo_install: "\ea36"; /* ""*/
+$entypo_key: "\ea5d"; /* ""*/
+$entypo_keyboard: "\e9c0"; /* ""*/
+$entypo_lamp: "\e9ea"; /* ""*/
+$entypo_language: "\ea50"; /* ""*/
+$entypo_lastfm_circled: "\ea89"; /* ""*/
+$entypo_lastfm: "\ea88"; /* ""*/
+$entypo_layout: "\e996"; /* ""*/
+$entypo_leaf: "\ea3e"; /* ""*/
+$entypo_left_bold: "\ea0e"; /* ""*/
+$entypo_left_circled: "\e9f6"; /* ""*/
+$entypo_left_dir: "\ea0a"; /* ""*/
+$entypo_left_open_big: "\ea02"; /* ""*/
+$entypo_left_open_mini: "\e9fe"; /* ""*/
+$entypo_left_open: "\e9fa"; /* ""*/
+$entypo_left_thin: "\ea12"; /* ""*/
+$entypo_left: "\ea06"; /* ""*/
+$entypo_level_down: "\ea18"; /* ""*/
+$entypo_level_up: "\ea19"; /* ""*/
+$entypo_lifebuoy: "\ea3f"; /* ""*/
+$entypo_light_down: "\e9eb"; /* ""*/
+$entypo_light_up: "\e9ec"; /* ""*/
+$entypo_link: "\e9a8"; /* ""*/
+$entypo_linkedin_circled: "\ea83"; /* ""*/
+$entypo_linkedin: "\ea82"; /* ""*/
+$entypo_list_add: "\ea2c"; /* ""*/
+$entypo_list: "\ea2b"; /* ""*/
+$entypo_location: "\e9c8"; /* ""*/
+$entypo_lock_open: "\e9ab"; /* ""*/
+$entypo_lock: "\e9aa"; /* ""*/
+$entypo_login: "\e9e2"; /* ""*/
+$entypo_logo_db: "\eaa1"; /* ""*/
+$entypo_logout: "\e9e3"; /* ""*/
+$entypo_loop: "\ea1b"; /* ""*/
+$entypo_magnet: "\ea47"; /* ""*/
+$entypo_mail: "\e98b"; /* ""*/
+$entypo_map: "\e9c9"; /* ""*/
+$entypo_megaphone: "\ea58"; /* ""*/
+$entypo_menu: "\e997"; /* ""*/
+$entypo_mic: "\e9e4"; /* ""*/
+$entypo_minus_circled: "\e9a0"; /* ""*/
+$entypo_minus_squared: "\e9a1"; /* ""*/
+$entypo_minus: "\e99f"; /* ""*/
+$entypo_mixi: "\ea9a"; /* ""*/
+$entypo_mobile: "\ea32"; /* ""*/
+$entypo_monitor: "\ea31"; /* ""*/
+$entypo_moon: "\ea3b"; /* ""*/
+$entypo_mouse: "\ea40"; /* ""*/
+$entypo_music: "\e988"; /* ""*/
+$entypo_mute: "\e9e5"; /* ""*/
+$entypo_network: "\ea33"; /* ""*/
+$entypo_newspaper: "\e9d3"; /* ""*/
+$entypo_note_beamed: "\e987"; /* ""*/
+$entypo_note: "\e986"; /* ""*/
+$entypo_palette: "\ea2a"; /* ""*/
+$entypo_paper_plane: "\ea3d"; /* ""*/
+$entypo_pause: "\ea1f"; /* ""*/
+$entypo_paypal: "\ea97"; /* ""*/
+$entypo_pencil: "\e9bc"; /* ""*/
+$entypo_phone: "\e9da"; /* ""*/
+$entypo_picasa: "\ea98"; /* ""*/
+$entypo_picture: "\e994"; /* ""*/
+$entypo_pinterest_circled: "\ea7f"; /* ""*/
+$entypo_pinterest: "\ea7e"; /* ""*/
+$entypo_play: "\ea1d"; /* ""*/
+$entypo_plus_circled: "\e99d"; /* ""*/
+$entypo_plus_squared: "\e99e"; /* ""*/
+$entypo_plus: "\e99c"; /* ""*/
+$entypo_popup: "\e9f1"; /* ""*/
+$entypo_print: "\e9be"; /* ""*/
+$entypo_progress_0: "\ea25"; /* ""*/
+$entypo_progress_1: "\ea26"; /* ""*/
+$entypo_progress_2: "\ea27"; /* ""*/
+$entypo_progress_3: "\ea28"; /* ""*/
+$entypo_publish: "\e9f2"; /* ""*/
+$entypo_qq: "\ea8e"; /* ""*/
+$entypo_quote: "\e9b9"; /* ""*/
+$entypo_rdio_circled: "\ea8b"; /* ""*/
+$entypo_rdio: "\ea8a"; /* ""*/
+$entypo_record: "\ea20"; /* ""*/
+$entypo_renren: "\ea95"; /* ""*/
+$entypo_reply_all: "\e9b7"; /* ""*/
+$entypo_reply: "\e9b6"; /* ""*/
+$entypo_resize_full: "\e9ef"; /* ""*/
+$entypo_resize_small: "\e9f0"; /* ""*/
+$entypo_retweet: "\e9bf"; /* ""*/
+$entypo_right_bold: "\ea0f"; /* ""*/
+$entypo_right_circled: "\e9f7"; /* ""*/
+$entypo_right_dir: "\ea0b"; /* ""*/
+$entypo_right_open_big: "\ea03"; /* ""*/
+$entypo_right_open_mini: "\e9ff"; /* ""*/
+$entypo_right_open: "\e9fb"; /* ""*/
+$entypo_right_thin: "\ea13"; /* ""*/
+$entypo_right: "\ea07"; /* ""*/
+$entypo_rocket: "\ea63"; /* ""*/
+$entypo_rss: "\e9d9"; /* ""*/
+$entypo_search: "\e989"; /* ""*/
+$entypo_share: "\e9dd"; /* ""*/
+$entypo_shareable: "\e9de"; /* ""*/
+$entypo_shuffle: "\ea1a"; /* ""*/
+$entypo_signal: "\ea2d"; /* ""*/
+$entypo_sina_weibo: "\ea96"; /* ""*/
+$entypo_skype_circled: "\ea94"; /* ""*/
+$entypo_skype: "\ea93"; /* ""*/
+$entypo_smashing: "\ea9e"; /* ""*/
+$entypo_sound: "\e9e6"; /* ""*/
+$entypo_soundcloud: "\ea99"; /* ""*/
+$entypo_spotify_circled: "\ea8d"; /* ""*/
+$entypo_spotify: "\ea8c"; /* ""*/
+$entypo_star_empty: "\e98f"; /* ""*/
+$entypo_star: "\e98e"; /* ""*/
+$entypo_stop: "\ea1e"; /* ""*/
+$entypo_stumbleupon_circled: "\ea87"; /* ""*/
+$entypo_stumbleupon: "\ea86"; /* ""*/
+$entypo_suitcase: "\ea42"; /* ""*/
+$entypo_sweden: "\ea9f"; /* ""*/
+$entypo_switch: "\ea1c"; /* ""*/
+$entypo_tag: "\e9ad"; /* ""*/
+$entypo_tape: "\ea4e"; /* ""*/
+$entypo_target: "\ea29"; /* ""*/
+$entypo_thermometer: "\ea5c"; /* ""*/
+$entypo_thumbs_down: "\e9b2"; /* ""*/
+$entypo_thumbs_up: "\e9b1"; /* ""*/
+$entypo_ticket: "\ea51"; /* ""*/
+$entypo_to_end: "\ea21"; /* ""*/
+$entypo_to_start: "\ea22"; /* ""*/
+$entypo_tools: "\e9dc"; /* ""*/
+$entypo_traffic_cone: "\ea65"; /* ""*/
+$entypo_trash: "\e9cd"; /* ""*/
+$entypo_trophy: "\ea2e"; /* ""*/
+$entypo_tumblr_circled: "\ea81"; /* ""*/
+$entypo_tumblr: "\ea80"; /* ""*/
+$entypo_twitter_circled: "\ea78"; /* ""*/
+$entypo_twitter: "\ea77"; /* ""*/
+$entypo_up_bold: "\ea10"; /* ""*/
+$entypo_up_circled: "\e9f8"; /* ""*/
+$entypo_up_dir: "\ea0c"; /* ""*/
+$entypo_up_open_big: "\ea04"; /* ""*/
+$entypo_up_open_mini: "\ea00"; /* ""*/
+$entypo_up_open: "\e9fc"; /* ""*/
+$entypo_up_thin: "\ea14"; /* ""*/
+$entypo_up: "\ea08"; /* ""*/
+$entypo_upload_cloud: "\e9b5"; /* ""*/
+$entypo_upload: "\e9b4"; /* ""*/
+$entypo_user_add: "\e992"; /* ""*/
+$entypo_user: "\e990"; /* ""*/
+$entypo_users: "\e991"; /* ""*/
+$entypo_vcard: "\e9c6"; /* ""*/
+$entypo_video: "\e993"; /* ""*/
+$entypo_vimeo_circled: "\ea76"; /* ""*/
+$entypo_vimeo: "\ea75"; /* ""*/
+$entypo_vkontakte: "\ea9d"; /* ""*/
+$entypo_volume: "\e9e7"; /* ""*/
+$entypo_water: "\ea52"; /* ""*/
+$entypo_window: "\e9f3"; /* ""*/
+$fontawesome_adn: "\e95a"; /* ""*/
+$fontawesome_ajust: "\e916"; /* ""*/
+$fontawesome_align_center: "\e8fb"; /* ""*/
+$fontawesome_align_justify: "\e8fd"; /* ""*/
+$fontawesome_align_left: "\e8fa"; /* ""*/
+$fontawesome_align_right: "\e8fc"; /* ""*/
+$fontawesome_ambulance: "\e94b"; /* ""*/
+$fontawesome_anchor: "\e953"; /* ""*/
+$fontawesome_android: "\e95b"; /* ""*/
+$fontawesome_angle_circled_down: "\e8b9"; /* ""*/
+$fontawesome_angle_circled_left: "\e8b6"; /* ""*/
+$fontawesome_angle_circled_right: "\e8b7"; /* ""*/
+$fontawesome_angle_circled_up: "\e8b8"; /* ""*/
+$fontawesome_angle_double_down: "\e8bd"; /* ""*/
+$fontawesome_angle_double_left: "\e8ba"; /* ""*/
+$fontawesome_angle_double_right: "\e8bb"; /* ""*/
+$fontawesome_angle_double_up: "\e8bc"; /* ""*/
+$fontawesome_angle_down: "\e8b5"; /* ""*/
+$fontawesome_angle_left: "\e8b2"; /* ""*/
+$fontawesome_angle_right: "\e8b3"; /* ""*/
+$fontawesome_angle_up: "\e8b4"; /* ""*/
+$fontawesome_apple: "\e95c"; /* ""*/
+$fontawesome_arrows_cw: "\e8d0"; /* ""*/
+$fontawesome_asterisk: "\e91c"; /* ""*/
+$fontawesome_attach: "\e84e"; /* ""*/
+$fontawesome_attention_alt: "\e879"; /* ""*/
+$fontawesome_attention_circled: "\e87b"; /* ""*/
+$fontawesome_attention: "\e87a"; /* ""*/
+$fontawesome_award: "\e8e6"; /* ""*/
+$fontawesome_barcode: "\e914"; /* ""*/
+$fontawesome_basket: "\e892"; /* ""*/
+$fontawesome_beaker: "\e92d"; /* ""*/
+$fontawesome_beer: "\e948"; /* ""*/
+$fontawesome_bell_alt: "\e878"; /* ""*/
+$fontawesome_bell: "\e877"; /* ""*/
+$fontawesome_bitbucket_squared: "\e95e"; /* ""*/
+$fontawesome_bitbucket: "\e95d"; /* ""*/
+$fontawesome_bitcoin: "\e938"; /* ""*/
+$fontawesome_blank: "\e984"; /* ""*/
+$fontawesome_block: "\e89f"; /* ""*/
+$fontawesome_bold: "\e8f6"; /* ""*/
+$fontawesome_book: "\e915"; /* ""*/
+$fontawesome_bookmark_empty: "\e858"; /* ""*/
+$fontawesome_bookmark: "\e857"; /* ""*/
+$fontawesome_box: "\e889"; /* ""*/
+$fontawesome_briefcase: "\e90c"; /* ""*/
+$fontawesome_bug: "\e929"; /* ""*/
+$fontawesome_building: "\e94f"; /* ""*/
+$fontawesome_bullseye: "\e959"; /* ""*/
+$fontawesome_calendar_empty: "\e894"; /* ""*/
+$fontawesome_calendar: "\e893"; /* ""*/
+$fontawesome_camera_alt: "\e831"; /* ""*/
+$fontawesome_camera: "\e830"; /* ""*/
+$fontawesome_cancel_circled2: "\e83b"; /* ""*/
+$fontawesome_cancel_circled: "\e83a"; /* ""*/
+$fontawesome_cancel: "\e839"; /* ""*/
+$fontawesome_ccw: "\e8cf"; /* ""*/
+$fontawesome_certificate: "\e92a"; /* ""*/
+$fontawesome_chart_bar: "\e920"; /* ""*/
+$fontawesome_chat_empty: "\e876"; /* ""*/
+$fontawesome_chat: "\e874"; /* ""*/
+$fontawesome_check_empty: "\e919"; /* ""*/
+$fontawesome_check: "\e918"; /* ""*/
+$fontawesome_circle_empty: "\e91b"; /* ""*/
+$fontawesome_circle: "\e91a"; /* ""*/
+$fontawesome_clock: "\e89d"; /* ""*/
+$fontawesome_cloud: "\e8ee"; /* ""*/
+$fontawesome_code: "\e869"; /* ""*/
+$fontawesome_coffee: "\e946"; /* ""*/
+$fontawesome_cog_alt: "\e890"; /* ""*/
+$fontawesome_cog: "\e88f"; /* ""*/
+$fontawesome_collapse_top: "\e8d6"; /* ""*/
+$fontawesome_collapse: "\e8d5"; /* ""*/
+$fontawesome_columns: "\e908"; /* ""*/
+$fontawesome_comment_empty: "\e875"; /* ""*/
+$fontawesome_comment: "\e873"; /* ""*/
+$fontawesome_compass: "\e87e"; /* ""*/
+$fontawesome_credit_card: "\e922"; /* ""*/
+$fontawesome_crop: "\e909"; /* ""*/
+$fontawesome_css3: "\e95f"; /* ""*/
+$fontawesome_cw: "\e8ce"; /* ""*/
+$fontawesome_desktop: "\e8e7"; /* ""*/
+$fontawesome_direction: "\e87d"; /* ""*/
+$fontawesome_doc_inv: "\e883"; /* ""*/
+$fontawesome_doc_text_inv: "\e884"; /* ""*/
+$fontawesome_doc_text: "\e882"; /* ""*/
+$fontawesome_doc: "\e880"; /* ""*/
+$fontawesome_docs: "\e881"; /* ""*/
+$fontawesome_dollar: "\e933"; /* ""*/
+$fontawesome_down_big: "\e8c2"; /* ""*/
+$fontawesome_down_circled2: "\e8a8"; /* ""*/
+$fontawesome_down_circled: "\e8cd"; /* ""*/
+$fontawesome_down_dir: "\e8aa"; /* ""*/
+$fontawesome_down_hand: "\e8c9"; /* ""*/
+$fontawesome_down_open: "\e8ae"; /* ""*/
+$fontawesome_down: "\e8be"; /* ""*/
+$fontawesome_download_cloud: "\e862"; /* ""*/
+$fontawesome_download: "\e860"; /* ""*/
+$fontawesome_dribbble: "\e960"; /* ""*/
+$fontawesome_dropbox: "\e961"; /* ""*/
+$fontawesome_edit: "\e86e"; /* ""*/
+$fontawesome_eject: "\e8e3"; /* ""*/
+$fontawesome_ellipsis_vert: "\e90f"; /* ""*/
+$fontawesome_ellipsis: "\e90e"; /* ""*/
+$fontawesome_eraser: "\e955"; /* ""*/
+$fontawesome_euro: "\e931"; /* ""*/
+$fontawesome_exchange: "\e8d4"; /* ""*/
+$fontawesome_expand: "\e8d7"; /* ""*/
+$fontawesome_export_alt: "\e86b"; /* ""*/
+$fontawesome_export: "\e86a"; /* ""*/
+$fontawesome_extinguisher: "\e958"; /* ""*/
+$fontawesome_eye_off: "\e854"; /* ""*/
+$fontawesome_eye: "\e853"; /* ""*/
+$fontawesome_facebook_squared: "\e963"; /* ""*/
+$fontawesome_facebook: "\e962"; /* ""*/
+$fontawesome_fast_bw: "\e8e2"; /* ""*/
+$fontawesome_fast_fw: "\e8e1"; /* ""*/
+$fontawesome_female: "\e82c"; /* ""*/
+$fontawesome_fighter_jet: "\e8f3"; /* ""*/
+$fontawesome_filter: "\e92c"; /* ""*/
+$fontawesome_fire: "\e91e"; /* ""*/
+$fontawesome_flag_checkered: "\e85b"; /* ""*/
+$fontawesome_flag_empty: "\e85a"; /* ""*/
+$fontawesome_flag: "\e859"; /* ""*/
+$fontawesome_flash: "\e8ef"; /* ""*/
+$fontawesome_flickr: "\e964"; /* ""*/
+$fontawesome_flight: "\e8f2"; /* ""*/
+$fontawesome_floppy: "\e923"; /* ""*/
+$fontawesome_folder_empty: "\e887"; /* ""*/
+$fontawesome_folder_open_empty: "\e888"; /* ""*/
+$fontawesome_folder_open: "\e886"; /* ""*/
+$fontawesome_folder: "\e885"; /* ""*/
+$fontawesome_font: "\e8f5"; /* ""*/
+$fontawesome_food: "\e947"; /* ""*/
+$fontawesome_fork: "\e927"; /* ""*/
+$fontawesome_forward: "\e866"; /* ""*/
+$fontawesome_foursquare: "\e965"; /* ""*/
+$fontawesome_frown: "\e951"; /* ""*/
+$fontawesome_gamepad: "\e872"; /* ""*/
+$fontawesome_gauge: "\e943"; /* ""*/
+$fontawesome_gift: "\e91d"; /* ""*/
+$fontawesome_github_circled: "\e968"; /* ""*/
+$fontawesome_github_squared: "\e967"; /* ""*/
+$fontawesome_github: "\e966"; /* ""*/
+$fontawesome_gittip: "\e969"; /* ""*/
+$fontawesome_glass: "\e81e"; /* ""*/
+$fontawesome_globe: "\e8ec"; /* ""*/
+$fontawesome_gplus_squared: "\e96a"; /* ""*/
+$fontawesome_gplus: "\e96b"; /* ""*/
+$fontawesome_h_sigh: "\e94d"; /* ""*/
+$fontawesome_hammer: "\e942"; /* ""*/
+$fontawesome_hdd: "\e925"; /* ""*/
+$fontawesome_headphones: "\e89c"; /* ""*/
+$fontawesome_heart_empty: "\e824"; /* ""*/
+$fontawesome_heart: "\e823"; /* ""*/
+$fontawesome_help_circled: "\e846"; /* ""*/
+$fontawesome_help: "\e845"; /* ""*/
+$fontawesome_home: "\e849"; /* ""*/
+$fontawesome_hospital: "\e94e"; /* ""*/
+$fontawesome_html5: "\e96c"; /* ""*/
+$fontawesome_inbox: "\e8eb"; /* ""*/
+$fontawesome_indent_left: "\e8ff"; /* ""*/
+$fontawesome_indent_right: "\e900"; /* ""*/
+$fontawesome_info_circled: "\e847"; /* ""*/
+$fontawesome_info: "\e848"; /* ""*/
+$fontawesome_instagramm: "\e96d"; /* ""*/
+$fontawesome_italic: "\e8f7"; /* ""*/
+$fontawesome_key: "\e926"; /* ""*/
+$fontawesome_keyboard: "\e871"; /* ""*/
+$fontawesome_laptop: "\e8e8"; /* ""*/
+$fontawesome_leaf: "\e8f4"; /* ""*/
+$fontawesome_left_big: "\e8c3"; /* ""*/
+$fontawesome_left_circled: "\e8ca"; /* ""*/
+$fontawesome_left_dir: "\e8ac"; /* ""*/
+$fontawesome_left_hand: "\e8c7"; /* ""*/
+$fontawesome_left_open: "\e8af"; /* ""*/
+$fontawesome_left: "\e8bf"; /* ""*/
+$fontawesome_lemon: "\e985"; /* ""*/
+$fontawesome_level_down: "\e8d2"; /* ""*/
+$fontawesome_level_up: "\e8d1"; /* ""*/
+$fontawesome_lightbulb: "\e89e"; /* ""*/
+$fontawesome_link_ext_alt: "\e84d"; /* ""*/
+$fontawesome_link_ext: "\e84c"; /* ""*/
+$fontawesome_link: "\e84a"; /* ""*/
+$fontawesome_linkedin_squared: "\e96e"; /* ""*/
+$fontawesome_linkedin: "\e970"; /* ""*/
+$fontawesome_linux: "\e96f"; /* ""*/
+$fontawesome_list_alt: "\e912"; /* ""*/
+$fontawesome_list_bullet: "\e901"; /* ""*/
+$fontawesome_list_numbered: "\e902"; /* ""*/
+$fontawesome_list: "\e8fe"; /* ""*/
+$fontawesome_location: "\e87c"; /* ""*/
+$fontawesome_lock_open_alt: "\e851"; /* ""*/
+$fontawesome_lock_open: "\e850"; /* ""*/
+$fontawesome_lock: "\e84f"; /* ""*/
+$fontawesome_login: "\e895"; /* ""*/
+$fontawesome_logout: "\e896"; /* ""*/
+$fontawesome_magic: "\e92e"; /* ""*/
+$fontawesome_magnet: "\e91f"; /* ""*/
+$fontawesome_mail_alt: "\e822"; /* ""*/
+$fontawesome_mail: "\e821"; /* ""*/
+$fontawesome_male: "\e82b"; /* ""*/
+$fontawesome_maxcdn: "\e971"; /* ""*/
+$fontawesome_medkit: "\e94c"; /* ""*/
+$fontawesome_megaphone: "\e924"; /* ""*/
+$fontawesome_meh: "\e952"; /* ""*/
+$fontawesome_menu: "\e88e"; /* ""*/
+$fontawesome_mic: "\e897"; /* ""*/
+$fontawesome_minus_circled: "\e841"; /* ""*/
+$fontawesome_minus_squared_alt: "\e843"; /* ""*/
+$fontawesome_minus_squared_small: "\e844"; /* ""*/
+$fontawesome_minus_squared: "\e842"; /* ""*/
+$fontawesome_minus: "\e840"; /* ""*/
+$fontawesome_mobile: "\e8ea"; /* ""*/
+$fontawesome_money: "\e930"; /* ""*/
+$fontawesome_moon: "\e8f0"; /* ""*/
+$fontawesome_move: "\e8a5"; /* ""*/
+$fontawesome_music: "\e81f"; /* ""*/
+$fontawesome_mute: "\e898"; /* ""*/
+$fontawesome_off: "\e910"; /* ""*/
+$fontawesome_ok_circled2: "\e837"; /* ""*/
+$fontawesome_ok_circled: "\e836"; /* ""*/
+$fontawesome_ok_squared: "\e838"; /* ""*/
+$fontawesome_ok: "\e835"; /* ""*/
+$fontawesome_paste: "\e90b"; /* ""*/
+$fontawesome_pause: "\e8dc"; /* ""*/
+$fontawesome_pencil_squared: "\e86d"; /* ""*/
+$fontawesome_pencil: "\e86c"; /* ""*/
+$fontawesome_phone_squared: "\e88d"; /* ""*/
+$fontawesome_phone: "\e88c"; /* ""*/
+$fontawesome_picture: "\e82f"; /* ""*/
+$fontawesome_pin: "\e852"; /* ""*/
+$fontawesome_pinterest_circled: "\e972"; /* ""*/
+$fontawesome_pinterest_squared: "\e973"; /* ""*/
+$fontawesome_play_circled2: "\e8da"; /* ""*/
+$fontawesome_play_circled: "\e8d9"; /* ""*/
+$fontawesome_play: "\e8d8"; /* ""*/
+$fontawesome_plus_circled: "\e83d"; /* ""*/
+$fontawesome_plus_squared_small: "\e83f"; /* ""*/
+$fontawesome_plus_squared: "\e83e"; /* ""*/
+$fontawesome_plus: "\e83c"; /* ""*/
+$fontawesome_pound: "\e932"; /* ""*/
+$fontawesome_print: "\e86f"; /* ""*/
+$fontawesome_puzzle: "\e956"; /* ""*/
+$fontawesome_qrcode: "\e913"; /* ""*/
+$fontawesome_quote_left: "\e867"; /* ""*/
+$fontawesome_quote_right: "\e868"; /* ""*/
+$fontawesome_renminbi: "\e936"; /* ""*/
+$fontawesome_renren: "\e974"; /* ""*/
+$fontawesome_reply_all: "\e865"; /* ""*/
+$fontawesome_reply: "\e864"; /* ""*/
+$fontawesome_resize_full_alt: "\e8a1"; /* ""*/
+$fontawesome_resize_full: "\e8a0"; /* ""*/
+$fontawesome_resize_horizontal: "\e8a4"; /* ""*/
+$fontawesome_resize_small: "\e8a2"; /* ""*/
+$fontawesome_resize_vertical: "\e8a3"; /* ""*/
+$fontawesome_retweet: "\e870"; /* ""*/
+$fontawesome_right_big: "\e8c4"; /* ""*/
+$fontawesome_right_circled: "\e8cb"; /* ""*/
+$fontawesome_right_dir: "\e8ad"; /* ""*/
+$fontawesome_right_hand: "\e8c6"; /* ""*/
+$fontawesome_right_open: "\e8b0"; /* ""*/
+$fontawesome_right: "\e8c0"; /* ""*/
+$fontawesome_road: "\e911"; /* ""*/
+$fontawesome_rocket: "\e928"; /* ""*/
+$fontawesome_rss_squared: "\e88b"; /* ""*/
+$fontawesome_rss: "\e88a"; /* ""*/
+$fontawesome_rupee: "\e934"; /* ""*/
+$fontawesome_scissors: "\e90a"; /* ""*/
+$fontawesome_search: "\e820"; /* ""*/
+$fontawesome_shield: "\e957"; /* ""*/
+$fontawesome_shuffle: "\e8d3"; /* ""*/
+$fontawesome_signal: "\e8e5"; /* ""*/
+$fontawesome_sitemap: "\e944"; /* ""*/
+$fontawesome_skype: "\e975"; /* ""*/
+$fontawesome_smile: "\e950"; /* ""*/
+$fontawesome_sort_alt_down: "\e93d"; /* ""*/
+$fontawesome_sort_alt_up: "\e93c"; /* ""*/
+$fontawesome_sort_down: "\e93a"; /* ""*/
+$fontawesome_sort_name_down: "\e93f"; /* ""*/
+$fontawesome_sort_name_up: "\e93e"; /* ""*/
+$fontawesome_sort_number_down: "\e941"; /* ""*/
+$fontawesome_sort_number_up: "\e940"; /* ""*/
+$fontawesome_sort_up: "\e93b"; /* ""*/
+$fontawesome_sort: "\e939"; /* ""*/
+$fontawesome_spinner: "\e945"; /* ""*/
+$fontawesome_stackoverflow: "\e976"; /* ""*/
+$fontawesome_star_empty: "\e826"; /* ""*/
+$fontawesome_star_half_alt: "\e828"; /* ""*/
+$fontawesome_star_half: "\e827"; /* ""*/
+$fontawesome_star: "\e825"; /* ""*/
+$fontawesome_stethoscope: "\e94a"; /* ""*/
+$fontawesome_stop: "\e8db"; /* ""*/
+$fontawesome_strike: "\e903"; /* ""*/
+$fontawesome_subscript: "\e906"; /* ""*/
+$fontawesome_suitcase: "\e90d"; /* ""*/
+$fontawesome_sun: "\e8ed"; /* ""*/
+$fontawesome_superscript: "\e905"; /* ""*/
+$fontawesome_table: "\e907"; /* ""*/
+$fontawesome_tablet: "\e8e9"; /* ""*/
+$fontawesome_tag: "\e855"; /* ""*/
+$fontawesome_tags: "\e856"; /* ""*/
+$fontawesome_target: "\e8e4"; /* ""*/
+$fontawesome_tasks: "\e92b"; /* ""*/
+$fontawesome_terminal: "\e954"; /* ""*/
+$fontawesome_text_height: "\e8f8"; /* ""*/
+$fontawesome_text_width: "\e8f9"; /* ""*/
+$fontawesome_th_large: "\e832"; /* ""*/
+$fontawesome_th_list: "\e834"; /* ""*/
+$fontawesome_th: "\e833"; /* ""*/
+$fontawesome_thumbs_down_alt: "\e85f"; /* ""*/
+$fontawesome_thumbs_down: "\e85d"; /* ""*/
+$fontawesome_thumbs_up_alt: "\e85e"; /* ""*/
+$fontawesome_thumbs_up: "\e85c"; /* ""*/
+$fontawesome_ticket: "\e921"; /* ""*/
+$fontawesome_tint: "\e917"; /* ""*/
+$fontawesome_to_end_alt: "\e8de"; /* ""*/
+$fontawesome_to_end: "\e8dd"; /* ""*/
+$fontawesome_to_start_alt: "\e8e0"; /* ""*/
+$fontawesome_to_start: "\e8df"; /* ""*/
+$fontawesome_trash: "\e87f"; /* ""*/
+$fontawesome_trello: "\e977"; /* ""*/
+$fontawesome_truck: "\e92f"; /* ""*/
+$fontawesome_tumblr_squared: "\e979"; /* ""*/
+$fontawesome_tumblr: "\e978"; /* ""*/
+$fontawesome_twitter_squared: "\e97a"; /* ""*/
+$fontawesome_twitter: "\e97b"; /* ""*/
+$fontawesome_umbrella: "\e8f1"; /* ""*/
+$fontawesome_underline: "\e904"; /* ""*/
+$fontawesome_unlink: "\e84b"; /* ""*/
+$fontawesome_up_big: "\e8c5"; /* ""*/
+$fontawesome_up_circled2: "\e8a9"; /* ""*/
+$fontawesome_up_circled: "\e8cc"; /* ""*/
+$fontawesome_up_dir: "\e8ab"; /* ""*/
+$fontawesome_up_hand: "\e8c8"; /* ""*/
+$fontawesome_up_open: "\e8b1"; /* ""*/
+$fontawesome_up: "\e8c1"; /* ""*/
+$fontawesome_upload_cloud: "\e863"; /* ""*/
+$fontawesome_upload: "\e861"; /* ""*/
+$fontawesome_user_md: "\e949"; /* ""*/
+$fontawesome_user: "\e829"; /* ""*/
+$fontawesome_users: "\e82a"; /* ""*/
+$fontawesome_video: "\e82d"; /* ""*/
+$fontawesome_videocam: "\e82e"; /* ""*/
+$fontawesome_vkontakte: "\e97c"; /* ""*/
+$fontawesome_volume_down: "\e89a"; /* ""*/
+$fontawesome_volume_off: "\e899"; /* ""*/
+$fontawesome_volume_up: "\e89b"; /* ""*/
+$fontawesome_weibo: "\e97d"; /* ""*/
+$fontawesome_windows: "\e97e"; /* ""*/
+$fontawesome_won: "\e937"; /* ""*/
+$fontawesome_wrench: "\e891"; /* ""*/
+$fontawesome_xing_squared: "\e980"; /* ""*/
+$fontawesome_xing: "\e97f"; /* ""*/
+$fontawesome_yen: "\e935"; /* ""*/
+$fontawesome_youtube_play: "\e983"; /* ""*/
+$fontawesome_youtube_squared: "\e982"; /* ""*/
+$fontawesome_youtube: "\e981"; /* ""*/
+$fontawesome_zoom_in: "\e8a6"; /* ""*/
+$fontawesome_zoom_out: "\e8a7"; /* ""*/
+$fontelico_chrome: "\e81b"; /* ""*/
+$fontelico_emo_angry: "\e80e"; /* ""*/
+$fontelico_emo_beer: "\e80c"; /* ""*/
+$fontelico_emo_coffee: "\e809"; /* ""*/
+$fontelico_emo_cry: "\e810"; /* ""*/
+$fontelico_emo_devil: "\e806"; /* ""*/
+$fontelico_emo_displeased: "\e80b"; /* ""*/
+$fontelico_emo_grin: "\e80d"; /* ""*/
+$fontelico_emo_happy: "\e800"; /* ""*/
+$fontelico_emo_laugh: "\e813"; /* ""*/
+$fontelico_emo_saint: "\e80f"; /* ""*/
+$fontelico_emo_shoot: "\e811"; /* ""*/
+$fontelico_emo_sleep: "\e804"; /* ""*/
+$fontelico_emo_squint: "\e812"; /* ""*/
+$fontelico_emo_sunglasses: "\e80a"; /* ""*/
+$fontelico_emo_surprised: "\e807"; /* ""*/
+$fontelico_emo_thumbsup: "\e805"; /* ""*/
+$fontelico_emo_tongue: "\e808"; /* ""*/
+$fontelico_emo_unhappy: "\e803"; /* ""*/
+$fontelico_emo_wink2: "\e802"; /* ""*/
+$fontelico_emo_wink: "\e801"; /* ""*/
+$fontelico_firefox: "\e81a"; /* ""*/
+$fontelico_ie: "\e81d"; /* ""*/
+$fontelico_opera: "\e81c"; /* ""*/
+$fontelico_spin1: "\e814"; /* ""*/
+$fontelico_spin2: "\e815"; /* ""*/
+$fontelico_spin3: "\e816"; /* ""*/
+$fontelico_spin4: "\e817"; /* ""*/
+$fontelico_spin5: "\e818"; /* ""*/
+$fontelico_spin6: "\e819"; /* ""*/
+$iconic_aperture_alt: "\ec53"; /* ""*/
+$iconic_aperture: "\ec52"; /* ""*/
+$iconic_arrow_curved: "\ec3c"; /* ""*/
+$iconic_article_alt: "\ec13"; /* ""*/
+$iconic_article: "\ec12"; /* ""*/
+$iconic_at: "\ec6a"; /* ""*/
+$iconic_attach: "\ebeb"; /* ""*/
+$iconic_award_empty: "\ec47"; /* ""*/
+$iconic_award: "\ec46"; /* ""*/
+$iconic_bat_charge: "\ec4d"; /* ""*/
+$iconic_bat_empty: "\ec4a"; /* ""*/
+$iconic_bat_full: "\ec4c"; /* ""*/
+$iconic_bat_half: "\ec4b"; /* ""*/
+$iconic_block: "\ec26"; /* ""*/
+$iconic_book_alt: "\ec56"; /* ""*/
+$iconic_book_open: "\ec14"; /* ""*/
+$iconic_book: "\ec55"; /* ""*/
+$iconic_box: "\ec17"; /* ""*/
+$iconic_brush_alt: "\ec58"; /* ""*/
+$iconic_brush: "\ec57"; /* ""*/
+$iconic_calendar_alt: "\ec1f"; /* ""*/
+$iconic_calendar_inv: "\ec1e"; /* ""*/
+$iconic_calendar: "\ec1d"; /* ""*/
+$iconic_camera: "\ebde"; /* ""*/
+$iconic_cancel_circle: "\ebe2"; /* ""*/
+$iconic_cancel: "\ebe1"; /* ""*/
+$iconic_cd: "\ec4f"; /* ""*/
+$iconic_chart_bar: "\ec64"; /* ""*/
+$iconic_chart_pie_alt: "\ec66"; /* ""*/
+$iconic_chart_pie: "\ec65"; /* ""*/
+$iconic_chat_inv: "\ec07"; /* ""*/
+$iconic_chat: "\ec06"; /* ""*/
+$iconic_clock: "\ec24"; /* ""*/
+$iconic_cloud: "\ec5e"; /* ""*/
+$iconic_cog: "\ec1a"; /* ""*/
+$iconic_comment_alt2: "\ec04"; /* ""*/
+$iconic_comment_alt: "\ec02"; /* ""*/
+$iconic_comment_inv_alt2: "\ec05"; /* ""*/
+$iconic_comment_inv_alt: "\ec03"; /* ""*/
+$iconic_comment_inv: "\ec01"; /* ""*/
+$iconic_comment: "\ec00"; /* ""*/
+$iconic_compass: "\ec0b"; /* ""*/
+$iconic_cursor: "\ec51"; /* ""*/
+$iconic_cw: "\ec37"; /* ""*/
+$iconic_dial: "\ec6c"; /* ""*/
+$iconic_doc_alt: "\ec10"; /* ""*/
+$iconic_doc_inv_alt: "\ec11"; /* ""*/
+$iconic_doc_inv: "\ec0f"; /* ""*/
+$iconic_doc: "\ec0e"; /* ""*/
+$iconic_down_circle: "\ec33"; /* ""*/
+$iconic_down: "\ec2f"; /* ""*/
+$iconic_download_cloud: "\ebf6"; /* ""*/
+$iconic_download: "\ebf4"; /* ""*/
+$iconic_eject: "\ec43"; /* ""*/
+$iconic_equalizer: "\ec50"; /* ""*/
+$iconic_exchange: "\ec3a"; /* ""*/
+$iconic_eye: "\ebf1"; /* ""*/
+$iconic_eyedropper: "\ec59"; /* ""*/
+$iconic_flash: "\ec60"; /* ""*/
+$iconic_folder_empty: "\ec16"; /* ""*/
+$iconic_folder: "\ec15"; /* ""*/
+$iconic_hash: "\ec69"; /* ""*/
+$iconic_headphones: "\ec23"; /* ""*/
+$iconic_heart_empty: "\ebd9"; /* ""*/
+$iconic_heart: "\ebd8"; /* ""*/
+$iconic_help: "\ebe7"; /* ""*/
+$iconic_home: "\ebe9"; /* ""*/
+$iconic_info: "\ebe8"; /* ""*/
+$iconic_key_inv: "\ec68"; /* ""*/
+$iconic_key: "\ec67"; /* ""*/
+$iconic_lamp: "\ec25"; /* ""*/
+$iconic_layers_alt: "\ec5b"; /* ""*/
+$iconic_layers: "\ec5a"; /* ""*/
+$iconic_left_circle: "\ec34"; /* ""*/
+$iconic_left: "\ec30"; /* ""*/
+$iconic_link: "\ebea"; /* ""*/
+$iconic_list_nested: "\ec49"; /* ""*/
+$iconic_list: "\ec48"; /* ""*/
+$iconic_location_alt: "\ec0a"; /* ""*/
+$iconic_location_inv: "\ec09"; /* ""*/
+$iconic_location: "\ec08"; /* ""*/
+$iconic_lock_empty: "\ebed"; /* ""*/
+$iconic_lock_open_empty: "\ebef"; /* ""*/
+$iconic_lock_open: "\ebee"; /* ""*/
+$iconic_lock: "\ebec"; /* ""*/
+$iconic_loop_alt: "\ec39"; /* ""*/
+$iconic_loop: "\ec38"; /* ""*/
+$iconic_mail: "\ebd7"; /* ""*/
+$iconic_mic: "\ec20"; /* ""*/
+$iconic_minus_circle: "\ebe6"; /* ""*/
+$iconic_minus: "\ebe5"; /* ""*/
+$iconic_mobile: "\ec4e"; /* ""*/
+$iconic_moon_inv: "\ec62"; /* ""*/
+$iconic_moon: "\ec61"; /* ""*/
+$iconic_move: "\ec2d"; /* ""*/
+$iconic_ok_circle: "\ebe0"; /* ""*/
+$iconic_ok: "\ebdf"; /* ""*/
+$iconic_pause: "\ec40"; /* ""*/
+$iconic_pencil_alt: "\ebfe"; /* ""*/
+$iconic_pencil_neg: "\ebfd"; /* ""*/
+$iconic_pencil: "\ebfc"; /* ""*/
+$iconic_picture: "\ebdd"; /* ""*/
+$iconic_pilcrow: "\ec6b"; /* ""*/
+$iconic_pin: "\ebf0"; /* ""*/
+$iconic_play_circle2: "\ec3e"; /* ""*/
+$iconic_play: "\ec3d"; /* ""*/
+$iconic_plus_circle: "\ebe4"; /* ""*/
+$iconic_plus: "\ebe3"; /* ""*/
+$iconic_popup: "\ec2e"; /* ""*/
+$iconic_quote_left_alt: "\ebfa"; /* ""*/
+$iconic_quote_left: "\ebf8"; /* ""*/
+$iconic_quote_right_alt: "\ebfb"; /* ""*/
+$iconic_quote_right: "\ebf9"; /* ""*/
+$iconic_rain: "\ec5f"; /* ""*/
+$iconic_resize_full_alt: "\ec28"; /* ""*/
+$iconic_resize_full: "\ec27"; /* ""*/
+$iconic_resize_horizontal: "\ec2c"; /* ""*/
+$iconic_resize_small_alt: "\ec2a"; /* ""*/
+$iconic_resize_small: "\ec29"; /* ""*/
+$iconic_resize_vertical: "\ec2b"; /* ""*/
+$iconic_right_circle: "\ec35"; /* ""*/
+$iconic_right: "\ec31"; /* ""*/
+$iconic_rss_alt: "\ec19"; /* ""*/
+$iconic_rss: "\ec18"; /* ""*/
+$iconic_search: "\ebd6"; /* ""*/
+$iconic_share: "\ec1c"; /* ""*/
+$iconic_signal: "\ec45"; /* ""*/
+$iconic_split: "\ec3b"; /* ""*/
+$iconic_star: "\ebda"; /* ""*/
+$iconic_steering_wheel: "\ec54"; /* ""*/
+$iconic_stop: "\ec3f"; /* ""*/
+$iconic_sun_inv: "\ec5d"; /* ""*/
+$iconic_sun: "\ec5c"; /* ""*/
+$iconic_tag_empty: "\ebf3"; /* ""*/
+$iconic_tag: "\ebf2"; /* ""*/
+$iconic_target: "\ec44"; /* ""*/
+$iconic_to_end: "\ec42"; /* ""*/
+$iconic_to_start: "\ec41"; /* ""*/
+$iconic_trash_empty: "\ec0d"; /* ""*/
+$iconic_trash: "\ec0c"; /* ""*/
+$iconic_umbrella: "\ec63"; /* ""*/
+$iconic_undo: "\ebff"; /* ""*/
+$iconic_up_circle: "\ec36"; /* ""*/
+$iconic_up: "\ec32"; /* ""*/
+$iconic_upload_cloud: "\ebf7"; /* ""*/
+$iconic_upload: "\ebf5"; /* ""*/
+$iconic_user: "\ebdb"; /* ""*/
+$iconic_video: "\ebdc"; /* ""*/
+$iconic_volume_off: "\ec21"; /* ""*/
+$iconic_volume_up: "\ec22"; /* ""*/
+$iconic_wrench: "\ec1b"; /* ""*/
+$linecons_attach: "\ef74"; /* ""*/
+$linecons_beaker: "\ef93"; /* ""*/
+$linecons_calendar: "\ef82"; /* ""*/
+$linecons_camera: "\ef72"; /* ""*/
+$linecons_cd: "\ef89"; /* ""*/
+$linecons_clock: "\ef84"; /* ""*/
+$linecons_cloud: "\ef8c"; /* ""*/
+$linecons_cog: "\ef80"; /* ""*/
+$linecons_comment: "\ef7a"; /* ""*/
+$linecons_cup: "\ef7c"; /* ""*/
+$linecons_database: "\ef91"; /* ""*/
+$linecons_desktop: "\ef87"; /* ""*/
+$linecons_diamond: "\ef98"; /* ""*/
+$linecons_doc: "\ef7e"; /* ""*/
+$linecons_eye: "\ef76"; /* ""*/
+$linecons_fire: "\ef8e"; /* ""*/
+$linecons_food: "\ef96"; /* ""*/
+$linecons_globe: "\ef8b"; /* ""*/
+$linecons_graduation_cap: "\ef8f"; /* ""*/
+$linecons_heart: "\ef6e"; /* ""*/
+$linecons_inbox: "\ef8a"; /* ""*/
+$linecons_key: "\ef92"; /* ""*/
+$linecons_lightbulb: "\ef85"; /* ""*/
+$linecons_location: "\ef7b"; /* ""*/
+$linecons_lock: "\ef75"; /* ""*/
+$linecons_mail: "\ef6d"; /* ""*/
+$linecons_megaphone: "\ef90"; /* ""*/
+$linecons_mobile: "\ef88"; /* ""*/
+$linecons_money: "\ef95"; /* ""*/
+$linecons_music: "\ef6b"; /* ""*/
+$linecons_note: "\ef7f"; /* ""*/
+$linecons_paper_plane: "\ef8d"; /* ""*/
+$linecons_params: "\ef81"; /* ""*/
+$linecons_pencil: "\ef79"; /* ""*/
+$linecons_photo: "\ef73"; /* ""*/
+$linecons_search: "\ef6c"; /* ""*/
+$linecons_shop: "\ef97"; /* ""*/
+$linecons_sound: "\ef83"; /* ""*/
+$linecons_star: "\ef6f"; /* ""*/
+$linecons_t_shirt: "\ef99"; /* ""*/
+$linecons_tag: "\ef77"; /* ""*/
+$linecons_thumbs_up: "\ef78"; /* ""*/
+$linecons_trash: "\ef7d"; /* ""*/
+$linecons_truck: "\ef94"; /* ""*/
+$linecons_tv: "\ef86"; /* ""*/
+$linecons_user: "\ef70"; /* ""*/
+$linecons_videocam: "\ef71"; /* ""*/
+$linecons_wallet: "\ef9a"; /* ""*/
+$maki_aboveground_rail: "\ed90"; /* ""*/
+$maki_airfield: "\ed91"; /* ""*/
+$maki_airport: "\ed92"; /* ""*/
+$maki_art_gallery: "\ed93"; /* ""*/
+$maki_bar: "\ed94"; /* ""*/
+$maki_baseball: "\ed95"; /* ""*/
+$maki_basketball: "\ed96"; /* ""*/
+$maki_beer: "\ed97"; /* ""*/
+$maki_belowground_rail: "\ed98"; /* ""*/
+$maki_bicycle: "\ed99"; /* ""*/
+$maki_bus: "\ed9a"; /* ""*/
+$maki_cafe: "\ed9b"; /* ""*/
+$maki_campsite: "\ed9c"; /* ""*/
+$maki_cemetery: "\ed9d"; /* ""*/
+$maki_cinema: "\ed9e"; /* ""*/
+$maki_college: "\ed9f"; /* ""*/
+$maki_commerical_building: "\eda0"; /* ""*/
+$maki_credit_card: "\eda1"; /* ""*/
+$maki_cricket: "\eda2"; /* ""*/
+$maki_embassy: "\eda3"; /* ""*/
+$maki_fast_food: "\eda4"; /* ""*/
+$maki_ferry: "\eda5"; /* ""*/
+$maki_fire_station: "\eda6"; /* ""*/
+$maki_football: "\eda7"; /* ""*/
+$maki_fuel: "\eda8"; /* ""*/
+$maki_garden: "\eda9"; /* ""*/
+$maki_giraffe: "\edaa"; /* ""*/
+$maki_golf: "\edab"; /* ""*/
+$maki_grocery_store: "\edac"; /* ""*/
+$maki_harbor: "\edad"; /* ""*/
+$maki_heliport: "\edae"; /* ""*/
+$maki_hospital: "\edaf"; /* ""*/
+$maki_industrial_building: "\edb0"; /* ""*/
+$maki_library: "\edb1"; /* ""*/
+$maki_lodging: "\edb2"; /* ""*/
+$maki_london_underground: "\edb3"; /* ""*/
+$maki_minefield: "\edb4"; /* ""*/
+$maki_monument: "\edb5"; /* ""*/
+$maki_museum: "\edb6"; /* ""*/
+$maki_pharmacy: "\edb7"; /* ""*/
+$maki_pitch: "\edb8"; /* ""*/
+$maki_police: "\edb9"; /* ""*/
+$maki_post: "\edba"; /* ""*/
+$maki_prison: "\edbb"; /* ""*/
+$maki_rail: "\edbc"; /* ""*/
+$maki_religious_christian: "\edbd"; /* ""*/
+$maki_religious_islam: "\edbe"; /* ""*/
+$maki_religious_jewish: "\edbf"; /* ""*/
+$maki_restaurant: "\edc0"; /* ""*/
+$maki_roadblock: "\edc1"; /* ""*/
+$maki_school: "\edc2"; /* ""*/
+$maki_shop: "\edc3"; /* ""*/
+$maki_skiing: "\edc4"; /* ""*/
+$maki_soccer: "\edc5"; /* ""*/
+$maki_swimming: "\edc6"; /* ""*/
+$maki_tennis: "\edc7"; /* ""*/
+$maki_theatre: "\edc8"; /* ""*/
+$maki_toilet: "\edc9"; /* ""*/
+$maki_town_hall: "\edca"; /* ""*/
+$maki_trash: "\edcb"; /* ""*/
+$maki_tree_1: "\edcc"; /* ""*/
+$maki_tree_2: "\edcd"; /* ""*/
+$maki_warehouse: "\edce"; /* ""*/
+$meteocons_celcius: "\ecd1"; /* ""*/
+$meteocons_cloud_flash_alt: "\ecec"; /* ""*/
+$meteocons_cloud_flash_inv: "\ecd9"; /* ""*/
+$meteocons_cloud_flash: "\eceb"; /* ""*/
+$meteocons_cloud_inv: "\ecd8"; /* ""*/
+$meteocons_cloud_moon_inv: "\ecd7"; /* ""*/
+$meteocons_cloud_moon: "\ece5"; /* ""*/
+$meteocons_cloud_sun_inv: "\ecd6"; /* ""*/
+$meteocons_cloud_sun: "\ece4"; /* ""*/
+$meteocons_cloud: "\ecea"; /* ""*/
+$meteocons_clouds_flash_alt: "\ecd3"; /* ""*/
+$meteocons_clouds_flash_inv: "\eccd"; /* ""*/
+$meteocons_clouds_flash: "\ecf6"; /* ""*/
+$meteocons_clouds_inv: "\eccc"; /* ""*/
+$meteocons_clouds: "\ecf5"; /* ""*/
+$meteocons_compass: "\eccf"; /* ""*/
+$meteocons_drizzle_inv: "\ecda"; /* ""*/
+$meteocons_drizzle: "\eced"; /* ""*/
+$meteocons_eclipse: "\ece0"; /* ""*/
+$meteocons_fahrenheit: "\ecd2"; /* ""*/
+$meteocons_fog_cloud: "\ece8"; /* ""*/
+$meteocons_fog_moon: "\ece7"; /* ""*/
+$meteocons_fog_sun: "\ece6"; /* ""*/
+$meteocons_fog: "\ece9"; /* ""*/
+$meteocons_hail_inv: "\eccb"; /* ""*/
+$meteocons_hail: "\ecf4"; /* ""*/
+$meteocons_mist: "\ece1"; /* ""*/
+$meteocons_moon_inv: "\ecd5"; /* ""*/
+$meteocons_moon: "\ecdf"; /* ""*/
+$meteocons_na: "\ecd0"; /* ""*/
+$meteocons_rain_inv: "\ecdb"; /* ""*/
+$meteocons_rain: "\ecee"; /* ""*/
+$meteocons_snow_alt: "\ecf2"; /* ""*/
+$meteocons_snow_heavy_inv: "\ecca"; /* ""*/
+$meteocons_snow_heavy: "\ecf3"; /* ""*/
+$meteocons_snow_inv: "\ecc9"; /* ""*/
+$meteocons_snow: "\ecf1"; /* ""*/
+$meteocons_snowflake: "\ece3"; /* ""*/
+$meteocons_sun_inv: "\ecd4"; /* ""*/
+$meteocons_sun: "\ecde"; /* ""*/
+$meteocons_sunrise: "\ecdd"; /* ""*/
+$meteocons_temperature: "\ecce"; /* ""*/
+$meteocons_wind: "\ece2"; /* ""*/
+$meteocons_windy_inv: "\ecdc"; /* ""*/
+$meteocons_windy_rain_inv: "\ecc8"; /* ""*/
+$meteocons_windy_rain: "\ecf0"; /* ""*/
+$meteocons_windy: "\ecef"; /* ""*/
+$mfglabs_anchor: "\ed78"; /* ""*/
+$mfglabs_at: "\ed72"; /* ""*/
+$mfglabs_attach: "\ed16"; /* ""*/
+$mfglabs_attention_alt: "\ed29"; /* ""*/
+$mfglabs_attention: "\ed28"; /* ""*/
+$mfglabs_bell: "\ed27"; /* ""*/
+$mfglabs_calendar: "\ed33"; /* ""*/
+$mfglabs_camera: "\ed06"; /* ""*/
+$mfglabs_cancel_circled: "\ed0e"; /* ""*/
+$mfglabs_cancel: "\ed0d"; /* ""*/
+$mfglabs_ccw: "\ed4d"; /* ""*/
+$mfglabs_chart_bar: "\ed6c"; /* ""*/
+$mfglabs_chat: "\ed26"; /* ""*/
+$mfglabs_clock: "\ed38"; /* ""*/
+$mfglabs_cloud: "\ed60"; /* ""*/
+$mfglabs_cog: "\ed32"; /* ""*/
+$mfglabs_color_adjust: "\ed6a"; /* ""*/
+$mfglabs_comment: "\ed25"; /* ""*/
+$mfglabs_connected_object: "\ed6e"; /* ""*/
+$mfglabs_coverflow_empty: "\ed62"; /* ""*/
+$mfglabs_coverflow: "\ed61"; /* ""*/
+$mfglabs_data_science_inv: "\ed5b"; /* ""*/
+$mfglabs_data_science: "\ed5a"; /* ""*/
+$mfglabs_doc: "\ed2c"; /* ""*/
+$mfglabs_down_bold: "\ed45"; /* ""*/
+$mfglabs_down_fat: "\ed49"; /* ""*/
+$mfglabs_down_open: "\ed3d"; /* ""*/
+$mfglabs_down: "\ed41"; /* ""*/
+$mfglabs_download_cloud: "\ed1e"; /* ""*/
+$mfglabs_download: "\ed1c"; /* ""*/
+$mfglabs_dribbble_circled: "\ed89"; /* ""*/
+$mfglabs_dribbble: "\ed88"; /* ""*/
+$mfglabs_export: "\ed22"; /* ""*/
+$mfglabs_eye: "\ed1b"; /* ""*/
+$mfglabs_facebook_circled: "\ed83"; /* ""*/
+$mfglabs_facebook: "\ed82"; /* ""*/
+$mfglabs_fast_backward: "\ed55"; /* ""*/
+$mfglabs_fast_forward: "\ed54"; /* ""*/
+$mfglabs_female: "\ed74"; /* ""*/
+$mfglabs_fire: "\ed6b"; /* ""*/
+$mfglabs_flash: "\ed5f"; /* ""*/
+$mfglabs_folder_empty: "\ed30"; /* ""*/
+$mfglabs_folder_open_empty: "\ed31"; /* ""*/
+$mfglabs_folder_open: "\ed2f"; /* ""*/
+$mfglabs_folder: "\ed2e"; /* ""*/
+$mfglabs_fontsize: "\ed69"; /* ""*/
+$mfglabs_github_circled_alt2: "\ed7f"; /* ""*/
+$mfglabs_github_circled_alt: "\ed7e"; /* ""*/
+$mfglabs_github_circled: "\ed7d"; /* ""*/
+$mfglabs_github: "\ed7c"; /* ""*/
+$mfglabs_globe_inv: "\ed5e"; /* ""*/
+$mfglabs_globe: "\ed5d"; /* ""*/
+$mfglabs_gplus_circled: "\ed85"; /* ""*/
+$mfglabs_gplus: "\ed84"; /* ""*/
+$mfglabs_hash: "\ed73"; /* ""*/
+$mfglabs_hdd: "\ed6d"; /* ""*/
+$mfglabs_heart_broken: "\ecfa"; /* ""*/
+$mfglabs_heart: "\ecf9"; /* ""*/
+$mfglabs_help_circled_alt: "\ed11"; /* ""*/
+$mfglabs_help_circled: "\ed10"; /* ""*/
+$mfglabs_home: "\ed14"; /* ""*/
+$mfglabs_hourglass: "\ed3a"; /* ""*/
+$mfglabs_inbox: "\ed5c"; /* ""*/
+$mfglabs_info_circled_alt: "\ed13"; /* ""*/
+$mfglabs_info_circled: "\ed12"; /* ""*/
+$mfglabs_instagram_circled: "\ed8b"; /* ""*/
+$mfglabs_instagram: "\ed8a"; /* ""*/
+$mfglabs_isight: "\ed05"; /* ""*/
+$mfglabs_joystick: "\ed79"; /* ""*/
+$mfglabs_king: "\ed77"; /* ""*/
+$mfglabs_left_bold: "\ed46"; /* ""*/
+$mfglabs_left_fat: "\ed4a"; /* ""*/
+$mfglabs_left_open: "\ed3e"; /* ""*/
+$mfglabs_left: "\ed42"; /* ""*/
+$mfglabs_link: "\ed15"; /* ""*/
+$mfglabs_linkedin_circled: "\ed87"; /* ""*/
+$mfglabs_linkedin: "\ed86"; /* ""*/
+$mfglabs_location: "\ed2a"; /* ""*/
+$mfglabs_lock_alt: "\ed18"; /* ""*/
+$mfglabs_lock_open_alt: "\ed1a"; /* ""*/
+$mfglabs_lock_open: "\ed19"; /* ""*/
+$mfglabs_lock: "\ed17"; /* ""*/
+$mfglabs_login: "\ed34"; /* ""*/
+$mfglabs_logout: "\ed35"; /* ""*/
+$mfglabs_mail: "\ecf8"; /* ""*/
+$mfglabs_male: "\ed75"; /* ""*/
+$mfglabs_math_circled_empty: "\ed65"; /* ""*/
+$mfglabs_math_circled: "\ed64"; /* ""*/
+$mfglabs_math: "\ed63"; /* ""*/
+$mfglabs_menu: "\ed07"; /* ""*/
+$mfglabs_mfg_logo_circled: "\ed8f"; /* ""*/
+$mfglabs_mfg_logo: "\ed8e"; /* ""*/
+$mfglabs_mic_off: "\ed37"; /* ""*/
+$mfglabs_mic: "\ed36"; /* ""*/
+$mfglabs_mobile: "\ed59"; /* ""*/
+$mfglabs_monitor: "\ed57"; /* ""*/
+$mfglabs_movie: "\ed03"; /* ""*/
+$mfglabs_newspaper: "\ed2d"; /* ""*/
+$mfglabs_ok_circled: "\ed0c"; /* ""*/
+$mfglabs_ok: "\ed0b"; /* ""*/
+$mfglabs_paper_plane_alt2: "\ed68"; /* ""*/
+$mfglabs_paper_plane_alt: "\ed67"; /* ""*/
+$mfglabs_paper_plane: "\ed66"; /* ""*/
+$mfglabs_pause: "\ed50"; /* ""*/
+$mfglabs_pencil: "\ed21"; /* ""*/
+$mfglabs_play: "\ed4f"; /* ""*/
+$mfglabs_plus: "\ed0f"; /* ""*/
+$mfglabs_print: "\ed23"; /* ""*/
+$mfglabs_reply: "\ed20"; /* ""*/
+$mfglabs_retweet: "\ed24"; /* ""*/
+$mfglabs_right_bold: "\ed47"; /* ""*/
+$mfglabs_right_fat: "\ed4b"; /* ""*/
+$mfglabs_right_open: "\ed3f"; /* ""*/
+$mfglabs_right: "\ed43"; /* ""*/
+$mfglabs_ruler: "\ed6f"; /* ""*/
+$mfglabs_search: "\ecf7"; /* ""*/
+$mfglabs_shuffle: "\ed4e"; /* ""*/
+$mfglabs_soundcloud_circled: "\ed8d"; /* ""*/
+$mfglabs_soundcloud: "\ed8c"; /* ""*/
+$mfglabs_spinner1: "\ed7a"; /* ""*/
+$mfglabs_spinner2: "\ed7b"; /* ""*/
+$mfglabs_spread: "\ed76"; /* ""*/
+$mfglabs_star_empty: "\ecfc"; /* ""*/
+$mfglabs_star_half: "\ecfd"; /* ""*/
+$mfglabs_star_half_empty: "\ecfe"; /* ""*/
+$mfglabs_star: "\ecfb"; /* ""*/
+$mfglabs_stop: "\ed51"; /* ""*/
+$mfglabs_stopwatch: "\ed39"; /* ""*/
+$mfglabs_tablet: "\ed58"; /* ""*/
+$mfglabs_th_list: "\ed0a"; /* ""*/
+$mfglabs_th_thumb_empty: "\ed09"; /* ""*/
+$mfglabs_th_thumb: "\ed08"; /* ""*/
+$mfglabs_to_end: "\ed52"; /* ""*/
+$mfglabs_to_start: "\ed53"; /* ""*/
+$mfglabs_trash: "\ed2b"; /* ""*/
+$mfglabs_trophy: "\ed56"; /* ""*/
+$mfglabs_twitter_circled: "\ed81"; /* ""*/
+$mfglabs_twitter: "\ed80"; /* ""*/
+$mfglabs_up_bold: "\ed48"; /* ""*/
+$mfglabs_up_fat: "\ed4c"; /* ""*/
+$mfglabs_up_open: "\ed40"; /* ""*/
+$mfglabs_up: "\ed44"; /* ""*/
+$mfglabs_upload_cloud: "\ed1f"; /* ""*/
+$mfglabs_upload: "\ed1d"; /* ""*/
+$mfglabs_user_female: "\ed01"; /* ""*/
+$mfglabs_user_male: "\ed00"; /* ""*/
+$mfglabs_user: "\ecff"; /* ""*/
+$mfglabs_users: "\ed02"; /* ""*/
+$mfglabs_vector_pencil: "\ed71"; /* ""*/
+$mfglabs_vector: "\ed70"; /* ""*/
+$mfglabs_videocam: "\ed04"; /* ""*/
+$mfglabs_zoom_in: "\ed3b"; /* ""*/
+$mfglabs_zoom_out: "\ed3c"; /* ""*/
+$modernpics_article_alt: "\ec94"; /* ""*/
+$modernpics_article: "\ec93"; /* ""*/
+$modernpics_at: "\ecbd"; /* ""*/
+$modernpics_attention: "\ec8d"; /* ""*/
+$modernpics_award: "\ecaf"; /* ""*/
+$modernpics_basket_alt: "\ec98"; /* ""*/
+$modernpics_basket: "\ec97"; /* ""*/
+$modernpics_bell: "\ec8c"; /* ""*/
+$modernpics_book: "\ecb6"; /* ""*/
+$modernpics_bullhorn: "\ec9e"; /* ""*/
+$modernpics_calendar_alt: "\ec9a"; /* ""*/
+$modernpics_calendar: "\ec99"; /* ""*/
+$modernpics_camera: "\ec77"; /* ""*/
+$modernpics_cancel_circle: "\ec7c"; /* ""*/
+$modernpics_cancel: "\ec7b"; /* ""*/
+$modernpics_cd: "\ecb4"; /* ""*/
+$modernpics_chart_bar: "\ecba"; /* ""*/
+$modernpics_chart_pie: "\ecbb"; /* ""*/
+$modernpics_chart: "\ecb9"; /* ""*/
+$modernpics_chat: "\ec8a"; /* ""*/
+$modernpics_clock_alt: "\eca0"; /* ""*/
+$modernpics_clock: "\ec9f"; /* ""*/
+$modernpics_colon: "\ecbe"; /* ""*/
+$modernpics_cw: "\ecad"; /* ""*/
+$modernpics_doc: "\ec92"; /* ""*/
+$modernpics_dollar: "\ecbc"; /* ""*/
+$modernpics_down_dir: "\eca7"; /* ""*/
+$modernpics_down: "\ecab"; /* ""*/
+$modernpics_download: "\ec85"; /* ""*/
+$modernpics_easel: "\ecb7"; /* ""*/
+$modernpics_edit: "\ec89"; /* ""*/
+$modernpics_export: "\ec86"; /* ""*/
+$modernpics_eye: "\ec81"; /* ""*/
+$modernpics_facebook_rect: "\ecc3"; /* ""*/
+$modernpics_facebook: "\ecc2"; /* ""*/
+$modernpics_globe: "\ecb8"; /* ""*/
+$modernpics_grid: "\ecb5"; /* ""*/
+$modernpics_heart: "\ec6f"; /* ""*/
+$modernpics_home: "\ec7e"; /* ""*/
+$modernpics_info: "\ec8e"; /* ""*/
+$modernpics_ipod: "\ecb3"; /* ""*/
+$modernpics_left_dir: "\eca8"; /* ""*/
+$modernpics_location: "\ec90"; /* ""*/
+$modernpics_lock_open: "\ec80"; /* ""*/
+$modernpics_lock: "\ec7f"; /* ""*/
+$modernpics_mail: "\ec6e"; /* ""*/
+$modernpics_mobile_alt: "\ecb1"; /* ""*/
+$modernpics_mobile: "\ecb0"; /* ""*/
+$modernpics_money: "\ecc1"; /* ""*/
+$modernpics_ok: "\ec7a"; /* ""*/
+$modernpics_pencil_alt: "\ec88"; /* ""*/
+$modernpics_pencil: "\ec87"; /* ""*/
+$modernpics_plus: "\ec7d"; /* ""*/
+$modernpics_popup: "\eca6"; /* ""*/
+$modernpics_print: "\ec8b"; /* ""*/
+$modernpics_question: "\ec8f"; /* ""*/
+$modernpics_resize_full: "\eca2"; /* ""*/
+$modernpics_resize_small: "\eca3"; /* ""*/
+$modernpics_right_dir: "\eca9"; /* ""*/
+$modernpics_rss: "\ec95"; /* ""*/
+$modernpics_search: "\ec6d"; /* ""*/
+$modernpics_semicolon: "\ecbf"; /* ""*/
+$modernpics_signal: "\ecae"; /* ""*/
+$modernpics_squares: "\ecc0"; /* ""*/
+$modernpics_star: "\ec70"; /* ""*/
+$modernpics_stop: "\eca1"; /* ""*/
+$modernpics_tablet: "\ecb2"; /* ""*/
+$modernpics_tag: "\ec82"; /* ""*/
+$modernpics_th_list: "\ec79"; /* ""*/
+$modernpics_th: "\ec78"; /* ""*/
+$modernpics_thumbs_down: "\ec84"; /* ""*/
+$modernpics_thumbs_up: "\ec83"; /* ""*/
+$modernpics_trash: "\ec91"; /* ""*/
+$modernpics_twitter_bird: "\ecc5"; /* ""*/
+$modernpics_twitter_rect: "\ecc6"; /* ""*/
+$modernpics_twitter: "\ecc4"; /* ""*/
+$modernpics_up_dir: "\ecaa"; /* ""*/
+$modernpics_up: "\ecac"; /* ""*/
+$modernpics_user_pair: "\ec73"; /* ""*/
+$modernpics_user_woman: "\ec72"; /* ""*/
+$modernpics_user: "\ec71"; /* ""*/
+$modernpics_video_alt: "\ec74"; /* ""*/
+$modernpics_videocam_alt: "\ec76"; /* ""*/
+$modernpics_videocam: "\ec75"; /* ""*/
+$modernpics_volume_down: "\ec9c"; /* ""*/
+$modernpics_volume_off: "\ec9b"; /* ""*/
+$modernpics_volume_up: "\ec9d"; /* ""*/
+$modernpics_wrench: "\ec96"; /* ""*/
+$modernpics_youtube: "\ecc7"; /* ""*/
+$modernpics_zoom_in: "\eca4"; /* ""*/
+$modernpics_zoom_out: "\eca5"; /* ""*/
+$typicons_address: "\eb04"; /* ""*/
+$typicons_anchor_outline: "\ebae"; /* ""*/
+$typicons_anchor: "\ebaf"; /* ""*/
+$typicons_archive: "\eb14"; /* ""*/
+$typicons_arrows_cw_outline: "\eb4e"; /* ""*/
+$typicons_arrows_cw: "\eb4f"; /* ""*/
+$typicons_at_circled: "\ebb9"; /* ""*/
+$typicons_at: "\ebb8"; /* ""*/
+$typicons_attach_outline: "\ead6"; /* ""*/
+$typicons_attach: "\ead7"; /* ""*/
+$typicons_attention_filled: "\eaff"; /* ""*/
+$typicons_attention: "\eafe"; /* ""*/
+$typicons_basket: "\eb20"; /* ""*/
+$typicons_bat_charge: "\eb69"; /* ""*/
+$typicons_bat1: "\eb65"; /* ""*/
+$typicons_bat2: "\eb66"; /* ""*/
+$typicons_bat3: "\eb67"; /* ""*/
+$typicons_bat4: "\eb68"; /* ""*/
+$typicons_beer: "\ebad"; /* ""*/
+$typicons_bell: "\eafd"; /* ""*/
+$typicons_block_outline: "\eb2e"; /* ""*/
+$typicons_block: "\eb2f"; /* ""*/
+$typicons_bookmark: "\eae2"; /* ""*/
+$typicons_box: "\eb15"; /* ""*/
+$typicons_briefcase: "\eb8b"; /* ""*/
+$typicons_brush: "\eb8c"; /* ""*/
+$typicons_calculator: "\ebb3"; /* ""*/
+$typicons_calendar_outlilne: "\eb21"; /* ""*/
+$typicons_calendar: "\eb22"; /* ""*/
+$typicons_camera_outline: "\eab8"; /* ""*/
+$typicons_camera: "\eab9"; /* ""*/
+$typicons_cancel_alt_filled: "\eac5"; /* ""*/
+$typicons_cancel_alt: "\eac4"; /* ""*/
+$typicons_cancel_circled_outline: "\eac6"; /* ""*/
+$typicons_cancel_circled: "\eac7"; /* ""*/
+$typicons_cancel_outline: "\eac2"; /* ""*/
+$typicons_cancel: "\eac3"; /* ""*/
+$typicons_certificate_outline: "\eba6"; /* ""*/
+$typicons_certificate: "\eba7"; /* ""*/
+$typicons_chart_alt_outline: "\eb96"; /* ""*/
+$typicons_chart_alt: "\eb97"; /* ""*/
+$typicons_chart_bar_outline: "\eb98"; /* ""*/
+$typicons_chart_bar: "\eb99"; /* ""*/
+$typicons_chart_outline: "\eb94"; /* ""*/
+$typicons_chart_pie_outline: "\eb9a"; /* ""*/
+$typicons_chart_pie: "\eb9b"; /* ""*/
+$typicons_chart: "\eb95"; /* ""*/
+$typicons_chat_alt: "\eafc"; /* ""*/
+$typicons_chat: "\eafb"; /* ""*/
+$typicons_check_outline: "\eb90"; /* ""*/
+$typicons_check: "\eb91"; /* ""*/
+$typicons_clipboard: "\eb9e"; /* ""*/
+$typicons_clock: "\eb2a"; /* ""*/
+$typicons_cloud_flash: "\eb84"; /* ""*/
+$typicons_cloud_sun: "\eb81"; /* ""*/
+$typicons_cloud_wind: "\eb85"; /* ""*/
+$typicons_cloud: "\eb7a"; /* ""*/
+$typicons_code_outline: "\eaf1"; /* ""*/
+$typicons_code: "\eaf2"; /* ""*/
+$typicons_coffee: "\ebac"; /* ""*/
+$typicons_cog_outline: "\eb1c"; /* ""*/
+$typicons_cog: "\eb1d"; /* ""*/
+$typicons_comment: "\eafa"; /* ""*/
+$typicons_compass: "\eb0a"; /* ""*/
+$typicons_contacts: "\eb02"; /* ""*/
+$typicons_contrast: "\eb73"; /* ""*/
+$typicons_credit_card: "\eb9d"; /* ""*/
+$typicons_cw_outline: "\eb4c"; /* ""*/
+$typicons_cw: "\eb4d"; /* ""*/
+$typicons_database: "\eb9f"; /* ""*/
+$typicons_desktop: "\eb6f"; /* ""*/
+$typicons_direction_outline: "\eb08"; /* ""*/
+$typicons_direction: "\eb09"; /* ""*/
+$typicons_divide_outline: "\eacc"; /* ""*/
+$typicons_divide: "\eacd"; /* ""*/
+$typicons_doc_add: "\eb0e"; /* ""*/
+$typicons_doc_remove: "\eb0f"; /* ""*/
+$typicons_doc_text: "\eb0d"; /* ""*/
+$typicons_doc: "\eb0c"; /* ""*/
+$typicons_down_outline: "\eb44"; /* ""*/
+$typicons_down_small: "\eb48"; /* ""*/
+$typicons_down: "\eb40"; /* ""*/
+$typicons_download_outline: "\eae7"; /* ""*/
+$typicons_download: "\eae8"; /* ""*/
+$typicons_dribbble_circled: "\ebc0"; /* ""*/
+$typicons_dribbble: "\ebc1"; /* ""*/
+$typicons_drizzle: "\eb82"; /* ""*/
+$typicons_edit: "\eaf8"; /* ""*/
+$typicons_eject_alt_outline: "\eb63"; /* ""*/
+$typicons_eject_alt: "\eb64"; /* ""*/
+$typicons_eject_outline: "\eb61"; /* ""*/
+$typicons_eject: "\eb62"; /* ""*/
+$typicons_eq_outline: "\eace"; /* ""*/
+$typicons_eq: "\eacf"; /* ""*/
+$typicons_export_outline: "\eaf3"; /* ""*/
+$typicons_export: "\eaf4"; /* ""*/
+$typicons_eye_outline: "\eade"; /* ""*/
+$typicons_eye: "\eadf"; /* ""*/
+$typicons_facebook_circled: "\ebc2"; /* ""*/
+$typicons_facebook: "\ebc3"; /* ""*/
+$typicons_fast_fw_outline: "\eb5b"; /* ""*/
+$typicons_fast_fw: "\eb5c"; /* ""*/
+$typicons_feather: "\eaf7"; /* ""*/
+$typicons_flag_filled: "\eae4"; /* ""*/
+$typicons_flag: "\eae3"; /* ""*/
+$typicons_flash_outline: "\eb7b"; /* ""*/
+$typicons_flash: "\eb7c"; /* ""*/
+$typicons_flask: "\ebaa"; /* ""*/
+$typicons_flickr_circled: "\ebc4"; /* ""*/
+$typicons_flickr: "\ebc5"; /* ""*/
+$typicons_flow_cross: "\eba5"; /* ""*/
+$typicons_flow_merge: "\eba3"; /* ""*/
+$typicons_flow_parallel: "\eba4"; /* ""*/
+$typicons_flow_split: "\eba2"; /* ""*/
+$typicons_folder_add: "\eb12"; /* ""*/
+$typicons_folder_delete: "\eb13"; /* ""*/
+$typicons_folder: "\eb11"; /* ""*/
+$typicons_forward_outline: "\eaef"; /* ""*/
+$typicons_forward: "\eaf0"; /* ""*/
+$typicons_gift: "\eb92"; /* ""*/
+$typicons_github_circled: "\ebc6"; /* ""*/
+$typicons_github: "\ebc7"; /* ""*/
+$typicons_globe_alt_outline: "\eb76"; /* ""*/
+$typicons_globe_alt: "\eb77"; /* ""*/
+$typicons_globe_outline: "\eb74"; /* ""*/
+$typicons_globe: "\eb75"; /* ""*/
+$typicons_headphones: "\eb29"; /* ""*/
+$typicons_heart_filled: "\eaa8"; /* ""*/
+$typicons_heart: "\eaa7"; /* ""*/
+$typicons_home_outline: "\ead2"; /* ""*/
+$typicons_home: "\ead3"; /* ""*/
+$typicons_infinity_outline: "\ebb4"; /* ""*/
+$typicons_infinity: "\ebb5"; /* ""*/
+$typicons_info_outline: "\ead0"; /* ""*/
+$typicons_info: "\ead1"; /* ""*/
+$typicons_key_outline: "\eba0"; /* ""*/
+$typicons_key: "\eba1"; /* ""*/
+$typicons_laptop: "\eb70"; /* ""*/
+$typicons_lastfm_circled: "\ebc8"; /* ""*/
+$typicons_lastfm: "\ebc9"; /* ""*/
+$typicons_leaf: "\eb89"; /* ""*/
+$typicons_left_open_outline: "\eb3c"; /* ""*/
+$typicons_left_open: "\eb3d"; /* ""*/
+$typicons_left_outline: "\eb45"; /* ""*/
+$typicons_left_small: "\eb49"; /* ""*/
+$typicons_left: "\eb41"; /* ""*/
+$typicons_lifebuoy: "\eb8a"; /* ""*/
+$typicons_lightbulb: "\eb2d"; /* ""*/
+$typicons_link_outline: "\ead4"; /* ""*/
+$typicons_link: "\ead5"; /* ""*/
+$typicons_linkedin_circled: "\ebca"; /* ""*/
+$typicons_linkedin: "\ebcb"; /* ""*/
+$typicons_location_outline: "\eb05"; /* ""*/
+$typicons_location: "\eb06"; /* ""*/
+$typicons_lock_filled: "\ead9"; /* ""*/
+$typicons_lock_open_filled: "\eadb"; /* ""*/
+$typicons_lock_open: "\eada"; /* ""*/
+$typicons_lock: "\ead8"; /* ""*/
+$typicons_loop_alt_outline: "\eb52"; /* ""*/
+$typicons_loop_alt: "\eb53"; /* ""*/
+$typicons_loop_outline: "\eb50"; /* ""*/
+$typicons_loop: "\eb51"; /* ""*/
+$typicons_looped_square_interest: "\ebbb"; /* ""*/
+$typicons_looped_square_outline: "\ebba"; /* ""*/
+$typicons_mail: "\eaa6"; /* ""*/
+$typicons_map: "\eb07"; /* ""*/
+$typicons_menu_outline: "\eb1a"; /* ""*/
+$typicons_menu: "\eb1b"; /* ""*/
+$typicons_mic_outline: "\eb23"; /* ""*/
+$typicons_mic: "\eb24"; /* ""*/
+$typicons_minus_outline: "\eaca"; /* ""*/
+$typicons_minus: "\eacb"; /* ""*/
+$typicons_mobile: "\eb72"; /* ""*/
+$typicons_moon: "\eb7d"; /* ""*/
+$typicons_move_outline: "\eb34"; /* ""*/
+$typicons_move: "\eb35"; /* ""*/
+$typicons_music_outline: "\eaa2"; /* ""*/
+$typicons_music: "\eaa3"; /* ""*/
+$typicons_news: "\eb10"; /* ""*/
+$typicons_ok_outline: "\eac0"; /* ""*/
+$typicons_ok: "\eac1"; /* ""*/
+$typicons_pause_outline: "\eb59"; /* ""*/
+$typicons_pause: "\eb5a"; /* ""*/
+$typicons_pen: "\eaf6"; /* ""*/
+$typicons_pencil: "\eaf5"; /* ""*/
+$typicons_phone_outline: "\eb18"; /* ""*/
+$typicons_phone: "\eb19"; /* ""*/
+$typicons_pi_outline: "\ebb6"; /* ""*/
+$typicons_pi: "\ebb7"; /* ""*/
+$typicons_picture_outline: "\eab6"; /* ""*/
+$typicons_picture: "\eab7"; /* ""*/
+$typicons_pin_outline: "\eadc"; /* ""*/
+$typicons_pin: "\eadd"; /* ""*/
+$typicons_pinterest_circled: "\ebcc"; /* ""*/
+$typicons_pinterest: "\ebcd"; /* ""*/
+$typicons_pipette: "\eb8d"; /* ""*/
+$typicons_plane_outline: "\eb87"; /* ""*/
+$typicons_plane: "\eb88"; /* ""*/
+$typicons_play_outline: "\eb55"; /* ""*/
+$typicons_play: "\eb56"; /* ""*/
+$typicons_plug: "\eb6a"; /* ""*/
+$typicons_plus_outline: "\eac8"; /* ""*/
+$typicons_plus: "\eac9"; /* ""*/
+$typicons_popup_1: "\eb36"; /* ""*/
+$typicons_popup: "\eb3b"; /* ""*/
+$typicons_power_outline: "\eb8e"; /* ""*/
+$typicons_power: "\eb8f"; /* ""*/
+$typicons_print: "\eaf9"; /* ""*/
+$typicons_puzzle_outline: "\ebb0"; /* ""*/
+$typicons_puzzle: "\ebb1"; /* ""*/
+$typicons_rain: "\eb80"; /* ""*/
+$typicons_record_outline: "\eb5f"; /* ""*/
+$typicons_record: "\eb60"; /* ""*/
+$typicons_reply_outline: "\eaed"; /* ""*/
+$typicons_reply: "\eaee"; /* ""*/
+$typicons_resize_full_outline: "\eb30"; /* ""*/
+$typicons_resize_full: "\eb31"; /* ""*/
+$typicons_resize_normal_outline: "\eb32"; /* ""*/
+$typicons_resize_normal: "\eb33"; /* ""*/
+$typicons_rewind_outline: "\eb5d"; /* ""*/
+$typicons_rewind: "\eb5e"; /* ""*/
+$typicons_right_open_outline: "\eb3e"; /* ""*/
+$typicons_right_open: "\eb3f"; /* ""*/
+$typicons_right_outline: "\eb46"; /* ""*/
+$typicons_right_small: "\eb4a"; /* ""*/
+$typicons_right: "\eb42"; /* ""*/
+$typicons_rss_outline: "\eb16"; /* ""*/
+$typicons_rss: "\eb17"; /* ""*/
+$typicons_scissors_outline: "\eba8"; /* ""*/
+$typicons_scissors: "\eba9"; /* ""*/
+$typicons_search_outline: "\eaa4"; /* ""*/
+$typicons_search: "\eaa5"; /* ""*/
+$typicons_shuffle: "\eb54"; /* ""*/
+$typicons_skype_outline: "\ebce"; /* ""*/
+$typicons_skype: "\ebcf"; /* ""*/
+$typicons_snow: "\eb83"; /* ""*/
+$typicons_sort_alphabet_outline: "\ebbc"; /* ""*/
+$typicons_sort_alphabet: "\ebbd"; /* ""*/
+$typicons_sort_numeric_outline: "\ebbe"; /* ""*/
+$typicons_sort_numeric: "\ebbf"; /* ""*/
+$typicons_star_filled: "\eaaa"; /* ""*/
+$typicons_star: "\eaa9"; /* ""*/
+$typicons_stop_outline: "\eb57"; /* ""*/
+$typicons_stop: "\eb58"; /* ""*/
+$typicons_stopwatch: "\eb2c"; /* ""*/
+$typicons_sun_filled: "\eb79"; /* ""*/
+$typicons_sun: "\eb78"; /* ""*/
+$typicons_tablet: "\eb71"; /* ""*/
+$typicons_tag: "\eae0"; /* ""*/
+$typicons_tags: "\eae1"; /* ""*/
+$typicons_target_outline: "\eb6b"; /* ""*/
+$typicons_target: "\eb6c"; /* ""*/
+$typicons_temperatire: "\eb93"; /* ""*/
+$typicons_th_large_outline: "\eabc"; /* ""*/
+$typicons_th_large: "\eabd"; /* ""*/
+$typicons_th_list_outline: "\eabe"; /* ""*/
+$typicons_th_list: "\eabf"; /* ""*/
+$typicons_th_outline: "\eaba"; /* ""*/
+$typicons_th: "\eabb"; /* ""*/
+$typicons_thumbs_down: "\eae6"; /* ""*/
+$typicons_thumbs_up: "\eae5"; /* ""*/
+$typicons_ticket: "\eb9c"; /* ""*/
+$typicons_trash: "\eb0b"; /* ""*/
+$typicons_tree: "\ebb2"; /* ""*/
+$typicons_tumbler_circled: "\ebd0"; /* ""*/
+$typicons_tumbler: "\ebd1"; /* ""*/
+$typicons_twitter_circled: "\ebd2"; /* ""*/
+$typicons_twitter: "\ebd3"; /* ""*/
+$typicons_up_outline: "\eb47"; /* ""*/
+$typicons_up_small: "\eb4b"; /* ""*/
+$typicons_up: "\eb43"; /* ""*/
+$typicons_upload_cloud_outline: "\eaeb"; /* ""*/
+$typicons_upload_cloud: "\eaec"; /* ""*/
+$typicons_upload_outline: "\eae9"; /* ""*/
+$typicons_upload: "\eaea"; /* ""*/
+$typicons_user_add_outline: "\eaaf"; /* ""*/
+$typicons_user_add: "\eab0"; /* ""*/
+$typicons_user_delete_outline: "\eab1"; /* ""*/
+$typicons_user_delete: "\eab2"; /* ""*/
+$typicons_user_outline: "\eaab"; /* ""*/
+$typicons_user: "\eaac"; /* ""*/
+$typicons_users_outline: "\eaad"; /* ""*/
+$typicons_users: "\eaae"; /* ""*/
+$typicons_vcard: "\eb03"; /* ""*/
+$typicons_video: "\eab3"; /* ""*/
+$typicons_videocam_outline: "\eab4"; /* ""*/
+$typicons_videocam: "\eab5"; /* ""*/
+$typicons_vimeo_circled: "\ebd4"; /* ""*/
+$typicons_vimeo: "\ebd5"; /* ""*/
+$typicons_volume_high: "\eb28"; /* ""*/
+$typicons_volume_low: "\eb26"; /* ""*/
+$typicons_volume_middle: "\eb27"; /* ""*/
+$typicons_volume_off: "\eb25"; /* ""*/
+$typicons_warning_empty: "\eb00"; /* ""*/
+$typicons_warning: "\eb01"; /* ""*/
+$typicons_waves_outline: "\eb7e"; /* ""*/
+$typicons_waves: "\eb7f"; /* ""*/
+$typicons_wifi_outline: "\eb6d"; /* ""*/
+$typicons_wifi: "\eb6e"; /* ""*/
+$typicons_wind: "\eb86"; /* ""*/
+$typicons_wine: "\ebab"; /* ""*/
+$typicons_wrench_outline: "\eb1e"; /* ""*/
+$typicons_wrench: "\eb1f"; /* ""*/
+$typicons_wristwatch: "\eb2b"; /* ""*/
+$typicons_zoom_in_outline: "\eb37"; /* ""*/
+$typicons_zoom_in: "\eb38"; /* ""*/
+$typicons_zoom_out_outline: "\eb39"; /* ""*/
+$typicons_zoom_out: "\eb3a"; /* ""*/
+$zocial_acrobat: "\ee2c"; /* ""*/
+$zocial_aim: "\edd0"; /* ""*/
+$zocial_amazon: "\ee09"; /* ""*/
+$zocial_android: "\edd4"; /* ""*/
+$zocial_angellist: "\ee27"; /* ""*/
+$zocial_appnet: "\ee2a"; /* ""*/
+$zocial_appstore: "\edec"; /* ""*/
+$zocial_bitbucket: "\ee30"; /* ""*/
+$zocial_bitcoin: "\edde"; /* ""*/
+$zocial_blogger: "\eded"; /* ""*/
+$zocial_buffer: "\ee2e"; /* ""*/
+$zocial_calendar: "\edda"; /* ""*/
+$zocial_call: "\ede3"; /* ""*/
+$zocial_cart: "\ee25"; /* ""*/
+$zocial_cc: "\edee"; /* ""*/
+$zocial_chrome: "\ee04"; /* ""*/
+$zocial_cloudapp: "\ee0b"; /* ""*/
+$zocial_delicious: "\edd1"; /* ""*/
+$zocial_digg: "\ede7"; /* ""*/
+$zocial_disqus: "\edfb"; /* ""*/
+$zocial_dribbble: "\edef"; /* ""*/
+$zocial_dropbox: "\ee0c"; /* ""*/
+$zocial_drupal: "\ee2d"; /* ""*/
+$zocial_dwolla: "\ee29"; /* ""*/
+$zocial_ebay: "\ee0d"; /* ""*/
+$zocial_email: "\ee05"; /* ""*/
+$zocial_eventasaurus: "\ee1c"; /* ""*/
+$zocial_eventbrite: "\ee20"; /* ""*/
+$zocial_eventful: "\edd5"; /* ""*/
+$zocial_evernote: "\edf0"; /* ""*/
+$zocial_facebook: "\ee0e"; /* ""*/
+$zocial_fivehundredpx: "\eddc"; /* ""*/
+$zocial_flattr: "\edd3"; /* ""*/
+$zocial_flickr: "\edf1"; /* ""*/
+$zocial_forrst: "\ede6"; /* ""*/
+$zocial_foursquare: "\ede0"; /* ""*/
+$zocial_github_circled: "\ee10"; /* ""*/
+$zocial_github: "\ee0f"; /* ""*/
+$zocial_gmail: "\ee16"; /* ""*/
+$zocial_google: "\edf2"; /* ""*/
+$zocial_googleplay: "\ee11"; /* ""*/
+$zocial_gowalla: "\edeb"; /* ""*/
+$zocial_gplus: "\edd7"; /* ""*/
+$zocial_grooveshark: "\ede4"; /* ""*/
+$zocial_guest: "\edea"; /* ""*/
+$zocial_hackernews: "\ee34"; /* ""*/
+$zocial_html5: "\ede1"; /* ""*/
+$zocial_ie: "\ede2"; /* ""*/
+$zocial_instagram: "\ee28"; /* ""*/
+$zocial_instapaper: "\edf4"; /* ""*/
+$zocial_intensedebate: "\ee1f"; /* ""*/
+$zocial_itunes: "\ee12"; /* ""*/
+$zocial_klout: "\edf6"; /* ""*/
+$zocial_lanyrd: "\edd9"; /* ""*/
+$zocial_lastfm: "\ee15"; /* ""*/
+$zocial_lego: "\ee31"; /* ""*/
+$zocial_linkedin: "\edf7"; /* ""*/
+$zocial_lkdto: "\ee35"; /* ""*/
+$zocial_login: "\ee32"; /* ""*/
+$zocial_macstore: "\ee06"; /* ""*/
+$zocial_meetup: "\edf8"; /* ""*/
+$zocial_myspace: "\ee07"; /* ""*/
+$zocial_ninetyninedesigns: "\ede5"; /* ""*/
+$zocial_openid: "\ee18"; /* ""*/
+$zocial_opentable: "\ee24"; /* ""*/
+$zocial_paypal: "\edd2"; /* ""*/
+$zocial_pinboard: "\ee17"; /* ""*/
+$zocial_pinterest: "\eddd"; /* ""*/
+$zocial_plancast: "\edfa"; /* ""*/
+$zocial_plurk: "\ee13"; /* ""*/
+$zocial_pocket: "\ee2f"; /* ""*/
+$zocial_podcast: "\ee08"; /* ""*/
+$zocial_posterous: "\ee22"; /* ""*/
+$zocial_print: "\ee26"; /* ""*/
+$zocial_quora: "\ee19"; /* ""*/
+$zocial_reddit: "\ede9"; /* ""*/
+$zocial_rss: "\edfc"; /* ""*/
+$zocial_scribd: "\ee21"; /* ""*/
+$zocial_skype: "\edfd"; /* ""*/
+$zocial_smashmag: "\edd6"; /* ""*/
+$zocial_songkick: "\ee14"; /* ""*/
+$zocial_soundcloud: "\ee1a"; /* ""*/
+$zocial_spotify: "\ede8"; /* ""*/
+$zocial_stackoverflow: "\ee33"; /* ""*/
+$zocial_statusnet: "\ee2b"; /* ""*/
+$zocial_steam: "\ee0a"; /* ""*/
+$zocial_stripe: "\ee23"; /* ""*/
+$zocial_stumbleupon: "\eddb"; /* ""*/
+$zocial_tumblr: "\ee1b"; /* ""*/
+$zocial_twitter: "\edfe"; /* ""*/
+$zocial_viadeo: "\edf3"; /* ""*/
+$zocial_vimeo: "\ee00"; /* ""*/
+$zocial_vk: "\edf9"; /* ""*/
+$zocial_w3c: "\eddf"; /* ""*/
+$zocial_weibo: "\edf5"; /* ""*/
+$zocial_wikipedia: "\edd8"; /* ""*/
+$zocial_windows: "\ee01"; /* ""*/
+$zocial_wordpress: "\ee1d"; /* ""*/
+$zocial_xing: "\ee02"; /* ""*/
+$zocial_yahoo: "\ee03"; /* ""*/
+$zocial_yelp: "\ee1e"; /* ""*/
+$zocial_youtube: "\edff"; /* ""*/
+
+$scubox_twintank: "\e801"; /* '' */
+$scubox_cert_01: "\e803"; /* '' */
+$scubox_cert_02: "\e804"; /* '' */
+$scubox_logo_01: "\e805"; /* '' */
+$scubox_logo_02: "\e806"; /* '' */
+$scubox_power: "\e80b"; /* '' */
+$scubox_dash: "\e80c"; /* '' */
+$scubox_cog: "\e80d"; /* '' */
+$scubox_help: "\e80e"; /* '' */
+$scubox_user: "\e80f"; /* '' */
+$scubox_close: "\e810"; /* '' */
+$scubox_search: "\e811"; /* '' */
+$scubox_info: "\e812"; /* '' */
+$scubox_list: "\e813"; /* '' */
+$scubox_page: "\e814"; /* '' */
+$scubox_window: "\e815"; /* '' */
+$scubox_marker: "\e816"; /* '' */
+$scubox_map: "\e817"; /* '' */
+$scubox_map_and_marker_01: "\e818"; /* '' */
+$scubox_map_and_marker_02: "\e819"; /* '' */
+$scubox_globe: "\e81a"; /* '' */
+$scubox_stats_01: "\e81b"; /* '' */
+$scubox_pie_01: "\e81c"; /* '' */
+$scubox_pie_02: "\e81d"; /* '' */
+$scubox_stats_02: "\e81e"; /* '' */
+$scubox_stats_03: "\e81f"; /* '' */
+$scubox_heart: "\e820"; /* '' */
+$scubox_motar_01: "\e821"; /* '' */
+$scubox_drybag: "\e802"; /* '' */
+$scubox_motar_02: "\e824"; /* '' */
+$scubox_book: "\e826"; /* '' */
+$scubox_liveaboard_01: "\e827"; /* '' */
+$scubox_liveaboard_02: "\e828"; /* '' */
+$scubox_sailboat_01: "\e829"; /* '' */
+$scubox_sailboat_02: "\e82a"; /* '' */
+$scubox_divesite_01: "\e82b"; /* '' */
+$scubox_divesite_02: "\e82c"; /* '' */
+$scubox_divesite_03: "\e82d"; /* '' */
+$scubox_divesite_04: "\e82e"; /* '' */
+$scubox_divesite_05: "\e82f"; /* '' */
+$scubox_divesite_06: "\e830"; /* '' */
+$scubox_fish: "\e831"; /* '' */
+$scubox_rankings_01: "\e832"; /* '' */
+$scubox_rankings_02: "\e833"; /* '' */
+$scubox_rankings_03: "\e834"; /* '' */
+$scubox_rosette_01: "\e835"; /* '' */
+$scubox_rosette_02: "\e836"; /* '' */
+$scubox_depth: "\e837"; /* '' */
+$scubox_current: "\e838"; /* '' */
+$scubox_access_01: "\e839"; /* '' */
+$scubox_access_02: "\e83a"; /* '' */
+$scubox_visibility_01: "\e83b"; /* '' */
+$scubox_visibility_02: "\e83c"; /* '' */
+$scubox_mask_01: "\e83d"; /* '' */
+$scubox_mask_02: "\e83e"; /* '' */
+$scubox_mask_03: "\e83f"; /* '' */
+$scubox_diveschool_01: "\e822"; /* '' */
+$scubox_diveschool_02: "\e823"; /* '' *
+
+ 
+//  /* ZF general icons */
+//  @include i-class(zf-general,-settings,"\f000");
+//  @include i-class(zf-general,-heart,"\f001");
+//  @include i-class(zf-general,-star,"\f002");
+//  @include i-class(zf-general,-plus,"\f003");
+//  @include i-class(zf-general,-minus,"\f004");
+//  @include i-class(zf-general,-checkmark,"\f005");
+//  @include i-class(zf-general,-remove,"\f006");
+//  @include i-class(zf-general,-mail,"\f007");
+//  @include i-class(zf-general,-calendar,"\f008");
+//  @include i-class(zf-general,-page,"\f009");
+//  @include i-class(zf-general,-tools,"\f00a");
+//  @include i-class(zf-general,-globe,"\f00b");
+//  @include i-class(zf-general,-home,"\f00c");
+//  @include i-class(zf-general,-quote,"\f00d");
+//  @include i-class(zf-general,-people,"\f00e");
+//  @include i-class(zf-general,-monitor,"\f00f");
+//  @include i-class(zf-general,-laptop,"\f010");
+//  @include i-class(zf-general,-phone,"\f011");
+//  @include i-class(zf-general,-cloud,"\f012");
+//  @include i-class(zf-general,-error,"\f013");
+//  @include i-class(zf-general,-right-arrow,"\f014");
+//  @include i-class(zf-general,-left-arrow,"\f015");
+//  @include i-class(zf-general,-up-arrow,"\f016");
+//  @include i-class(zf-general,-down-arrow,"\f017");
+//  @include i-class(zf-general,-trash,"\f018");
+//  @include i-class(zf-general,-add-doc,"\f019");
+//  @include i-class(zf-general,-edit,"\f01a");
+//  @include i-class(zf-general,-lock,"\f01b");
+//  @include i-class(zf-general,-unlock,"\f01c");
+//  @include i-class(zf-general,-refresh,"\f01d");
+//  @include i-class(zf-general,-paper-clip,"\f01e");
+//  @include i-class(zf-general,-video,"\f01f");
+//  @include i-class(zf-general,-photo,"\f020");
+//  @include i-class(zf-general,-graph,"\f021");
+//  @include i-class(zf-general,-idea,"\f022");
+//  @include i-class(zf-general,-mic,"\f023");
+//  @include i-class(zf-general,-cart,"\f024");
+//  @include i-class(zf-general,-address-book,"\f025");
+//  @include i-class(zf-general,-compass,"\f026");
+//  @include i-class(zf-general,-flag,"\f027");
+//  @include i-class(zf-general,-location,"\f028");
+//  @include i-class(zf-general,-clock,"\f029");
+//  @include i-class(zf-general,-folder,"\f02a");
+//  @include i-class(zf-general,-inbox,"\f02b");
+//  @include i-class(zf-general,-website,"\f02c");
+//  @include i-class(zf-general,-smiley,"\f02d");
+//  @include i-class(zf-general,-search,"\f02e");
+//  
+//  /* ZF general enclosed icons */
+//  @include i-class(zf-enclosed,-settings,"\f000");
+//  @include i-class(zf-enclosed,-heart,"\f001");
+//  @include i-class(zf-enclosed,-star,"\f002");
+//  @include i-class(zf-enclosed,-plus,"\f003");
+//  @include i-class(zf-enclosed,-minus,"\f004");
+//  @include i-class(zf-enclosed,-checkmark,"\f005");
+//  @include i-class(zf-enclosed,-remove,"\f006");
+//  @include i-class(zf-enclosed,-mail,"\f007");
+//  @include i-class(zf-enclosed,-calendar,"\f008");
+//  @include i-class(zf-enclosed,-page,"\f009");
+//  @include i-class(zf-enclosed,-tools,"\f00a");
+//  @include i-class(zf-enclosed,-globe,"\f00b");
+//  @include i-class(zf-enclosed,-home,"\f00c");
+//  @include i-class(zf-enclosed,-quote,"\f00d");
+//  @include i-class(zf-enclosed,-people,"\f00e");
+//  @include i-class(zf-enclosed,-monitor,"\f00f");
+//  @include i-class(zf-enclosed,-laptop,"\f010");
+//  @include i-class(zf-enclosed,-phone,"\f011");
+//  @include i-class(zf-enclosed,-cloud,"\f012");
+//  @include i-class(zf-enclosed,-error,"\f013");
+//  @include i-class(zf-enclosed,-right-arrow,"\f014");
+//  @include i-class(zf-enclosed,-left-arrow,"\f015");
+//  @include i-class(zf-enclosed,-up-arrow,"\f016");
+//  @include i-class(zf-enclosed,-down-arrow,"\f017");
+//  @include i-class(zf-enclosed,-trash,"\f018");
+//  @include i-class(zf-enclosed,-add-doc,"\f019");
+//  @include i-class(zf-enclosed,-edit,"\f01a");
+//  @include i-class(zf-enclosed,-lock,"\f01b");
+//  @include i-class(zf-enclosed,-unlock,"\f01c");
+//  @include i-class(zf-enclosed,-refresh,"\f01d");
+//  @include i-class(zf-enclosed,-paper-clip,"\f01e");
+//  @include i-class(zf-enclosed,-video,"\f01f");
+//  @include i-class(zf-enclosed,-photo,"\f020");
+//  @include i-class(zf-enclosed,-graph,"\f021");
+//  @include i-class(zf-enclosed,-idea,"\f022");
+//  @include i-class(zf-enclosed,-mic,"\f023");
+//  @include i-class(zf-enclosed,-cart,"\f024");
+//  @include i-class(zf-enclosed,-address-book,"\f025");
+//  @include i-class(zf-enclosed,-compass,"\f026");
+//  @include i-class(zf-enclosed,-flag,"\f027");
+//  @include i-class(zf-enclosed,-location,"\f028");
+//  @include i-class(zf-enclosed,-clock,"\f029");
+//  @include i-class(zf-enclosed,-folder,"\f02a");
+//  @include i-class(zf-enclosed,-inbox,"\f02b");
+//  @include i-class(zf-enclosed,-website,"\f02c");
+//  @include i-class(zf-enclosed,-smiley,"\f02d");
+//  @include i-class(zf-enclosed,-search,"\f02e");
+//  
+//  /* ZF social icons */
+//  @include i-class(zf-social,-thumb-up,"\f000");
+//  @include i-class(zf-social,-thumb-down,"\f001");
+//  @include i-class(zf-social,-rss,"\f002");
+//  @include i-class(zf-social,-facebook,"\f003");
+//  @include i-class(zf-social,-twitter,"\f004");
+//  @include i-class(zf-social,-pinterest,"\f005");
+//  @include i-class(zf-social,-github,"\f006");
+//  @include i-class(zf-social,-path,"\f007");
+//  @include i-class(zf-social,-linkedin,"\f008");
+//  @include i-class(zf-social,-dribbble,"\f009");
+//  @include i-class(zf-social,-stumble-upon,"\f00a");
+//  @include i-class(zf-social,-behance,"\f00b");
+//  @include i-class(zf-social,-reddit,"\f00c");
+//  @include i-class(zf-social,-google-plus,"\f00d");
+//  @include i-class(zf-social,-youtube,"\f00e");
+//  @include i-class(zf-social,-vimeo,"\f00f");
+//  @include i-class(zf-social,-flickr,"\f010");
+//  @include i-class(zf-social,-slideshare,"\f011");
+//  @include i-class(zf-social,-picassa,"\f012");
+//  @include i-class(zf-social,-skype,"\f013");
+//  @include i-class(zf-social,-steam,"\f014");
+//  @include i-class(zf-social,-instagram,"\f015");
+//  @include i-class(zf-social,-foursquare,"\f016");
+//  @include i-class(zf-social,-delicious,"\f017");
+//  @include i-class(zf-social,-chat,"\f018");
+//  @include i-class(zf-social,-torso,"\f019");
+//  @include i-class(zf-social,-tumblr,"\f01a");
+//  @include i-class(zf-social,-video-chat,"\f01b");
+//  @include i-class(zf-social,-digg,"\f01c");
+//  @include i-class(zf-social,-wordpress,"\f01d");
+//  
+//  /* ZF accessibility icons */
+//  @include i-class(zf-accessibility,-wheelchair,"\f000");
+//  @include i-class(zf-accessibility,-speaker,"\f001");
+//  @include i-class(zf-accessibility,-fontsize,"\f002");
+//  @include i-class(zf-accessibility,-eject,"\f003");
+//  @include i-class(zf-accessibility,-view-mode,"\f004");
+//  @include i-class(zf-accessibility,-eyeball,"\f005");
+//  @include i-class(zf-accessibility,-asl,"\f006");
+//  @include i-class(zf-accessibility,-person,"\f007");
+//  @include i-class(zf-accessibility,-question,"\f008");
+//  @include i-class(zf-accessibility,-adult,"\f009");
+//  @include i-class(zf-accessibility,-child,"\f00a");
+//  @include i-class(zf-accessibility,-glasses,"\f00b");
+//  @include i-class(zf-accessibility,-cc,"\f00c");
+//  @include i-class(zf-accessibility,-blind,"\f00d");
+//  @include i-class(zf-accessibility,-braille,"\f00e");
+//  @include i-class(zf-accessibility,-iphone-home,"\f00f");
+//  @include i-class(zf-accessibility,-w3c,"\f010");
+//  @include i-class(zf-accessibility,-css,"\f011");
+//  @include i-class(zf-accessibility,-key,"\f012");
+//  @include i-class(zf-accessibility,-hearing-impaired,"\f013");
+//  @include i-class(zf-accessibility,-male,"\f014");
+//  @include i-class(zf-accessibility,-female,"\f015");
+//  @include i-class(zf-accessibility,-network,"\f016");
+//  @include i-class(zf-accessibility,-guidedog,"\f017");
+//  @include i-class(zf-accessibility,-universal-access,"\f018");
+//  @include i-class(zf-accessibility,-elevator,"\f019");
+
+//Fontello sets CORE44 D7 BASE
+//  @include i-class(c44-d7,-openid,"\e814"); /* '' */
+//  @include i-class(c44-d7,-druplicon,"\e839"); /* '' */
+//  @include i-class(c44-d7,-content-types,"\e816"); /* '' */
+//  @include i-class(c44-d7,-site-information,"\e83a"); /* '' */
+//  @include i-class(c44-d7,-home,"\e80d"); /* '' */
+//  @include i-class(c44-d7,-regional-settings,"\e829"); /* '' */
+//  @include i-class(c44-d7,-triggers,"\e83d"); /* '' */
+//  @include i-class(c44-d7,-tools,"\e832"); /* '' */
+//  @include i-class(c44-d7,-settings,"\e844"); /* '' */
+//  @include i-class(c44-d7,-warning,"\e841"); /* '' */
+//  @include i-class(c44-d7,-system,"\e81e"); /* '' */
+//  @include i-class(c44-d7,-configuration,"\e808"); /* '' */
+//  @include i-class(c44-d7,-field-ui,"\e825"); /* '' */
+//  @include i-class(c44-d7,-content-authoring,"\e81f"); /* '' */
+//  @include i-class(c44-d7,-ok,"\e842"); /* '' */
+//  @include i-class(c44-d7,-error,"\e843"); /* '' */
+//  @include i-class(c44-d7,-add-content,"\e80e"); /* '' */
+//  @include i-class(c44-d7,-modules,"\e804"); /* '' */
+//  @include i-class(c44-d7,-appearance,"\e805"); /* '' */
+//  @include i-class(c44-d7,-actions,"\e83c"); /* '' */
+//  @include i-class(c44-d7,-clean-urls,"\e806"); /* '' */
+//  @include i-class(c44-d7,-reports,"\e807"); /* '' */
+//  @include i-class(c44-d7,-add-user,"\e820"); /* '' */
+//  @include i-class(c44-d7,-help,"\e80a"); /* '' */
+//  @include i-class(c44-d7,-info,"\e83e"); /* '' */
+//  @include i-class(c44-d7,-term,"\e80f"); /* '' */
+//  @include i-class(c44-d7,-taxonomy,"\e815"); /* '' */
+//  @include i-class(c44-d7,-comments,"\e813"); /* '' */
+//  @include i-class(c44-d7,-account-settings,"\e831"); /* '' */
+//  @include i-class(c44-d7,-search-and-metadata,"\e82e"); /* '' */
+//  @include i-class(c44-d7,-structure,"\e803"); /* '' */
+//  @include i-class(c44-d7,-login,"\e80b"); /* '' */
+//  @include i-class(c44-d7,-logout,"\e80c"); /* '' */
+//  @include i-class(c44-d7,-publish,"\e818"); /* '' */
+//  @include i-class(c44-d7,-languages,"\e827"); /* '' */
+//  @include i-class(c44-d7,-testing,"\e82f"); /* '' */
+//  @include i-class(c44-d7,-support,"\e837"); /* '' */
+//  @include i-class(c44-d7,-performance,"\e801"); /* '' */
+//  @include i-class(c44-d7,-statistics,"\e83b"); /* '' */
+//  @include i-class(c44-d7,-maintenance-mode,"\e824"); /* '' */
+//  @include i-class(c44-d7,-ip-address-blocking,"\e822"); /* '' */
+//  @include i-class(c44-d7,-blocks,"\e812"); /* '' */
+//  @include i-class(c44-d7,-draggable,"\e823"); /* '' */
+//  @include i-class(c44-d7,-path,"\e81b"); /* '' */
+//  @include i-class(c44-d7,-search-settings,"\e834"); /* '' */
+//  @include i-class(c44-d7,-text-formats,"\e81d"); /* '' */
+//  @include i-class(c44-d7,-feed,"\e817"); /* '' */
+//  @include i-class(c44-d7,-tasks,"\e821"); /* '' */
+//  @include i-class(c44-d7,-feed-aggregator,"\e828"); /* '' */
+//  @include i-class(c44-d7,-development,"\e82a"); /* '' */
+//  @include i-class(c44-d7,-menu,"\e811"); /* '' */
+//  @include i-class(c44-d7,-cron,"\e81c"); /* '' */
+//  @include i-class(c44-d7,-dashboard,"\e838"); /* '' */
+//  @include i-class(c44-d7,-logging-and-errors,"\e82c"); /* '' */
+//  @include i-class(c44-d7,-url-aliases,"\e835"); /* '' */
+//  @include i-class(c44-d7,-link-shortcuts,"\e800"); /* '' */
+//  @include i-class(c44-d7,-file-system,"\e82b"); /* '' */
+//  @include i-class(c44-d7,-image-toolkit,"\e833"); /* '' */
+//  @include i-class(c44-d7,-regional-and-language,"\e826"); /* '' */
+//  @include i-class(c44-d7,-media,"\e809"); /* '' */
+//  @include i-class(c44-d7,-poll,"\e81a"); /* '' */
+//  @include i-class(c44-d7,-user,"\e840"); /* '' */
+//  @include i-class(c44-d7,-people,"\e83f"); /* '' */
+//  @include i-class(c44-d7,-books,"\e810"); /* '' */
+//  @include i-class(c44-d7,-content,"\e802"); /* '' */
+//  @include i-class(c44-d7,-translate-interface,"\e82d"); /* '' */
+//  @include i-class(c44-d7,-update,"\e845"); /* '' */
+//  @include i-class(c44-d7,-roles,"\e830"); /* '' */
+//  @include i-class(c44-d7,-permissions,"\e819"); /* '' */
+//  @include i-class(c44-d7,-date-and-time,"\e836"); /* '' */

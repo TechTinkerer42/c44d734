@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the logosumo feature.
+ */
+
+include_once 'logosumo.features.inc';

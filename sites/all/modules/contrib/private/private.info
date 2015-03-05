@@ -1,0 +1,13 @@
+name = Private
+description = Allows users to mark content as private, and hide that content from visitors.
+core = 7.x
+package = Node Access
+
+files[] = private_handler_filter_private.inc
+
+; Information added by drupal.org packaging script on 2013-10-01
+version = "7.x-1.1+0-dev"
+core = "7.x"
+project = "private"
+datestamp = "1380623834"
+

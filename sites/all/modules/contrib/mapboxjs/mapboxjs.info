@@ -1,0 +1,17 @@
+name = MapBox.JS
+description = Integration with the MapBox.js map scripting library.
+core = 7.x
+
+dependencies[] = libraries (>=2)
+
+files[] = includes/mapboxjs.entity.inc
+files[] = includes/mapboxjs.ui_controller.inc
+
+configure = admin/structure/mapboxjs/presets
+
+; Information added by drupal.org packaging script on 2013-10-01
+version = "7.x-1.0-alpha1+70-dev"
+core = "7.x"
+project = "mapboxjs"
+datestamp = "1380585888"
+

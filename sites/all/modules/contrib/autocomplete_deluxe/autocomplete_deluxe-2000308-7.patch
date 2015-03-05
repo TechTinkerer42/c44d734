@@ -1,0 +1,14 @@
+diff --git a/autocomplete_deluxe.js b/autocomplete_deluxe.js
+index 44d7f15..c0f331f 100755
+--- a/autocomplete_deluxe.js
++++ b/autocomplete_deluxe.js
+@@ -320,7 +320,8 @@
+ 
+     // Override the resize function, so that the suggestion list doesn't resizes
+     // all the time.
+-    jqObject.data("autocomplete")._resizeMenu = function()  {};
++    var autocompleteDataKey = typeof jqObject.data('autocomplete') == 'object' ? 'autocomplete' : 'ui-autocomplete';
++    jqObject.data(autocompleteDataKey)._resizeMenu = function()  {};
+ 
+     jqObject.show();
+ 

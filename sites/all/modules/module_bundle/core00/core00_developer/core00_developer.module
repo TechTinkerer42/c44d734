@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Features: core00 dev feature.
+ */
+
+include_once 'core00_developer.features.inc';

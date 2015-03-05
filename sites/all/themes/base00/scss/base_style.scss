@@ -1,0 +1,24 @@
+/*******************************************************************************
+ * style.scss
+ *
+ * This file shouldn't directly contain any SCSS code, instead it only serves to
+ * combine the SCSS contained in other Sass partials through @import directives.
+ *
+ * BASE............Styling for common HTML and Drupal elements.
+ * LAYOUT..........Styles for the page structure that contain components.
+ * COMPONENTS......Components, their modifiers and sub-components.
+ * CONTRIB......Third party module overrides and tweaks.
+ ******************************************************************************/
+
+@import "styles/utils";
+@import "bootstrap/mixins";
+@import "styles/bs-overrides";
+//	
+@import "styles/components";
+@import "styles/drupal";
+@import "styles/contrib";
+//	@import "styles/jquery_ui_theme/jquery.ui.theme";
+//	@import "styles/layouts";
+
+//	@import "styles/dev";
+@import "styles/misc";

@@ -1,0 +1,6 @@
+; $Id$
+core = "7.x"
+name = "Bulk Domain Check"
+description = "Bulk checking of domain availability"
+package = "Brand Ape"
+stylesheets[all][] = css/bulk_domain_check.css

@@ -1,0 +1,341 @@
+/*******************************************************************************
+ * _components.scss
+ *
+ * Imports more partials that contain full components (modules in SMACSS), their
+ * sub-components and modifiers.
+ *
+ * Components are discrete parts of your page that should sit within the regions
+ * of your layouts. You should try to abstract your components as much as
+ * possible to promote reuse throughout the theme. Components should be flexible
+ * enough to respond to any width and should never rely on context
+ * (e.g. .sidebar-first .component) for styling. This allows modules to be
+ * placed throughout the theme with no risk of them breaking.
+ *
+ * If you find you need to change the look of a component depending on it's
+ * context you should avoid using context based classes at all costs. Instead it
+ * is better to add another "modifier" class to the component to alter the
+ * styling. Again, this promotes reuse.
+ *
+ * Sub-components are the individual parts that make up a component. As a
+ * general rule, adding a class to target a sub-component is a much better
+ * option than using descendant selectors or element selectors. In many cases
+ * sub-components can be made more reusable by making them components in their
+ * own right, so they can then be used within other components.
+ *
+ * Almost everything that doesn't belong in base should be made a component.
+ * Here's some common examples throughout Drupal:
+ *
+ * - Blocks
+ * - Content Types - For example, you may have a generic node component that
+ *      contains sub-components for the submitted by line and links. Specific
+ *      components can then be created for each content type to style the
+ *      specifics of each. Finally, by using entity view modes you can easily
+ *      apply modifications based on the .node-[view-mode] classes.
+ * - Forms - For instance the log in form.
+ * - Views - Each views output style could be made into a component, the content
+ *       of each row should be provided my a view mode styled by it's component
+ *       CSS. Exposed filter forms, views pagers and other views elements are
+ *       also good candidates for components.
+ ******************************************************************************/
+
+
+/*******************************************************************************
+ * icons
+ ******************************************************************************/
+@import "components/glyphicons"; 
+@import "components/icons";
+
+
+.hover-opacity{
+  @include opacity(.7);
+  &:hover{
+    @include opacity(1);    
+  }
+}
+.hover-opacity-rev{
+  @include opacity(1);
+  &:hover{
+    @include opacity(0.9);    
+  }
+}
+.icon-text{
+  display: block;
+  text-indent: -9999px;
+  font-size: 10px;
+  line-height: 1;
+  /* This needs to be removed and chrome issue fixed */
+  display: none;
+}
+.view-empty.user-picture{
+  padding: 10% 5%;
+  text-align: center;
+  height: 280px;
+}
+/*******************************************************************************
+ * blog
+ ******************************************************************************/
+.field--name-field-media{
+   iframe{
+    width: 100% !important;
+  } 
+}
+.field-media.hero{
+  margin: 0 -15px 20px;
+  iframe{
+    width: 100% !important;
+  }
+}
+.node-wrapper{
+  background-color: #fff;
+  margin-bottom: 20px;
+  padding: 19px;
+}
+.node-footer {
+    border-top: 1px solid #EEEEEE;
+    margin: 0 -20px;
+    padding: 20px 20px 10px;
+}
+.comment {
+    border: 1px solid #DDDDDD;
+    border-radius: 4px 4px 4px 4px;
+    margin: 20px 0;
+    padding: 20px;
+}
+#edit-trigger-link.glyphicon{
+    font-size: 20px;
+    margin: 0 10px 0 0;
+    line-height: 1;
+}
+/*******************************************************************************
+ * custom beans
+ ******************************************************************************/
+
+.view-display-id-c00_profile_contact,
+.bean-contact-block{
+  .field-label{
+    display: block;
+    float: left;
+    text-indent: -9999px;
+  }
+  .glyphicon{
+    float: left;
+    margin-right: 10px;
+  }
+}
+
+/*******************************************************************************
+ * services
+ ******************************************************************************/
+
+.service-teaser-wrapper{
+  text-align: center;
+}
+
+/*******************************************************************************
+ * Network block
+ ******************************************************************************/
+
+.field--name-field-network-links {
+/*
+    background-color: #ddd;
+    border-radius: 30px 30px 30px 30px;
+*/
+    float: left;
+    text-align: center;
+    font-size: 20px;
+    margin: 0px 3px 0px 0px;
+    .c44icon- {
+      float: left;
+      padding: 10px 5px 10px 10px;
+      text-align: left;
+    }
+}
+.inverse .field--name-field-network-links {
+/*     background-color: #333; */
+}
+
+/*******************************************************************************
+ * User menu
+ ******************************************************************************/
+ 
+.login-wrapper  {
+  width: 80px;
+  border-right: 1px solid #000;  
+  height: 49px;
+  float: left;
+/*   text-indent: -9999px;  */ 
+	margin-right: 0 !important;
+	background-color: $gray-darker;
+
+	a.toggle-trigger{
+	  background: transparent;
+	  opacity: 0.2;
+	  width: 79px;
+	  height: 49px;
+	  float: left;
+	  color: $gray-light;
+		&:hover{
+		  opacity: 0.5;	
+		}
+		&.active{
+		  background-color: $brand-primary;
+		  opacity: 1;
+		  .c44icon- {
+				color: #fff !important;
+			}
+		}
+		.login-status{
+			display: none;
+		}
+		.c44icon-:before {
+	    font-size: 52px;
+	    height: 49px;
+	    line-height: 1em;
+	    margin: 0;
+	    padding: 0;
+	    text-indent: 0;
+	    width: 79px;
+	    display: block;	    
+			@include inc-icon(scubox,$scubox_user);		
+		}
+	}
+}
+#user-menu {
+	.user-links {
+    border-bottom: 1px solid #000000;
+    display: none;
+    position: absolute;
+    width: 100%;
+    top: -1px;
+    z-index: 20;
+	}
+	ul.links {
+	  position: absolute;
+	  clear: both;
+	  right: 0;
+	  left: 0;  
+	  top: 50px;
+	  z-index: 1000;
+	  background-color: $gray-dark;
+	  border-top: 1px solid #000000;
+		li {
+			list-style: none;
+			a {
+		    background: none repeat scroll 0 0 #222222;
+		    border-bottom: 1px solid #000000;
+		    color: #FFFFFF;
+		    float: left;
+		    height: auto;
+		    padding: 0.695em 45px;
+		    width: 100%;
+		    text-transform: uppercase;
+						&:hover {
+						  background: $brand-primary;
+						  color: #fff;
+						}
+				}
+			}
+	}
+}
+/*******************************************************************************
+ * Breadcrumb
+ ******************************************************************************/
+#breadcrumb{
+    float: left;
+    font-size: 15px;
+    font-weight: normal;
+    height: 49px;
+    list-style: none outside none;
+    margin: 0;
+    max-height: 49px;
+    padding-right: 16px;
+    text-transform: uppercase;
+}
+
+#breadcrumb span{
+  float: left;
+  margin-bottom: 5px;
+}
+.breadcrumb-wrapper{
+max-width: 60%;
+}
+// 	strong {
+// 		color: $gray-light;
+// 		font-weight: normal;
+// 		float: left;
+// 		margin-right: -15px;
+// 		padding: 15px 30px;
+// 		background: url(../images/scubox-bleeds.png) 100% -100px no-repeat;
+// 		max-width: 320px;
+//    overflow: hidden;
+//     
+// 		&:hover { 
+// 			background-position:100% -150px; color: #fff; 
+// 		}
+// 	}
+#breadcrumb span a, #breadcrumb span strong {
+    background: none repeat scroll 0 0 $gray-darker;
+    color: $gray-light;
+    float: left;
+    font-weight: normal;
+    max-width: 320px;
+    padding: 14px 15px 14px 35px !important;
+    position: relative;
+    text-decoration: none;
+    line-height: 1.42857em;
+}
+#breadcrumb span strong {
+	background-color: $brand-primary;
+	color: #fff;
+}
+#breadcrumb .breadcrumb-depth-0 a{
+    padding-left: 20px !important;
+}
+
+#breadcrumb a:hover{
+  background: $brand-primary;
+  color: #fff;
+}
+
+#breadcrumb strong::after,
+#breadcrumb strong::before,
+#breadcrumb a::after,
+#breadcrumb a::before{
+    content: "";
+    border-bottom: 26px solid rgba(0, 0, 0, 0);
+    border-left: 15px solid;
+    border-top: 26px solid rgba(0, 0, 0, 0);
+    margin-top: -27px;
+    position: absolute;
+    right: -15px;
+    top: 50%;
+}
+
+#breadcrumb a::after,#breadcrumb strong::after{ 
+  z-index: 2;
+  border-left-color: $gray-darker;  
+}
+#breadcrumb strong::after{ 
+  border-left-color: $brand-primary;
+}
+
+#breadcrumb a::before,#breadcrumb strong::before{
+    border-left-color: #000000;
+    right: -16px;
+    z-index: 1;
+}
+
+#breadcrumb a:hover::after{
+  border-left-color: $brand-primary;
+}
+
+#breadcrumb .current,
+#breadcrumb .current:hover{
+  font-weight: bold;
+  background: none;
+}
+
+#breadcrumb .current::after,
+#breadcrumb .current::before{
+  content: normal;  
+}

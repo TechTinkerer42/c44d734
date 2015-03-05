@@ -1,0 +1,196 @@
+@import "../utils";
+//@import "bootstrap/mixins";
+
+/*******************************************************************************
+ * _layout.scss
+ *
+ * Styling of the "simple" layout demonstrating the Compass grid extension Susy
+ * and building mobile first layouts.
+ ******************************************************************************/
+
+.l-title-inner, .l-main-inner, .l-footer {
+    margin: auto;
+    max-width: 1280px;
+    padding: 20px;
+    width: 100%;
+    float: none;
+    position: relative;
+}
+#console {
+    padding: 0 10px;
+}
+a.navbar-brand{
+    margin: 0;
+}
+
+.nav-inner {
+    display: block;
+    height: 100%;
+    margin: auto !important;
+    max-width: 1220px;
+    position: relative;
+    width: 100%;
+}
+#cart-link {
+    position: absolute;
+    right: 0;
+    top: 10px;
+   
+}
+/*
+body {
+    padding-top: 110px;
+}
+*/
+.navbar {
+    background: none repeat scroll 0 0 #333;
+    margin-bottom: 0;
+    z-index: 999;
+}
+/*
+.navbar-header {
+    float: none;
+    margin: 0 auto;
+    width: 275px;
+}
+*/
+#tabs {
+   display: none;
+}
+.l-title.not-overlay h1.page-title, .l-title.not-overlay .h1.page-title {
+    float: none;
+    margin-right: 0;
+}
+.l-title.not-overlay, .l-title.not-overlay .l-title-inner {
+		text-align: center;
+}
+.navbar-header {
+    height: 100%;
+}
+/*
+.navbar {
+    border-radius: 0;
+    box-shadow: 0 -5px 12px #000000;
+    height: 110px;
+    max-height: 110px;
+    min-height: 110px !important;
+}
+.navbar-brand img {
+    height: 90px;
+    margin-top: 9px;
+}
+*/
+
+.tags a.active {
+    //background-color: $brand-primary;
+    background-color: #D31A69;
+}
+
+
+
+.navbar {
+    border-radius: 0;
+    box-shadow: 0 -5px 12px #000000;
+    height: 50px;
+    max-height: 50px;
+    min-height: 50px !important;
+}
+.navbar-header {
+    float: none;
+    margin: 0 auto;
+    width: 118px;
+}
+body {
+    padding-top: 50px;
+}
+
+
+@include at-breakpoint(640px) {
+		.view-display-id-filter_tax .views-row,
+		.view-display-id-brand_filter .views-row {
+    	width: 50%;
+    }	
+    a.tag-menu,
+    a.home{
+    	overflow: visible;
+    	width: auto;
+    }
+		.navbar-brand img {
+		    height: 70px;
+		    margin-top: 9px;
+		}
+		.navbar {
+		    border-radius: 0;
+		    box-shadow: 0 -5px 12px #000000;
+		    height: 90px;
+		    max-height: 90px;
+		    min-height: 90px !important;
+		}	
+		.navbar-header {
+		    width: 205px;
+		}	
+body {
+    padding-top: 90px;
+}				
+#cart-link {
+    top: 20px;
+    	.c44icon-:before {
+	    	font-size: 52px !important;
+	    }    
+}  
+.toggle-block{	
+    top: 90px;
+}  
+}
+@include at-breakpoint(1024px) {
+		.view-display-id-filter_tax .views-row,
+		.view-display-id-brand_filter .views-row {
+    	width: 33.333%;
+    }	
+		.navbar-brand img {
+		    height: 90px;
+		    margin-top: 9px;
+		}
+		.navbar {
+		    border-radius: 0;
+		    box-shadow: 0 -5px 12px #000000;
+		    height: 110px;
+		    max-height: 110px;
+		    min-height: 110px !important;
+		}	  
+		.navbar-header {
+		    width: 255px;
+		}
+body {
+    padding-top: 110px;
+}
+#cart-link {
+    top: 30px;
+    	.c44icon-:before {
+	    	font-size: 52px !important;
+	    }
+}
+.toggle-block{	
+    top: 110px;
+}   
+}
+
+/* #### Desktops #### */
+/*
+@media screen and (min-width: 1300px){
+		.view-display-id-brand_filter .views-row {
+    	width: 25%;
+    }	
+}
+*/
+
+/* #### Mobile Phones Landscape #### */
+@media screen and (max-device-width: 640px) and (orientation: landscape){
+  /* some CSS here */
+  .navbar-fixed-top{
+  	position: relative !important;
+  }
+  .l-main-inner {
+    padding-top: 20px !important;
+  }
+}

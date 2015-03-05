@@ -1,0 +1,5 @@
+name = Commerce BTC
+description = Implements a Bitcoin currency type in Drupal Commerce.
+package = Commerce (contrib)
+dependencies[] = commerce
+core = 7.x

@@ -1,0 +1,11 @@
+name = Commerce BitPay
+description = Implements BitPay Bitcoin payment gateway API for use with Drupal Commerce.
+package = Commerce (contrib)
+configure = admin/commerce/config/payment-methods/manage/commerce_payment_bitpay
+dependencies[] = commerce
+dependencies[] = commerce_payment
+dependencies[] = libraries
+files[] = includes/commerce_bitpay.admin.inc
+files[] = includes/commerce_bitpay.callbacks.inc
+files[] = includes/commerce_bitpay.ipn.inc
+core = 7.x

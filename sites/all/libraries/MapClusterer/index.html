@@ -1,0 +1,107 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="leaflet-0.7.1/leaflet.css" />
+        <!--[if lte IE 8]>
+	        <link rel="stylesheet" href="leaflet/leaflet.ie.css" />
+        <![endif]-->
+
+        <script src="leaflet-0.7.1/leaflet-src.js" language="javascript" type="text/javascript"></script>
+	<script src="src/habitatum.map.js" language="javascript" type="text/javascript"></script>
+    </head>
+    <body>
+	    <div id="map" style="height: 600px"></div>
+	
+	    <script language="javascript" type="text/javascript">
+	      
+	      /* Styles */
+				var testStyle = {
+							clickable:true,
+							color:"#fff",
+							dashArray:null,
+							fill:true,
+							fillColor: 'green',
+							fillOpacity:0.5,
+							lineCap:null,
+							lineJoin:null,
+							opacity:1,
+							//radius:30,
+							stroke:true,
+							weight:1				    	
+				    };
+				    
+	       
+	        var map = new HabitatumMap('map', 'a262d37f27f54ce2af83dc7e8ef00c57', null, {
+	        	"click": function(clusterClickEvent){
+					//alert(1);
+				}
+				<!-- LIST OF EVENTS THAT LEAFLET SUPPORT -->
+			});			
+
+				//Create an empty geoJSON layer define settings and and add it to the map
+				var testJson = {"type":"FeatureCollection","features":[{"type":"Feature","geometry":{"type":"Point","coordinates":[34.832283280691,28.876980680074]},"properties":{"name":"Georges","description":"","nid":10436,"type":"divesite"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[34.679345199661,28.975918453799]},"properties":{"name":"Abu Lou Lou","description":"","nid":10236,"type":"divesite"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[34.68460021925,28.97858399746]},"properties":{"name":"Sunk Buoy","description":"","nid":10237,"type":"divesite"}}]};
+				
+	
+				//Create layers for content types and add them to the map
+				var	divesite = L.geoJson(testJson,{
+							style: style,
+							//onEachFeature: onEachFeature,		  	    
+							//pointToLayer: pointToLayer,
+			
+				});
+				
+			function style(feature, latlng) {
+				return testStyle;				
+			}				
+
+
+			//Decide what to do with each geoJSON feature
+			function pointToLayer(feature, latlng) {
+				var radius = 8;
+				
+	
+					return HabitatumMarker(latlng, "text", 
+					{
+						"click": function(e){
+								alert("Some text");
+						}
+						<!-- LIST OF EVENTS THAT LEAFLET SUPPORT -->
+					}
+				);
+				};	
+				
+				
+				var layers = divesite.getLayers();
+				console.log(layers)
+
+
+			var markers = [];
+			
+			var step = -0.09;
+			for(var markerIndex = 0; markerIndex < 10; markerIndex++){
+	
+				var marker = new HabitatumMarker(new L.LatLng(51.5, step), "text", 
+					{
+						"click": function(e){
+								alert("Some text");
+						}
+						<!-- LIST OF EVENTS THAT LEAFLET SUPPORT -->
+					}
+				);
+				markers.push(marker);
+				step = step - 0.01;
+			}
+			
+			var step = -0.09;
+			for(var markerIndex = 0; markerIndex < 10; markerIndex++){
+	
+				var marker = new HabitatumMarker(new L.LatLng(56.5, step), "text");
+				markers.push(marker);
+				step = step - 0.01;
+			}
+			
+			map.addMarkers(markers);
+			map.addMarkers(layers);
+			map.redraw(true);
+	    </script>
+    </body>
+</html>

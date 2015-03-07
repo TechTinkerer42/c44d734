@@ -4,7 +4,7 @@
  * @file
  * Provides a payment method for Drupal Commerce via Blockchain.
  */
-
+ 
 /**
  * Implements hook_commerce_payment_method_info().
  */
@@ -61,6 +61,7 @@ function commerce_blockchain_callback_access($secret) {
  * Implements hook_form_FORM_ID_alter().
  */
 function commerce_blockchain_form_commerce_checkout_form_alter(&$form, &$form_state) {
+
   // If this checkout form contains the payment method radios...
   if (!empty($form['commerce_payment']['payment_method']['#options'])) {
     // Loop over its options array looking for a Bitcoin option.
@@ -71,7 +72,7 @@ function commerce_blockchain_form_commerce_checkout_form_alter(&$form, &$form_st
         case 'blockchain':
           // Prepare the replacement radio button text with icons.
           $variables = array(
-            'path' => drupal_get_path('module', 'commerce_blockchain') . '/images/bitcoin.gif',
+            'path' => drupal_get_path('module', 'commerce_blockchain') . '/images/pay_now_64.png',
             'title' => t('Bitcoin accepted by Blockchain.info'),
             'alt' => t('Bitcoin logo'),
             'attributes' => array(

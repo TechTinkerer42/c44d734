@@ -20,7 +20,7 @@ function commerce_blockchain_settings_form($settings = array(), $payment_method 
   }
 
   $settings += array(
-    'payment_hash' => '1GHMVzFKQBN4CBZuxRC3bVaV8DxTmEPEnB',
+    'payment_hash' => '1KaSZ1XzvvYPjWAKfkiY3M2MiQx214SJVK',
     'blockchain_mixer' => 'false',
     'confirmations' => 6,
     'callback_url' => $base_url . '/blockchain/callback/' . $settings['secret'],
@@ -67,6 +67,7 @@ function commerce_blockchain_settings_form($settings = array(), $payment_method 
  * Payment method callback: submit form.
  */
 function commerce_blockchain_submit_form($payment_method, $pane_values, $checkout_pane, $order) {
+
   $transaction_info = db_query("SELECT transaction_id FROM {commerce_payment_transaction} WHERE payment_method = 'blockchain' AND order_id = :id", array(':id' => $order->order_id))->fetchAssoc();
 
   // Generating a bunch of invoice IDs could get the site banned by Blockchain.
@@ -111,6 +112,12 @@ function commerce_blockchain_submit_form($payment_method, $pane_values, $checkou
     $amount = commerce_currency_amount_to_decimal($transaction->amount, 'BTC');
   }
 	$blockchain_root = "https://blockchain.info/"; 
+  
+  drupal_add_js(array('commerce_blockchain' => array('remote_id' => $transaction->remote_id)), 'setting');  
+  $form['#attached']['js'] = array(
+		drupal_get_path('module', 'commerce_blockchain') . '/js/pay-now-button-v2.js',
+	);
+  
   $form['bitcoin_payment_qr'] = array(
     '#type' => 'container',
     '#prefix' => '',
@@ -118,14 +125,14 @@ function commerce_blockchain_submit_form($payment_method, $pane_values, $checkou
   );    
   $form['bitcoin_payment_address'] = array(
     '#type' => 'container',
-    '#prefix' => t('Send @amount BTC to: @address', array('@amount' => $amount, '@address' => $transaction->remote_id)),
-    '#suffix' => t('Please wait a few seconds for your payment to be seen by blockchain.info before proceeding.', array('@amount' => $amount, '@address' => $transaction->remote_id)),
+    '#prefix' => '<span>' . t('Send @amount BTC to: @address', array('@amount' => $amount, '@address' => $transaction->remote_id)) .'</span>',
+    '#suffix' => '<span>' . t('Please wait a few seconds for your payment to be seen by the block chain before proceeding.') . '</span>',
   );
   $form['transaction'] = array(
     '#type' => 'value',
     '#value' => $transaction,
   );
-
+dsm($form);
   return $form;
 }
 

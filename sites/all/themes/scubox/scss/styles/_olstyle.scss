@@ -1,0 +1,148 @@
+/*////////// OPENLAYERS OVERRIDES //////////*/
+
+
+
+
+
+
+/**
+ * Openlayers theme overries ==========================================================
+ */
+#openlayers-map{
+	 .olControlPanZoomBar {
+    left: inherit !important;
+    right: 60px !important;
+    top: 90px !important;
+	}
+	.olControlEditingToolbar {
+    height: auto !important;
+    margin: 0;
+    right: 80px !important;
+    top: 0 !important;
+    width: auto !important;
+    
+    .olButton{
+	    margin: 0 !important;
+	    background-image: none !important;
+	    cursor: pointer;
+	    	    	color: #aaa;
+	    &:before{
+		    opacity: 0.4;
+				font-size: 40px;
+				line-height: 1;	
+	    }
+			&:hover{
+		    color: #ffffff !important;		    
+	    }
+    } 
+
+		.olControlDrawFeaturePointItemActive,
+		.olControlDrawFeaturePointItemInactive {
+	    	&:before{
+	    		@include inc-icon(scubox,$scubox_marker);	
+	    	}
+		}
+
+		.olControlDrawFeatureBoxItemActive,
+		.olControlDrawFeatureBoxItemInactive {
+	    	&:before{		
+	    		@include inc-icon(scubox,$scubox_map_square);
+	    	}	
+		}
+
+		.olControlDrawFeatureCircleItemActive,
+		.olControlDrawFeatureCircleItemInactive {
+	    	&:before{		
+	    		@include inc-icon(scubox,$scubox_map_circle);	
+	    	}
+		}
+
+		.olControlDrawFeaturePolygonItemActive,
+		.olControlDrawFeaturePolygonItemInactive {
+	    	&:before{		
+	    		@include inc-icon(scubox,$scubox_map_poly);	
+	    	}
+		}
+
+		.olControlDrawFeaturePathItemActive,
+		.olControlDrawFeaturePathItemInactive {
+	    	&:before{		
+	    		@include inc-icon(scubox,$scubox_map_line);
+	    	}	
+		}
+
+		.olControlNavigationItemActive,
+		.olControlNavigationItemInactive {
+	    	&:before{		
+	    		@include inc-icon(scubox,$scubox_map_hand);	
+	    	}
+		}
+
+		.olControlModifyFeatureItemActive,
+		.olControlModifyFeatureItemInactive {
+	    	&:before{		
+	    		@include inc-icon(scubox,$scubox_map_move);	
+	    	}
+		}
+		
+		.olControlDrawFeaturePointItemActive,
+		.olControlDrawFeatureBoxItemActive,
+		.olControlDrawFeatureCircleItemActive,
+		.olControlDrawFeaturePolygonItemActive,
+		.olControlDrawFeaturePathItemActive,
+		.olControlNavigationItemActive,
+		.olControlModifyFeatureItemActive{
+			background-color: $brand-primary !important;
+			&:before{
+				opacity: 1;
+				color: #fff !important;
+			}
+		}
+		
+				
+	}
+	.openlayers-popupbox.popup {
+    box-shadow: none;
+    height: 100% !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 40% !important;
+	}
+	.links.popup-links {
+		li {
+	    float: left;
+	    list-style: none outside none;
+		}	
+	}
+}
+.openlayers-tooltip{
+	a{
+		color: #ffffff;
+		&:hover{
+		color: $brand-primary;	
+		}
+	}
+}
+.popups.direct-edit {
+/*
+    background-color: #111;
+    float: left;
+    height: 24px;
+    position: relative;
+    right: 0;
+    text-indent: -9999px;
+    width: 24px;
+*/
+}
+.openlayers-tooltip-tick{
+	background-image: none;
+	.caret{
+    border-color: #333333 transparent transparent;
+    border-width: 10px 10px 0;
+    left: -2px;
+    position: absolute;
+	}
+}
+.front #map #openlayers-map .openlayers-popupbox.popup {
+	top: 0px !important;
+}

@@ -165,7 +165,7 @@ function logosumo_views_default_views() {
     'default_quantity' => '1',
     'combine' => 1,
     'show_single_product_attributes' => 0,
-    'line_item_type' => 0,
+    'line_item_type' => 'product',
   );
   /* Field: Commerce Product: Stock */
   $handler->display->display_options['fields']['commerce_stock']['id'] = 'commerce_stock';
@@ -698,7 +698,7 @@ function logosumo_views_default_views() {
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = '<h3>Your shopping cart is empty</h3>';
+  $handler->display->display_options['empty']['area']['content'] = 'Your shopping cart is empty';
   $handler->display->display_options['empty']['area']['format'] = 'full_html';
   /* Relationship: Commerce Order: Referenced line items */
   $handler->display->display_options['relationships']['commerce_line_items_line_item_id']['id'] = 'commerce_line_items_line_item_id';
@@ -740,7 +740,8 @@ function logosumo_views_default_views() {
   $handler->display->display_options['arguments']['order_id']['id'] = 'order_id';
   $handler->display->display_options['arguments']['order_id']['table'] = 'commerce_order';
   $handler->display->display_options['arguments']['order_id']['field'] = 'order_id';
-  $handler->display->display_options['arguments']['order_id']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['order_id']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['order_id']['default_argument_type'] = 'commerce_cart_current_cart_order_id';
   $handler->display->display_options['arguments']['order_id']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['order_id']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['order_id']['summary_options']['items_per_page'] = '25';

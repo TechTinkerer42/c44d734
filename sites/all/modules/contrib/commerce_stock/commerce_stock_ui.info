@@ -6,9 +6,9 @@ dependencies[] = commerce
 dependencies[] = commerce_stock
 core = 7.x
 configure = admin/commerce/config/stock
-; Information added by Drupal.org packaging script on 2014-05-15
-version = "7.x-2.0-rc1+9-dev"
+; Information added by Drupal.org packaging script on 2014-12-11
+version = "7.x-2.1"
 core = "7.x"
 project = "commerce_stock"
-datestamp = "1400178828"
+datestamp = "1418323685"
 

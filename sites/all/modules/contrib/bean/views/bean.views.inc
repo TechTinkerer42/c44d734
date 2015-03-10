@@ -12,16 +12,12 @@ function bean_views_data_alter(&$data) {
   $data['bean']['type'] = array(
     'title' => t('Type'),
     'help' => t('The block type'),
-    'argument' => array(
-      'handler' => 'views_handler_argument_bean_type',
-    ),
     'field' => array(
       'handler' => 'views_handler_field_bean_type',
     ),
     'filter' => array(
       'handler' => 'views_handler_filter_bean_type',
     ),
-
   );
 
   $data['bean']['edit_link'] = array(

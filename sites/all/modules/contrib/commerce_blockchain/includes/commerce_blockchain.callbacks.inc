@@ -120,19 +120,16 @@ function commerce_blockchain_submit_form($payment_method, $pane_values, $checkou
   
   $form['bitcoin_payment_qr'] = array(
     '#type' => 'container',
-    '#prefix' => '',
-    '#suffix' => '<img style="margin:5px" id="qrsend" src="'.$blockchain_root. 'qr?data=bitcoin:'.$transaction->remote_id.'%3Famount='.$amount.'%26label=LogoSumo&size=125" alt=""/>',
+    '#prefix' => '<img style="margin:5px" id="qrsend" src="'.$blockchain_root. 'qr?data=bitcoin:'.$transaction->remote_id.'%3Famount='.$amount.'%26label=LogoSumo&size=125" alt=""/>',
+    '#suffix' => '<div>' . t('Send <b>@amount</b> BTC to: <b>@address</b><br>Please wait a few moments for your payments to be received by the blockchain. Once received you will be able to contimue.', array('@amount' => $amount, '@address' => $transaction->remote_id)) .'</div>',
   );    
-  $form['bitcoin_payment_address'] = array(
-    '#type' => 'container',
-    '#prefix' => '<span>' . t('Send @amount BTC to: @address', array('@amount' => $amount, '@address' => $transaction->remote_id)) .'</span>',
-    '#suffix' => '<span>' . t('Please wait a few seconds for your payment to be seen by the block chain before proceeding.') . '</span>',
-  );
+
   $form['transaction'] = array(
     '#type' => 'value',
     '#value' => $transaction,
   );
-dsm($form);
+  
+
   return $form;
 }
 

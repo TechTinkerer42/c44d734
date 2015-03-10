@@ -6173,17 +6173,19 @@ label.media-filename {
   margin-top: 20px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/base00\/scss\/styles\/_contrib\.scss}line{font-family:\00003488}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/base00\/scss\/styles\/_contrib\.scss}line{font-family:\00003489}}
+.cart-empty-page,
 .view-empty {
   border: 5px dashed #eeeeee;
   padding: 10% 5%;
   text-align: center;
+  font-size: 27px;
 }
 
 /*******************************************************************************
  * RESIZE LISTENER  > _contrib.scss
  ******************************************************************************/
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/base00\/scss\/styles\/_contrib\.scss}line{font-family:\00003498}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/base00\/scss\/styles\/_contrib\.scss}line{font-family:\00003500}}
 .resize-sensor, .resize-sensor > div {
   position: absolute;
   top: 0;
@@ -6197,19 +6199,19 @@ label.media-filename {
 /*******************************************************************************
  * STYLEGUIDE  > _contrib.scss
  ******************************************************************************/
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/base00\/scss\/styles\/_contrib\.scss}line{font-family:\00003512}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/base00\/scss\/styles\/_contrib\.scss}line{font-family:\00003514}}
 div.styleguide {
   border-bottom: 1px solid red;
   border-top: 0 solid #777777;
   padding-top: 19px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/base00\/scss\/styles\/_contrib\.scss}line{font-family:\00003517}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/base00\/scss\/styles\/_contrib\.scss}line{font-family:\00003519}}
 #styleguide-header {
   padding: 21px 20px 20px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/base00\/scss\/styles\/_contrib\.scss}line{font-family:\00003520}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/base00\/scss\/styles\/_contrib\.scss}line{font-family:\00003522}}
 h2.styleguide {
   margin: 0;
   padding: 0;
@@ -6220,7 +6222,7 @@ h2.styleguide {
   /*     text-transform: uppercase; */
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/base00\/scss\/styles\/_contrib\.scss}line{font-family:\00003528}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/base00\/scss\/styles\/_contrib\.scss}line{font-family:\00003530}}
 .styleguide-description {
   margin: 0;
   font-size: 0.92857em;
@@ -6230,7 +6232,7 @@ h2.styleguide {
 /*******************************************************************************
  * NAME  > _contrib.scss
  ******************************************************************************/
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/base00\/scss\/styles\/_contrib\.scss}line{font-family:\00003538}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/base00\/scss\/styles\/_contrib\.scss}line{font-family:\00003540}}
 .name-title-wrapper,
 .name-family-wrapper,
 .name-given-wrapper {
@@ -6238,12 +6240,12 @@ h2.styleguide {
   margin-right: 2% !important;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/base00\/scss\/styles\/_contrib\.scss}line{font-family:\00003542}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/base00\/scss\/styles\/_contrib\.scss}line{font-family:\00003544}}
 .name-title-wrapper {
   width: 20%;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/base00\/scss\/styles\/_contrib\.scss}line{font-family:\00003545}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/base00\/scss\/styles\/_contrib\.scss}line{font-family:\00003547}}
 .name-family-wrapper {
   margin-right: 0 !important;
 }
@@ -6251,17 +6253,17 @@ h2.styleguide {
 /*******************************************************************************
  * CONTEXT  > _contrib.scss
  ******************************************************************************/
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/base00\/scss\/styles\/_contrib\.scss}line{font-family:\00003551}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/base00\/scss\/styles\/_contrib\.scss}line{font-family:\00003553}}
 #context-blockform .context-blockform-selector {
   height: 40em;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/base00\/scss\/styles\/_contrib\.scss}line{font-family:\00003554}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/base00\/scss\/styles\/_contrib\.scss}line{font-family:\00003556}}
 #context-blockform td.blocks .label {
   background: none repeat scroll 0 0 #AAAAAA;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/base00\/scss\/styles\/_contrib\.scss}line{font-family:\00003557}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/base00\/scss\/styles\/_contrib\.scss}line{font-family:\00003559}}
 #context-blockform td.blocks .label a {
   background: none repeat scroll 0 0 #EEEEEE;
   border-radius: 3px;
@@ -6269,7 +6271,7 @@ h2.styleguide {
   padding: 6px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/base00\/scss\/styles\/_contrib\.scss}line{font-family:\00003563}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/base00\/scss\/styles\/_contrib\.scss}line{font-family:\00003565}}
 .context-plugin-form .tabledrag-toggle-weight-wrapper {
   display: none !important;
 }
@@ -6277,12 +6279,12 @@ h2.styleguide {
 /*******************************************************************************
  * CONTEXTUAL LINKS  > _contrib.scss
  ******************************************************************************/
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/base00\/scss\/styles\/_contrib\.scss}line{font-family:\00003569}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/base00\/scss\/styles\/_contrib\.scss}line{font-family:\00003571}}
 .contextual-links-wrapper {
   z-index: 500;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/base00\/scss\/styles\/_contrib\.scss}line{font-family:\00003572}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/base00\/scss\/styles\/_contrib\.scss}line{font-family:\00003574}}
 .contextual-links-trigger {
   background: none !important;
   font-size: 17px;
@@ -6290,17 +6292,17 @@ h2.styleguide {
   text-indent: 0;
   color: #999999;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/base00\/scss\/styles\/_contrib\.scss}line{font-family:\00003578}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/base00\/scss\/styles\/_contrib\.scss}line{font-family:\00003580}}
 .contextual-links-trigger:hover, .contextual-links-trigger:focus {
   color: #555555;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/base00\/scss\/styles\/_contrib\.scss}line{font-family:\00003581}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/base00\/scss\/styles\/_contrib\.scss}line{font-family:\00003583}}
 .contextual-links-trigger:before {
   content: "\e88f";
   font-family: "c44_d7";
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/base00\/scss\/styles\/_contrib\.scss}line{font-family:\00003585}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/base00\/scss\/styles\/_contrib\.scss}line{font-family:\00003587}}
 .contextual-links {
   top: 24px;
 }
@@ -11219,4 +11221,9 @@ footer .field--name-field-network-links .c44icon- {
   display: block;
   content: "\ee25";
   font-family: "c44_d7";
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/sumo\/scss\/styles\/_sumo\.scss}line{font-family:\00003435}}
+#payment-details.disabled {
+  display: none;
 }

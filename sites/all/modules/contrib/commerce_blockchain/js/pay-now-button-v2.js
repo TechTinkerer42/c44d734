@@ -7,8 +7,10 @@
 
 			if(document.getElementById('edit-commerce-payment-payment-method-blockchaincommerce-payment-blockchain').checked) {
       	$('#edit-continue').addClass('disabled');
+				$('#payment-details').removeClass('disabled');      	
 			}else{
 				$('#edit-continue').removeClass('disabled');
+				$('#payment-details').addClass('disabled');
 			}
 
 	    function checkBalance() {

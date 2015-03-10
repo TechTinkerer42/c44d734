@@ -11227,3 +11227,8 @@ footer .field--name-field-network-links .c44icon- {
 #payment-details.disabled {
   display: none;
 }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/core44\/Sites\/sumo\/sites\/all\/themes\/sumo\/scss\/styles\/_sumo\.scss}line{font-family:\00003439}}
+#overlay-content .l-main {
+  min-height: 500px;
+}
